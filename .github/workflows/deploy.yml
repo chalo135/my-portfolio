@@ -1,0 +1,91 @@
+# Builds the static export and uploads it to hosting.com over SSH.
+# Runbook: DEPLOY.md.
+name: Deploy
+
+on:
+  push:
+    # >>> DEPLOY BRANCH: change `main` here to deploy from another branch. <<<
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: 'Branch, tag or commit SHA to deploy (blank = the branch you run this from). Use an older SHA to roll back.'
+        required: false
+        default: ''
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+env:
+  SITE: https://charlesndirangu.com
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ inputs.ref || github.sha }}
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Type-check
+        run: npx tsc --noEmit
+
+      - name: Build
+        run: npm run build
+
+      - name: Check the export
+        run: npm run check:export
+
+      - name: Set up SSH
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}
+        run: |
+          install -d -m 700 ~/.ssh
+          printf '%s\n' "$SSH_PRIVATE_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          printf '%s\n' "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          chmod 644 ~/.ssh/known_hosts
+
+      - name: Upload
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_PORT: ${{ secrets.SSH_PORT }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+        run: |
+          rsync -az --delete \
+            --exclude '.well-known/' --exclude 'cgi-bin/' \
+            -e "ssh -i ~/.ssh/deploy_key -p $SSH_PORT" \
+            out/ "$SSH_USER@$SSH_HOST:$DEPLOY_PATH/"
+
+      - name: Remove the key
+        if: always()
+        run: rm -f ~/.ssh/deploy_key
+
+      - name: Smoke test
+        run: |
+          set -u
+          fail=0
+          for path in /en/ /sw/; do
+            code=$(curl -s -o /dev/null -w '%{http_code}' "$SITE$path")
+            echo "$path -> $code"
+            [ "$code" = 200 ] || fail=1
+          done
+          # / has no page of its own; .htaccess sends it to /en/.
+          read -r code location < <(curl -s -o /dev/null -w '%{http_code} %{redirect_url}' "$SITE/")
+          echo "/ -> $code $location"
+          [ "$code" = 301 ] && [ "$location" = "$SITE/en/" ] || fail=1
+          exit $fail

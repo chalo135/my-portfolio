@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Literal copies of --accent-rgb (#A8141C) and --on-accent-rgb (#FFFFFF), light theme. -->
+  <rect width="64" height="64" rx="4" fill="#A8141C"/>
+  <text x="32" y="45" font-family="Trajan Pro, Palatino Linotype, Palatino, Georgia, serif" font-size="40" font-weight="700"
+        text-anchor="middle" fill="#FFFFFF">C</text>
+</svg>

@@ -1,0 +1,48 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Next.js
+.next
+out
+next-env.d.ts
+
+# Env files
+.env
+.env*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Large local-only binaries. These must never sit inside the project root:
+# Next's dev watcher and `next build`'s output file tracing both walk it, and
+# half a gigabyte of binary there is a measurable stall on every start.
+# They have been moved to ../_local-assets/.
+*.mp4
+!public/videos/*.mp4
+*.exe
+*.msi
+*.zip
+_local-assets/
+.md
+
+*.exe
+*.crdownload

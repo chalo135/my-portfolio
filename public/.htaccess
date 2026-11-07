@@ -1,0 +1,79 @@
+# Server config for the static export, served by LiteSpeed on hosting.com
+# shared hosting (reads Apache .htaccess). Copied into out/ by next build.
+# The redirects that used to live in next.config.ts are here. See DEPLOY.md.
+
+Options -Indexes
+DirectoryIndex index.html
+ErrorDocument 404 /404.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # HTTPS and the canonical host in one hop. AutoSSL needs /.well-known/
+  # reachable over plain HTTP, so it's left alone.
+  RewriteCond %{REQUEST_URI} !^/\.well-known/
+  RewriteCond %{HTTPS} !=on [OR]
+  RewriteCond %{HTTP_HOST} !^charlesndirangu\.com$ [NC]
+  RewriteRule ^ https://charlesndirangu.com%{REQUEST_URI} [R=301,L]
+
+  # / goes to the English home. There is no root page; every page lives
+  # under /en/ or /sw/.
+  RewriteRule ^$ /en/ [R=301,L]
+
+  # Old flat paths go to their /en/ counterparts. One explicit line per
+  # route in routePaths (src/content/site.ts), plus the two slug routes.
+  # No catch-all regex. None of these match a path starting en/ or sw/.
+  RewriteRule ^projects/?$ /en/projects/ [R=301,L]
+  RewriteRule ^philosophy/?$ /en/philosophy/ [R=301,L]
+  RewriteRule ^about/?$ /en/about/ [R=301,L]
+  RewriteRule ^capabilities/?$ /en/capabilities/ [R=301,L]
+  RewriteRule ^technologies/?$ /en/technologies/ [R=301,L]
+  RewriteRule ^experience/?$ /en/experience/ [R=301,L]
+  RewriteRule ^writing/?$ /en/writing/ [R=301,L]
+  RewriteRule ^resume/?$ /en/resume/ [R=301,L]
+  RewriteRule ^contact/?$ /en/contact/ [R=301,L]
+
+  # Placeholder projects that were removed land on the project list, in one
+  # hop, from both the old flat path and the localized path. The target
+  # (/xx/projects/) never matches these rules, so they cannot loop.
+  RewriteRule ^projects/(enterprise-platform|fintech-analytics|secure-communications)/?$ /en/projects/ [R=301,L]
+  RewriteRule ^(en|sw)/projects/(enterprise-platform|fintech-analytics|secure-communications)/?$ /$1/projects/ [R=301,L]
+
+  # The two dynamic route families.
+  RewriteRule ^projects/([^/]+)/?$ /en/projects/$1/ [R=301,L]
+  RewriteRule ^writing/([^/]+)/?$ /en/writing/$1/ [R=301,L]
+</IfModule>
+
+<IfModule mod_mime.c>
+  AddType application/manifest+json .webmanifest
+  AddType image/avif .avif
+  AddType video/mp4 .mp4
+  AddType video/webm .webm
+  AddType font/woff2 .woff2
+  # Cinzel is self-hosted from a .ttf (hashed, under _next/static/media/).
+  AddType font/ttf .ttf
+  AddType application/octet-stream .pbix
+</IfModule>
+
+# The OG images export as en/opengraph-image and sw/opengraph-image, with no
+# extension. They are PNGs; without this, nosniff makes crawlers reject them.
+<FilesMatch "^opengraph-image$">
+  ForceType image/png
+</FilesMatch>
+
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+  # Pages and RSC payloads change on every build.
+  <FilesMatch "\.(html|txt)$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+  # Hashed build assets never change under the same name.
+  <FilesMatch "\.(js|css|woff2|ttf)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "(\.(png|jpe?g|webp|avif|gif|svg|ico|mp4|webm)|^opengraph-image)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+</IfModule>
