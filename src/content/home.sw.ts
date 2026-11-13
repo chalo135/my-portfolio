@@ -2,20 +2,20 @@ import type { HomeContent } from './home'
 
 // Place names and the name on the card are not translated.
 export const homeContent: HomeContent = {
-  heading: 'TODO',
-  intro: 'TODO',
-  ctaWork: 'TODO',
-  ctaContact: 'TODO',
+  heading: 'Habari, mimi ni Chalo.',
+  intro: 'Mimi ni msanidi programu jijini Nairobi. Ninatengeneza tovuti na programu kwa biashara ndogo.',
+  ctaWork: 'Tazama miradi yangu',
+  ctaContact: 'Wasiliana nami',
   sticky: ['Nairobi,', 'Kenya'],
-  noteLaptop: 'TODO',
-  noteMe: 'TODO',
-  noteTug: 'TODO',
-  notebookLabel: 'TODO',
-  laptopLabel: 'TODO',
+  noteLaptop: 'miradi yangu iko humu',
+  noteMe: 'huyu ni mimi',
+  noteTug: 'ivute kidogo',
+  notebookLabel: 'mawazo',
+  laptopLabel: 'Tazama miradi yangu',
   card: {
     name: 'CHARLES NDIRANGU',
-    role: 'TODO',
+    role: 'Msanidi programu',
     location: 'Nairobi, Kenya',
-    alt: 'TODO',
+    alt: "Kadi yenye picha ya Charles Ndirangu ikining'inia kwenye kamba.",
   },
 }

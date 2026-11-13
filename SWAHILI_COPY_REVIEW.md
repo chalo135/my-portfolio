@@ -591,3 +591,22 @@ The English copy was rewritten to sound like Charles and to claim only what is t
 | remote-engineering-excellence.content[2] | A written proposal can be read whenever someone comes online. A meeting can't. Meetings are worth keeping for decisions that need a back-and-forth. | Pendekezo lililoandikwa linaweza kusomwa wakati wowote mtu anapoingia mtandaoni. Mkutano hauwezi. Mikutano inafaa kubakizwa kwa maamuzi yanayohitaji majadiliano ya kwenda na kurudi. |
 | remote-engineering-excellence.content[3] | ## Say why | ## Eleza sababu |
 | remote-engineering-excellence.content[4] | A teammate who wasn't there needs the reason for a decision as well as the decision itself. | Mwenzako wa timu ambaye hakuwepo anahitaji sababu ya uamuzi pamoja na uamuzi wenyewe. |
+
+## Workbench
+
+Kiswahili drafts for the Workbench redesign (Home, Work, About, Contact). Every string over about eight words, for a fluent speaker to check. Shorter strings are in the `.sw.ts` files under `src/content/`.
+
+| Key | English | Kiswahili draft |
+|---|---|---|
+| site.description, pages.meta.home.description | I build websites and software for small businesses. Based in Nairobi, Kenya. | Ninatengeneza tovuti na programu kwa biashara ndogo. Niko Nairobi, Kenya. |
+| site.status | Open to full-time roles and freelance work. | Niko tayari kwa kazi ya kudumu na kazi huru. |
+| home.intro | I'm a software developer in Nairobi. I build websites and software for small businesses. | Mimi ni msanidi programu jijini Nairobi. Ninatengeneza tovuti na programu kwa biashara ndogo. |
+| home.card.alt | A photo card of Charles Ndirangu hanging from a strap. | Kadi yenye picha ya Charles Ndirangu ikining'inia kwenye kamba. |
+| work.projects.pharimz.descriptor | An e-commerce website for Kenyan streetwear and design | Tovuti ya duka la mtandaoni la mavazi ya mtaani na ubunifu wa Kenya |
+| work.projects.jade-wears.descriptor | An e-commerce website for a lifestyle brand | Tovuti ya duka la mtandaoni la chapa ya mtindo wa maisha |
+| work.projects.kahawa-smart.descriptor | An app that spots coffee leaf disease from a photo | Programu inayotambua ugonjwa wa majani ya kahawa kutoka kwa picha |
+| about.paragraphs[0] | I studied Computer Technology at Multimedia University of Kenya. I've built software for clients since April 2025. | Nilisomea Teknolojia ya Kompyuta katika Chuo Kikuu cha Multimedia cha Kenya. Nimetengeneza programu kwa wateja tangu Aprili 2025. |
+| about.paragraphs[1] | I also help run our family's plumbing and bio-digester business and our spare-parts shop. | Pia ninasaidia kuendesha biashara ya familia yetu ya mabomba na mitambo ya biogesi, na duka letu la vipuri. |
+| contact.form.helper | This opens your email app with your note filled in. | Hii inafungua programu yako ya barua pepe ikiwa na ujumbe wako tayari. |
+
+Worth a second look: "msanidi programu" for "software developer"; "kazi ya kudumu na kazi huru" for "full-time roles and freelance work"; "mitambo ya biogesi" for "bio-digester"; the university's Kiswahili name (it may be better left in English as "Multimedia University of Kenya").
