@@ -10,8 +10,7 @@ import { localeFromPathname, localeHref } from '@/lib/locale-href'
 /**
  * Route-level error boundary.
  *
- * Without this, an uncaught client error anywhere in the tree (the WebGL
- * canvas, a bad ref) unmounts the whole segment and leaves a blank page that
+ * Without this, an uncaught client error anywhere in the tree unmounts the whole segment and leaves a blank page that
  * reads as a hang. This keeps the page usable and gives a way back.
  *
  * An error boundary receives no route params, so the locale is read off the
@@ -35,8 +34,7 @@ export default function Error({
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center gap-6 px-[var(--section-padding)] text-center">
-      <p className="font-sans text-xs tracking-label text-fg-muted">{copy.label}</p>
-      <h1 className="max-w-2xl text-balance font-display text-display-md font-bold text-fg">
+      <h1 className="max-w-2xl text-balance text-4xl font-bold text-fg">
         {copy.title}
       </h1>
       <p className="max-w-measure text-sm leading-relaxed text-fg/90">{copy.body}</p>

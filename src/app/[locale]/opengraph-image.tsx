@@ -69,7 +69,7 @@ export default async function OpengraphImage({
 
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <div style={{ display: 'flex', fontSize: 76, lineHeight: 1.1, maxWidth: 940 }}>
-            {site.tagline}
+            {site.description}
           </div>
           <div
             style={{

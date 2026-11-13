@@ -20,28 +20,35 @@ ErrorDocument 404 /404.html
   # under /en/ or /sw/.
   RewriteRule ^$ /en/ [R=301,L]
 
-  # Old flat paths go to their /en/ counterparts. One explicit line per
-  # route in routePaths (src/content/site.ts), plus the two slug routes.
-  # No catch-all regex. None of these match a path starting en/ or sw/.
-  RewriteRule ^projects/?$ /en/projects/ [R=301,L]
-  RewriteRule ^philosophy/?$ /en/philosophy/ [R=301,L]
+  # Workbench redesign: four pages (/, /work/, /about/, /contact/) per
+  # locale. One explicit 301 per old route, in one hop. No catch-all, and no
+  # rule matches a new path (/xx/, /xx/work/, /xx/about/, /xx/contact/), so
+  # nothing can loop.
+
+  # Old flat paths, from before the locale prefix.
+  RewriteRule ^work/?$ /en/work/ [R=301,L]
   RewriteRule ^about/?$ /en/about/ [R=301,L]
-  RewriteRule ^capabilities/?$ /en/capabilities/ [R=301,L]
-  RewriteRule ^technologies/?$ /en/technologies/ [R=301,L]
-  RewriteRule ^experience/?$ /en/experience/ [R=301,L]
-  RewriteRule ^writing/?$ /en/writing/ [R=301,L]
-  RewriteRule ^resume/?$ /en/resume/ [R=301,L]
   RewriteRule ^contact/?$ /en/contact/ [R=301,L]
+  RewriteRule ^projects/?$ /en/work/ [R=301,L]
+  RewriteRule ^projects/[^/]+/?$ /en/work/ [R=301,L]
+  RewriteRule ^capabilities/?$ /en/work/ [R=301,L]
+  RewriteRule ^technologies/?$ /en/work/ [R=301,L]
+  RewriteRule ^philosophy/?$ /en/ [R=301,L]
+  RewriteRule ^writing/?$ /en/ [R=301,L]
+  RewriteRule ^writing/[^/]+/?$ /en/ [R=301,L]
+  RewriteRule ^experience/?$ /en/about/ [R=301,L]
+  RewriteRule ^resume/?$ /en/about/ [R=301,L]
 
-  # Placeholder projects that were removed land on the project list, in one
-  # hop, from both the old flat path and the localized path. The target
-  # (/xx/projects/) never matches these rules, so they cannot loop.
-  RewriteRule ^projects/(enterprise-platform|fintech-analytics|secure-communications)/?$ /en/projects/ [R=301,L]
-  RewriteRule ^(en|sw)/projects/(enterprise-platform|fintech-analytics|secure-communications)/?$ /$1/projects/ [R=301,L]
-
-  # The two dynamic route families.
-  RewriteRule ^projects/([^/]+)/?$ /en/projects/$1/ [R=301,L]
-  RewriteRule ^writing/([^/]+)/?$ /en/writing/$1/ [R=301,L]
+  # Removed pages, in each locale ($1 is en or sw).
+  RewriteRule ^(en|sw)/projects/?$ /$1/work/ [R=301,L]
+  RewriteRule ^(en|sw)/projects/[^/]+/?$ /$1/work/ [R=301,L]
+  RewriteRule ^(en|sw)/capabilities/?$ /$1/work/ [R=301,L]
+  RewriteRule ^(en|sw)/technologies/?$ /$1/work/ [R=301,L]
+  RewriteRule ^(en|sw)/philosophy/?$ /$1/ [R=301,L]
+  RewriteRule ^(en|sw)/writing/?$ /$1/ [R=301,L]
+  RewriteRule ^(en|sw)/writing/[^/]+/?$ /$1/ [R=301,L]
+  RewriteRule ^(en|sw)/experience/?$ /$1/about/ [R=301,L]
+  RewriteRule ^(en|sw)/resume/?$ /$1/about/ [R=301,L]
 </IfModule>
 
 <IfModule mod_mime.c>
@@ -50,9 +57,6 @@ ErrorDocument 404 /404.html
   AddType video/mp4 .mp4
   AddType video/webm .webm
   AddType font/woff2 .woff2
-  # Cinzel is self-hosted from a .ttf (hashed, under _next/static/media/).
-  AddType font/ttf .ttf
-  AddType application/octet-stream .pbix
 </IfModule>
 
 # The OG images export as en/opengraph-image and sw/opengraph-image, with no
@@ -70,7 +74,7 @@ ErrorDocument 404 /404.html
     Header set Cache-Control "no-cache"
   </FilesMatch>
   # Hashed build assets never change under the same name.
-  <FilesMatch "\.(js|css|woff2|ttf)$">
+  <FilesMatch "\.(js|css|woff2)$">
     Header set Cache-Control "public, max-age=31536000, immutable"
   </FilesMatch>
   <FilesMatch "(\.(png|jpe?g|webp|avif|gif|svg|ico|mp4|webm)|^opengraph-image)$">

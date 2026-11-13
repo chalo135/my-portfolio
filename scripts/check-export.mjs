@@ -5,7 +5,7 @@
 // No dependencies: Node 18+ built-ins only. Exits 1 on any failure.
 //
 //   1. The server files exist: .htaccess, 404.html, robots.txt, sitemap.xml.
-//   2. Every route, project slug and writing slug exported, in every locale.
+//   2. Every route in routePaths exported, in every locale.
 //   3. Every internal href / src / srcset / og:image / twitter:image in every
 //      HTML file resolves to a file in out/.
 //   4. Every canonical and hreflang URL is on the live origin, ends in `/`,
@@ -35,15 +35,7 @@ const locales = localeList ? allMatches(localeList, /'([^']+)'/g) : []
 
 const siteTs = await read('src', 'content', 'site.ts')
 const routeList = siteTs.match(/routePaths\s*=\s*\[([^\]]*)\]/)?.[1] ?? ''
-const siteEn = await read('src', 'content', 'site.en.ts')
-const footerList = siteEn.match(/footerItems:\s*\[([\s\S]*?)\n\s*\]/)?.[1] ?? ''
-const routes = new Set([
-  ...allMatches(routeList, /'([^']+)'/g),
-  ...allMatches(footerList, /href:\s*'(\/[^']*)'/g),
-])
-
-const projectSlugs = allMatches(await read('src', 'content', 'projects.en.ts'), /slug:\s*'([^']+)'/g)
-const writingSlugs = allMatches(await read('src', 'content', 'writing.en.ts'), /slug:\s*'([^']+)'/g)
+const routes = new Set(allMatches(routeList, /'([^']+)'/g))
 
 const failures = []
 function fail(message) {
@@ -52,8 +44,8 @@ function fail(message) {
 }
 
 if (!existsSync(OUT)) fail('out/ does not exist. Run `npm run build` first.')
-if (routes.size === 0 || projectSlugs.length === 0 || writingSlugs.length === 0) {
-  fail('Read no routes or slugs from src/content. Has the source layout changed?')
+if (routes.size === 0) {
+  fail('Read no routes from src/content/site.ts. Has the source layout changed?')
 }
 
 /* --- 1. server files ------------------------------------------------------ */
@@ -64,11 +56,7 @@ for (const file of ['.htaccess', '404.html', 'robots.txt', 'sitemap.xml']) {
 
 /* --- 2. every page exported ----------------------------------------------- */
 
-const pagePaths = [
-  ...routes,
-  ...projectSlugs.map((s) => `/projects/${s}`),
-  ...writingSlugs.map((s) => `/writing/${s}`),
-]
+const pagePaths = [...routes]
 const prefixes = locales.length > 0 ? locales.map((l) => `/${l}`) : ['']
 let expectedPages = 0
 for (const prefix of prefixes) {

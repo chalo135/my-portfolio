@@ -1,82 +1,51 @@
 import Link from 'next/link'
-import { getSite } from '@/content/site'
+import { contact, getSite } from '@/content/site'
 import { localeHref } from '@/lib/locale-href'
 import type { Locale } from '@/i18n/config'
-import BackToTop from '@/components/layout/BackToTop'
 
+const linkClass =
+  'inline-flex min-h-[44px] items-center text-fg underline-offset-4 transition-colors duration-150 ease-out hover:underline [overflow-wrap:anywhere]'
+
+/** One wrapping row under a dashed rule: name and year, the four links,
+ *  email and GitHub. */
 export default function Footer({ locale }: { locale: Locale }) {
   const year = new Date().getFullYear()
-  const { site, footerGroups, socialItems, ui } = getSite(locale)
+  const { site, footerItems, ui } = getSite(locale)
 
   return (
-    <footer className="border-t border-line px-[var(--section-padding)] pb-16 pt-section-sm">
-      <div className="mx-auto max-w-content">
-        <div className="max-w-measure">
-          <p className="font-sans text-[0.85rem] tracking-label text-fg/80">{site.ethos}</p>
-          <a
-            href={`mailto:${site.email}`}
-            className="mt-6 inline-block text-balance [overflow-wrap:anywhere] font-sans text-[clamp(1.25rem,3vw,2rem)] font-semibold text-fg transition-colors duration-150 ease-out hover:text-accent"
-          >
-            {site.email}
-          </a>
-        </div>
+    <footer className="mx-4 border-t-2 border-dashed border-fg/25 pb-[30px] pt-[22px] sm:mx-10">
+      <div className="mx-auto flex max-w-[1360px] flex-wrap items-center gap-x-8 gap-y-2 text-[15px]">
+        <p className="flex items-baseline gap-3">
+          <span className="font-hand text-[26px] font-bold leading-none text-fg">{site.name}</span>
+          <span className="text-fg-muted">© {year}</span>
+        </p>
 
-        <div className="mt-16 grid grid-cols-1 gap-12 md:grid-cols-12">
-          <div className="md:col-span-4">
-            <p className="font-display text-lg text-fg">{site.name}</p>
-            <p className="mt-2 max-w-sm text-sm leading-relaxed text-fg/80">
-              <span className="block">{site.role}</span>
-              <span className="block">{site.location}</span>
-            </p>
-            <div className="mt-4 flex flex-wrap gap-x-6">
-              {socialItems
-                .filter((social) => social.href !== '#')
-                .map((social) => (
-                  <a
-                    key={social.label}
-                    href={social.href}
-                    target={social.href.startsWith('http') ? '_blank' : undefined}
-                    rel={social.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                    className="block py-1.5 font-sans text-[0.9rem] text-fg transition-colors duration-150 ease-out hover:text-accent"
-                  >
-                    {social.label}
-                  </a>
-                ))}
-            </div>
-          </div>
-
-          <nav
-            className="grid grid-cols-2 gap-8 sm:grid-cols-3 md:col-span-7 md:col-start-6"
-            aria-label={ui.footerNavLabel}
-          >
-            {footerGroups.map((group) => (
-              <div key={group.heading}>
-                <h2 className="font-sans text-[0.75rem] tracking-label text-fg-muted">
-                  {group.heading}
-                </h2>
-                <ul className="mt-3">
-                  {group.items.map((item) => (
-                    <li key={item.href}>
-                      <Link
-                        href={localeHref(item.href, locale)}
-                        className="block py-1.5 text-[0.95rem] text-fg transition-colors duration-150 ease-out hover:text-accent"
-                      >
-                        {item.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+        <nav aria-label={ui.footerNavLabel}>
+          <ul className="flex flex-wrap gap-x-5">
+            {footerItems.map((item) => (
+              <li key={item.href}>
+                <Link href={localeHref(item.href, locale)} className={linkClass}>
+                  {item.label}
+                </Link>
+              </li>
             ))}
-          </nav>
-        </div>
+          </ul>
+        </nav>
 
-        <div className="mt-16 flex flex-col gap-4 border-t border-line pt-8 sm:flex-row sm:items-center sm:justify-between">
-          <p className="font-sans text-[0.8rem] text-fg-muted">
-            © {year} {site.name}
-          </p>
-          <BackToTop label={ui.backToTop} />
-        </div>
+        <ul className="flex flex-wrap gap-x-5">
+          <li>
+            <a href={`mailto:${contact.email}`} className={linkClass}>
+              {contact.email}
+            </a>
+          </li>
+          {contact.github ? (
+            <li>
+              <a href={contact.github} target="_blank" rel="noopener noreferrer" className={linkClass}>
+                GitHub
+              </a>
+            </li>
+          ) : null}
+        </ul>
       </div>
     </footer>
   )

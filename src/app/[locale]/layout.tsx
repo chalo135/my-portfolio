@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation'
 import '../globals.css'
 import { ExperienceProvider } from '@/providers/ExperienceProvider'
 import { getSite } from '@/content/site'
+import { getPages } from '@/content/pages'
 import { siteUrl } from '@/lib/site-url'
 import { alternatesFor } from '@/lib/alternates'
 import { locales, isLocale, localeTags, localeOgTags } from '@/i18n/config'
@@ -49,20 +50,21 @@ export async function generateMetadata({
   const { locale } = await params
   if (!isLocale(locale)) return {}
   const { site, meta } = getSite(locale)
+  const home = getPages(locale).meta.home
 
   return {
     metadataBase: new URL(siteUrl),
     title: {
-      default: `${site.name} | ${site.role}`,
+      default: home.title,
       template: `%s | ${site.name}`,
     },
-    description: site.description,
+    description: home.description,
     keywords: meta.keywords,
     authors: [{ name: site.name }],
     alternates: alternatesFor('/', locale),
     openGraph: {
-      title: `${site.name} | ${site.role}`,
-      description: site.description,
+      title: home.title,
+      description: home.description,
       type: 'website',
       locale: localeOgTags[locale],
     },

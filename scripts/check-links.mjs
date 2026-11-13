@@ -15,7 +15,7 @@ import { join } from 'node:path'
 const CONTENT_DIR = join(process.cwd(), 'src', 'content')
 const TIMEOUT_MS = 10_000
 
-const files = (await readdir(CONTENT_DIR)).filter((name) => /^projects.*\.ts$/.test(name))
+const files = (await readdir(CONTENT_DIR)).filter((name) => /^work.*\.ts$/.test(name))
 
 // Collected across files so a URL shared by the English and Kiswahili data is
 // requested once.
