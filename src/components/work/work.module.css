@@ -1,0 +1,48 @@
+/* Work page motion. Every hidden state needs `.armed`, which DeskReveal adds
+   on mount only when motion is allowed, so with no JS or under reduced motion
+   the rows stay visible and tilted. */
+
+.print {
+  transform: rotate(calc(var(--tilt) * 1deg));
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Waiting to be placed. No transition here, so arming hides at once. */
+  .armed .row:not(.placed) .print {
+    opacity: 0;
+    transform: translateY(70px) rotate(calc(var(--tilt) * -4deg)) scale(0.96);
+  }
+
+  .armed .row:not(.placed) .text {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  /* Placed on the desk. */
+  .armed .placed .print {
+    transition:
+      transform 900ms cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 500ms ease-out;
+  }
+
+  .armed .placed .text {
+    transition:
+      transform 700ms cubic-bezier(0.16, 1, 0.3, 1) 200ms,
+      opacity 700ms ease-out 200ms;
+  }
+}
+
+/* Tech stickers: tilted, and on fine pointers hover straightens them. */
+.sticker {
+  transform: rotate(calc(var(--tilt) * 1deg));
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .sticker {
+    transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .sticker:hover {
+    transform: rotate(0deg) scale(1.06);
+  }
+}

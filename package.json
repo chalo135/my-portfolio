@@ -11,17 +11,23 @@
     "check:export": "node scripts/check-export.mjs"
   },
   "dependencies": {
+    "@react-three/drei": "10.7.9",
+    "@react-three/fiber": "9.8.2",
+    "@react-three/rapier": "2.2.0",
     "clsx": "^2.1.0",
     "lenis": "^1.3.24",
+    "meshline": "3.3.1",
     "next": "^15.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "tailwind-merge": "^2.5.0"
+    "tailwind-merge": "^2.5.0",
+    "three": "0.187.0"
   },
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/three": "0.187.0",
     "autoprefixer": "^10.0.0",
     "eslint": "^9",
     "eslint-config-next": "^15.0.0",

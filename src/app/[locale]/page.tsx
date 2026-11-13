@@ -1,17 +1,27 @@
 import { notFound } from 'next/navigation'
 import PageShell from '@/components/layout/PageShell'
+import Desk from '@/components/home/Desk'
+import { getHome } from '@/content/home'
+import { getSite } from '@/content/site'
 import { pageMetadata } from '@/lib/page-meta'
+import { publicFileExists } from '@/lib/public-file'
 import { isLocale } from '@/i18n/config'
 
 export const generateMetadata = pageMetadata('home', '/')
 
-// Phase 1 placeholder: the heading only.
+const PHOTO = '/me/chalo.jpg'
+
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
   if (!isLocale(locale)) notFound()
+  const copy = getHome(locale)
+  const { site } = getSite(locale)
+  // Checked at build time; until the photo exists the card shows the monogram.
+  const photo = publicFileExists(PHOTO) ? PHOTO : undefined
+
   return (
     <PageShell locale={locale}>
-      <h1 className="px-10 py-10 text-5xl font-bold">{"Hi, I'm Chalo."}</h1>
+      <Desk locale={locale} copy={copy} status={site.status} photo={photo} />
     </PageShell>
   )
 }
