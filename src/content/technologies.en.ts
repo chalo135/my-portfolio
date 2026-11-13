@@ -14,11 +14,11 @@ export const technologyContent: TechnologyCategory[] = [
     items: ['Node.js', 'Express', 'GraphQL', 'REST APIs', 'WebSockets'],
   },
   {
-    name: 'Data',
+    name: 'Databases',
     items: ['PostgreSQL', 'MongoDB', 'Redis', 'Prisma', 'TimescaleDB'],
   },
   {
-    name: 'Servers & Deployment',
+    name: 'Cloud & DevOps',
     items: ['AWS', 'Docker', 'Kubernetes', 'GitHub Actions', 'Vercel', 'Terraform'],
   },
   {

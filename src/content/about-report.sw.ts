@@ -5,7 +5,7 @@ import type { AboutReportCopy } from './about-report'
 // English on purpose: they are identifiers in the .pbix.
 
 const introOpening =
-  'Mimi ni Charles Ndirangu, ila watu wengi huniita Chalo. Ni mhandisi wa programu jijini Nairobi, na ninaunda programu za mauzo, M-Pesa na uhasibu ambazo biashara za Kenya hutegemea.'
+  "Mimi ni Charles Ndirangu, ila watu wengi huniita Chalo, mhandisi wa programu jijini Nairobi. Ninaunda Salio, mfumo wa mauzo (POS) wenye uhasibu wa pande mbili (double-entry). Kwenye Pharimz Creatives, duka la mtandaoni lililo hewani lenye malipo ya M-Pesa, niliziba mwanya ambao ungeweza kufichua oda ya mteja mwingine."
 const introReport =
   'Pia ninafanya kazi na Power BI, kwa hiyo sehemu hii ni ripoti kunihusu. Bofya hali, mstari wa chati au mradi ili kuichuja. Muundo wa data, vipimo vya DAX na hatua za Power Query zilizo nyuma yake viko kwenye kurasa nyingine'
 
@@ -17,9 +17,9 @@ export const aboutReportCopy: AboutReportCopy = {
   ],
 
   kinds: {
-    salio: 'Bidhaa',
+    salio: 'Mfumo wa mauzo',
     pharimz: 'Duka la mtandaoni',
-    'kahawa-smart': 'Programu ya AI',
+    'kahawa-smart': 'Utambuzi wa kutu ya majani',
   },
 
   areaLabels: {
@@ -50,8 +50,11 @@ export const aboutReportCopy: AboutReportCopy = {
       start: '2025-04-01',
     },
     { lane: 'Mafunzo kazini ya usaidizi wa mtandao, Fiberlink', type: 'Attachment' },
-    { lane: 'Cheti cha usaidizi kwa wateja', type: 'Certificate' },
-    { lane: 'ALX Data and AI Literacy', type: 'Certificate', end: '2026-11-30', expected: true },
+    // September 2026; the day isn't known and isn't shown (the legend reads the month).
+    { lane: 'Cheti cha huduma kwa wateja, Griffin Global Bootcamp', type: 'Certificate', end: '2026-09-30' },
+    // Finished in 2026. Earlier data had it due in November 2026; only the month
+    // is shown. Charles: correct the month if it finished earlier.
+    { lane: 'ALX Data and AI Literacy', type: 'Certificate', end: '2026-11-01' },
   ],
 
   profile: [
@@ -62,7 +65,7 @@ export const aboutReportCopy: AboutReportCopy = {
     { field: 'Jinsia' },
     { field: 'Urefu' },
     { field: 'Uzito' },
-    { field: 'Shahada', value: 'BSc ya Teknolojia ya Kompyuta, Multimedia University of Kenya' },
+    { field: 'Shahada', value: 'BSc ya Teknolojia ya Kompyuta, Multimedia University of Kenya, alihitimu 2026' },
     { field: 'KCSE', value: 'Wastani wa alama A, pointi 80 kati ya 84' },
     { field: 'Hisabati ya KCSE', value: 'Asilimia 4 ya juu ya watahiniwa kitaifa' },
   ],

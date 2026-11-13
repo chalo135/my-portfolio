@@ -17,11 +17,11 @@ export const projectContent: Project[] = [
     title: 'Salio',
     status: 'building',
     oneLiner:
-      'Mfumo wa mauzo (POS) kwa maduka ya Kenya, wenye uhasibu halisi wa pande mbili (double-entry) chini yake.',
+      'Mfumo wa mauzo (POS) kwa maduka ya Kenya, wenye uhasibu wa pande mbili (double-entry) chini yake.',
     problem:
       'Maduka madogo huendesha mashine ya mauzo na daftari la hesabu kando, na viwili hivyo hutofautiana taratibu. Kusawazisha hesabu mwisho wa mwezi ndiko makosa na saa nyingi hupotelea.',
     context:
-      'Umebuniwa kwa kuzingatia duka la familia la vipuri vya magari, kwa wamiliki ambao si wahasibu.',
+      'Ninaujenga kwa kuzingatia duka la familia la vipuri vya magari, kwa wamiliki ambao si wahasibu.',
     built: [
       'Kila mauzo ni muamala mmoja wa hifadhidata unaoandika risiti, mabadiliko ya stoo na ingizo la jarida lililosawazika kwa pamoja. Hakuna usawazishaji, kwa sababu kuna seti moja tu ya hesabu.',
       'Pesa huhifadhiwa kwa senti kamili, kamwe si kwa namba za desimali (floating-point).',
@@ -39,7 +39,7 @@ export const projectContent: Project[] = [
     title: 'Pharimz Creatives',
     status: 'live',
     oneLiner:
-      'Duka la mtandaoni la biashara ya Kenya ya mavazi ya mtaani na chapa — hoodie, jezi za mpira wa miguu na huduma za usanifu.',
+      'Duka la mtandaoni la biashara ya Kenya ya mavazi ya mtaani na chapa inayouza hoodie, jezi za mpira wa miguu na huduma za usanifu.',
     problem:
       'Biashara ilihitaji kupokea oda na malipo mtandaoni kwa shilingi, ikiwemo M-Pesa, ambayo ndiyo njia wateja wengi hulipa.',
     built: [
@@ -55,7 +55,7 @@ export const projectContent: Project[] = [
     slug: 'kahawa-smart',
     title: 'Kahawa Smart',
     status: 'finished',
-    oneLiner: 'Utambuzi wa magonjwa ya majani ya kahawa kwa wakulima wadogo wa Kenya.',
+    oneLiner: 'Utambuzi wa kutu ya majani ya kahawa kutoka kwenye picha, kwa wakulima wadogo wa Kenya.',
     problem:
       'Kutu ya majani ya kahawa huenea haraka, na mkulima mdogo mara nyingi hawezi kupata mtaalamu wa kuangalia jani kwa wakati.',
     context: 'Niliujenga kama mradi wangu wa maonyesho wa chuo kikuu.',

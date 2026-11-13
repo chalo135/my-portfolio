@@ -445,3 +445,149 @@ Wahandisi walio mbali hawana muktadha wa mazungumzo ya njiani. Shiriki "kwa nini
 
 
 <!-- 85 strings, generated from the .en/.sw content files -->
+
+---
+
+## Copy rewrite
+
+The English copy was rewritten to sound like Charles and to claim only what is true (see `COPY_CHANGES.md`). Every Kiswahili string that changed with it and is longer than about eight words is below, for Charles to sign off. Translated by Claude, not a Kiswahili speaker. Technical terms with no settled Kiswahili word (deploy, row-level security, callbacks, unit tests, floating-point, double-entry, RAG) were kept in English or given in brackets on purpose.
+
+### `src/content/site.sw.ts`
+
+| key | English | Kiswahili |
+|---|---|---|
+| site.description | Software engineer in Nairobi. I build software for small Kenyan businesses: a live online shop with M-Pesa checkout, and a point of sale with double-entry accounting underneath, still in progress. Available now. | Mhandisi wa programu jijini Nairobi. Ninaunda programu kwa biashara ndogo za Kenya: duka la mtandaoni lililo hewani lenye malipo ya M-Pesa, na mfumo wa mauzo wenye uhasibu wa kuingiza mara mbili chini yake, ambao bado ninaujenga. Ninapatikana sasa. |
+| site.ethos | In Salio, the books have to balance at the end of the month. | Katika Salio, vitabu vya hesabu lazima vilingane mwishoni mwa mwezi. |
+| hero.subhead | Right now that’s Pharimz Creatives, a live shop that takes M-Pesa, and Salio, a point of sale with double-entry accounting that I’m still building. Available now for remote or onsite roles. | Kwa sasa ni Pharimz Creatives, duka lililo hewani linalopokea M-Pesa, na Salio, mfumo wa mauzo wenye uhasibu wa kuingiza mara mbili ambao bado ninaujenga. Ninapatikana sasa kwa nafasi za kazi ya mbali au ya ofisini. |
+| homeTeasers.philosophy.lead | On Pharimz Creatives, changing an ID in a request could show another customer’s order, so I closed that hole. In Salio, a journal entry that doesn’t balance is refused. | Kwenye Pharimz Creatives, kubadilisha ID katika ombi kungeweza kuonyesha oda ya mteja mwingine, kwa hiyo niliziba mwanya huo. Katika Salio, ingizo la jarida lisilolingana hukataliwa. |
+| homeTeasers.work.lead | What I’ve shipped, and the point of sale I’m building now. | Nilichokamilisha na kuzindua, na mfumo wa mauzo ninaoujenga sasa. |
+| homeTeasers.capabilities.lead | React and Supabase on the shop, where I tightened row-level security. C# and .NET with PostgreSQL under the point of sale. I run my own Linux VPS with Docker and deploy with GitHub Actions. | React na Supabase kwenye duka, ambako niliimarisha row-level security. C# na .NET pamoja na PostgreSQL chini ya mfumo wa mauzo. Ninaendesha Linux VPS yangu mwenyewe yenye Docker, na ninazindua masasisho kupitia GitHub Actions. |
+| homeTeasers.contact.lead | I’m available now for remote full-stack roles, onsite IT roles and freelance projects. | Ninapatikana sasa kwa nafasi za full-stack za kazi ya mbali, nafasi za IT za ofisini, na miradi ya kujitegemea (freelance). |
+
+### `src/content/pages.sw.ts`
+
+| key | English | Kiswahili |
+|---|---|---|
+| meta.about.description | I'm Charles Ndirangu, a software engineer in Nairobi. I build software for small Kenyan businesses, including a live online shop and a point of sale I'm still building. | Mimi ni Charles Ndirangu, mhandisi wa programu jijini Nairobi. Ninaunda programu kwa biashara ndogo za Kenya, ikiwemo duka la mtandaoni lililo hewani na mfumo wa mauzo ambao bado ninaujenga. |
+| meta.capabilities.description | M-Pesa checkout on a live shop, and my own Linux VPS with Docker and GitHub Actions deploys. | Malipo ya M-Pesa kwenye duka lililo hewani, na Linux VPS yangu mwenyewe yenye Docker na uzinduzi kupitia GitHub Actions. |
+| meta.contact.description | I'm available now for remote full-stack roles, onsite IT roles and freelance projects. | Ninapatikana sasa kwa nafasi za full-stack za kazi ya mbali, nafasi za IT za ofisini, na miradi ya kujitegemea. |
+| meta.experience.description | Freelance software work since April 2025, family business operations, and a network support attachment. | Kazi ya kujitegemea ya programu tangu Aprili 2025, shughuli za biashara ya familia, na mafunzo kwa vitendo ya usaidizi wa mitandao. |
+| meta.philosophy.description | How I build software, with examples from Salio and Pharimz Creatives. | Jinsi ninavyounda programu, kwa mifano kutoka Salio na Pharimz Creatives. |
+| meta.projects.description | A point of sale with double-entry accounting, a live M-Pesa shop, and a coffee leaf rust model. | Mfumo wa mauzo wenye uhasibu wa kuingiza mara mbili, duka la M-Pesa lililo hewani, na modeli ya kutu ya majani ya kahawa. |
+| meta.resume.description | My résumé: freelance software work since April 2025 and a BSc in Computer Technology. | Wasifu wangu: kazi ya kujitegemea ya programu tangu Aprili 2025 na shahada ya BSc ya Teknolojia ya Kompyuta. |
+| meta.technologies.description | A list of languages, frameworks and tools. Each project page shows its own stack. | Orodha ya lugha, frameworks na zana. Kila ukurasa wa mradi unaonyesha teknolojia zake. |
+| meta.writing.description | Notes on Salio's books, securing Pharimz Creatives and building Kahawa Smart. | Maelezo kuhusu vitabu vya hesabu vya Salio, kulinda Pharimz Creatives na kujenga Kahawa Smart. |
+| projects.hero.description | A live online shop that takes M-Pesa, a point of sale I'm still building, and a university project that spots coffee leaf rust. | Duka la mtandaoni lililo hewani linalopokea M-Pesa, mfumo wa mauzo ambao bado ninaujenga, na mradi wa chuo kikuu unaotambua kutu ya majani ya kahawa. |
+| writing.hero.description | Notes on Salio's books, securing Pharimz Creatives and building Kahawa Smart. | Maelezo kuhusu vitabu vya hesabu vya Salio, kulinda Pharimz Creatives na kujenga Kahawa Smart. |
+| capabilities.hero.description | Web frontends and backends with M-Pesa payments, plus my own Linux VPS with Docker and GitHub Actions deploys. | Upande wa mbele na wa nyuma wa tovuti wenye malipo ya M-Pesa, pamoja na Linux VPS yangu mwenyewe yenye Docker na uzinduzi kupitia GitHub Actions. |
+| technologies.hero.description | A list of languages, frameworks and tools. Each project page shows what that project uses. | Orodha ya lugha, frameworks na zana. Kila ukurasa wa mradi unaonyesha kile mradi huo unatumia. |
+| experience.hero.description | Freelance software development since April 2025, operations in the family business since May 2023, and a network support attachment at Fiberlink. | Utengenezaji wa programu wa kujitegemea tangu Aprili 2025, shughuli za biashara ya familia tangu Mei 2023, na mafunzo kwa vitendo ya usaidizi wa mitandao katika Fiberlink. |
+| resume.hero.description | Software engineer in Nairobi. I build software for small Kenyan businesses, including a live online shop and a point of sale I'm still building. Available now. | Mhandisi wa programu jijini Nairobi. Ninaunda programu kwa biashara ndogo za Kenya, ikiwemo duka la mtandaoni lililo hewani na mfumo wa mauzo ambao bado ninaujenga. Ninapatikana sasa. |
+| contact.lead | I'm open to remote full-stack roles, onsite IT roles and freelance projects. | Niko wazi kwa nafasi za full-stack za kazi ya mbali, nafasi za IT za ofisini, na miradi ya kujitegemea. |
+
+### `src/content/projects.sw.ts`
+
+| key | English | Kiswahili |
+|---|---|---|
+| salio.oneLiner | A point-of-sale system for Kenyan shops with double-entry accounting underneath. | Mfumo wa mauzo (POS) kwa maduka ya Kenya, wenye uhasibu wa pande mbili (double-entry) chini yake. |
+| salio.context | I'm building it around a family spare-parts shop, for owners who aren't accountants. | Ninaujenga kwa kuzingatia duka la familia la vipuri vya magari, kwa wamiliki ambao si wahasibu. |
+| pharimz.oneLiner | An online shop for a Kenyan streetwear and branding business that sells hoodies, football jerseys and design services. | Duka la mtandaoni la biashara ya Kenya ya mavazi ya mtaani na chapa inayouza hoodie, jezi za mpira wa miguu na huduma za usanifu. |
+| kahawa-smart.oneLiner | Coffee leaf rust detection from a photo, for Kenyan smallholder farmers. | Utambuzi wa kutu ya majani ya kahawa kutoka kwenye picha, kwa wakulima wadogo wa Kenya. |
+
+### `src/content/about-report.sw.ts`
+
+| key | English | Kiswahili |
+|---|---|---|
+| introOpening | I'm Charles Ndirangu, Chalo to most people, a software engineer in Nairobi. I'm building Salio, a point-of-sale system with double-entry accounting. On Pharimz Creatives, a live online shop with M-Pesa checkout, I closed a hole that could expose another customer's order. | Mimi ni Charles Ndirangu, ila watu wengi huniita Chalo, mhandisi wa programu jijini Nairobi. Ninaunda Salio, mfumo wa mauzo (POS) wenye uhasibu wa pande mbili (double-entry). Kwenye Pharimz Creatives, duka la mtandaoni lililo hewani lenye malipo ya M-Pesa, niliziba mwanya ambao ungeweza kufichua oda ya mteja mwingine. |
+| profile[Degree].value | BSc Computer Technology, Multimedia University of Kenya, graduated 2026 | BSc ya Teknolojia ya Kompyuta, Multimedia University of Kenya, alihitimu 2026 |
+
+### `src/content/experience.sw.ts`
+
+| key | English | Kiswahili |
+|---|---|---|
+| exp-1.description | Software work for clients, alongside operations in the family business. | Kazi za programu kwa wateja, sambamba na uendeshaji katika biashara ya familia. |
+| exp-2.description | I work in operations for the family business, which does plumbing and bio-digesters. | Ninafanya kazi ya uendeshaji katika biashara ya familia, inayoshughulikia mabomba na mitambo ya biogesi. |
+| exp-2.highlights[0] | Plumbing and bio-digester work for about 12 large clients | Kazi ya mabomba na mitambo ya biogesi kwa takriban wateja wakubwa 12 |
+
+### `src/content/philosophy.sw.ts`
+
+| key | English | Kiswahili |
+|---|---|---|
+| pillars.quality.description | In Salio, only one function, PostJournal, can write journal lines. It refuses any entry whose debits and credits don't match, and I covered it with unit tests. | Katika Salio, ni kitendakazi kimoja tu, PostJournal, kinachoweza kuandika mistari ya jarida. Kinakataa ingizo lolote ambalo debiti na krediti zake haziwiani, na nimekiandikia unit tests. |
+| pillars.craftsmanship.description | I care about the work and see it through. The examples are in the other principles on this page. | Ninaijali kazi na ninaifikisha mwisho. Mifano iko kwenye kanuni nyingine za ukurasa huu. |
+| pillars.scalability.description | Every table in Salio is scoped to a business, so one install can serve many shops. | Kila jedwali katika Salio linahusishwa na biashara moja, hivyo usakinishaji mmoja unaweza kuhudumia maduka mengi. |
+| pillars.user-centered.headline | Built for shop owners and their customers. | Imejengwa kwa ajili ya wenye maduka na wateja wao. |
+| pillars.user-centered.description | I'm building Salio for shop owners who aren't accountants. On Pharimz Creatives, checkout takes M-Pesa STK Push, because that's how most customers pay. | Ninajenga Salio kwa ajili ya wenye maduka ambao si wahasibu. Kwenye Pharimz Creatives, malipo hufanywa kwa M-Pesa STK Push, kwa sababu hivyo ndivyo wateja wengi wanavyolipa. |
+| pillars.security.description | On Pharimz Creatives I closed a hole where changing an ID in a request could expose another customer's order. I verified M-Pesa callbacks so a payment can't be faked, and tightened Supabase row-level security. | Kwenye Pharimz Creatives nilifunga mwanya ambapo kubadilisha ID kwenye ombi kungeweza kufichua oda ya mteja mwingine. Nilithibitisha callbacks za M-Pesa ili malipo yasiweze kughushiwa, na nikaimarisha row-level security ya Supabase. |
+| pillars.maintainability.description | In Salio, stock movements are append-only and reports are calculated when they're read, never stored. Money is kept in whole cents, never floating-point numbers. | Katika Salio, mienendo ya stoku huongezwa tu, haibadilishwi (append-only), na ripoti hukokotolewa zinaposomwa, hazihifadhiwi kamwe. Pesa huhifadhiwa kwa senti kamili, kamwe si kwa namba za floating-point. |
+| pillars.innovation.description | For Kahawa Smart, my university project, I built a TensorFlow model that flags coffee leaf rust from a photo of a leaf, and a chatbot grounded in a RAG pipeline. | Kwa Kahawa Smart, mradi wangu wa chuo kikuu, nilijenga modeli ya TensorFlow inayotambua kutu ya majani ya kahawa kutoka kwenye picha ya jani, na chatbot inayotegemea RAG pipeline. |
+| intro.description | The examples come from Salio, the point of sale I'm building in C#; Pharimz Creatives, an online shop that's live; and Kahawa Smart, my university project. | Mifano inatoka Salio, mfumo wa mauzo (point of sale) ninaoujenga kwa C#; Pharimz Creatives, duka la mtandaoni lililo hewani; na Kahawa Smart, mradi wangu wa chuo kikuu. |
+
+### `src/content/capabilities.sw.ts`
+
+| key | English | Kiswahili |
+|---|---|---|
+| frontend.description | React and Vite for the Pharimz Creatives storefront, accounts and checkout. This site is Next.js and TypeScript. | React na Vite kwa duka la Pharimz Creatives, akaunti zake na malipo. Tovuti hii imejengwa kwa Next.js na TypeScript. |
+| backend.description | Node.js and Express behind Pharimz Creatives, with M-Pesa Daraja payments. ASP.NET Core and EF Core behind Salio, where I'm learning C# by building it. | Node.js na Express nyuma ya Pharimz Creatives, pamoja na malipo ya M-Pesa Daraja. ASP.NET Core na EF Core nyuma ya Salio, ambapo ninajifunza C# kwa kuujenga. |
+| cloud.description | I run my own Linux VPS, deploy with GitHub Actions, and host client sites on Ubuntu servers. | Ninaendesha Linux VPS yangu mwenyewe, ninasambaza kwa GitHub Actions, na ninahifadhi tovuti za wateja kwenye seva za Ubuntu. |
+| ai.description | For Kahawa Smart, my university project: a TensorFlow model that flags coffee leaf rust, and a chatbot grounded in a RAG pipeline. | Kwa Kahawa Smart, mradi wangu wa chuo kikuu: modeli ya TensorFlow inayotambua kutu ya majani ya kahawa, na chatbot inayotegemea RAG pipeline. |
+| security.description | On Pharimz Creatives, after launch, I closed an ID-swap hole that could expose other customers' orders, verified M-Pesa callbacks and tightened Supabase row-level security. | Kwenye Pharimz Creatives, baada ya uzinduzi, nilifunga mwanya wa kubadilisha ID ambao ungeweza kufichua oda za wateja wengine, nilithibitisha callbacks za M-Pesa na nikaimarisha row-level security ya Supabase. |
+| system-design.description | I haven't built a large-scale system yet. Salio's design is under Databases. | Bado sijajenga mfumo wa kiwango kikubwa. Muundo wa Salio uko chini ya Hifadhidata. |
+| databases.description | Salio runs on PostgreSQL 16: one transaction per sale, money in whole cents, every table scoped to a business. Pharimz Creatives runs on Supabase. | Salio inaendeshwa kwa PostgreSQL 16: muamala mmoja kwa kila mauzo, pesa kwa senti kamili, kila jedwali linahusishwa na biashara moja. Pharimz Creatives inaendeshwa kwa Supabase. |
+| ui-engineering.description | GSAP animation on Kahawa Smart, and responsive layouts on this site. | Uhuishaji wa GSAP kwenye Kahawa Smart, na mipangilio inayoitikia (responsive) kwenye tovuti hii. |
+
+`src/content/writing.sw.ts`
+
+| key | English | Kiswahili |
+|---|---|---|
+| building-scalable-systems.title | How I keep Salio's books in balance | Jinsi ninavyoweka hesabu za Salio zikiwa sawa |
+| building-scalable-systems.excerpt | The design rules in Salio, my point-of-sale system, that keep the till and the accounts from drifting apart. | Kanuni za muundo katika Salio, mfumo wangu wa mauzo (point-of-sale), zinazozuia kaunta ya mauzo na hesabu zisitofautiane. |
+| building-scalable-systems.content[0] | Salio is a point-of-sale system I'm building for Kenyan shops, with double-entry accounting underneath. I'm building it around a family spare-parts shop, for owners who aren't accountants. It's still in progress. These are its rules. Rules like these are hard to add once data exists. | Salio ni mfumo wa mauzo (point-of-sale) ninaoujenga kwa ajili ya maduka ya Kenya, wenye uhasibu wa double-entry chini yake. Ninaujenga kwa kuzingatia duka la familia la vipuri, kwa ajili ya wenye maduka ambao si wahasibu. Bado haujakamilika. Hizi ndizo kanuni zake. Kanuni kama hizi ni ngumu kuziongeza baada ya data kuwepo. |
+| building-scalable-systems.content[1] | ## The stack | ## Teknolojia |
+| building-scalable-systems.content[2] | C# on .NET 10, with ASP.NET Core and EF Core, over PostgreSQL 16. I'm learning C# by building it. | C# kwenye .NET 10, pamoja na ASP.NET Core na EF Core, juu ya PostgreSQL 16. Ninajifunza C# kwa kuujenga. |
+| building-scalable-systems.content[3] | ## One transaction per sale | ## Muamala mmoja kwa kila uuzaji |
+| building-scalable-systems.content[4] | Every sale is one database transaction. It writes the receipt, the stock movement and a balanced journal entry together, or it writes nothing. There's no sync between the till and the books, because there is only one set of books. | Kila uuzaji ni muamala mmoja wa database. Unaandika risiti, ingizo la stoki na ingizo la jarida lililosawazishwa kwa pamoja, au hauandiki chochote. Hakuna usawazishaji kati ya kaunta na vitabu vya hesabu, kwa sababu kuna seti moja tu ya vitabu. |
+| building-scalable-systems.content[5] | ## One door into the ledger | ## Mlango mmoja wa kuingia kwenye leja |
+| building-scalable-systems.content[6] | Only one function, PostJournal, is allowed to write journal lines. It refuses any entry whose debits and credits don't balance. I wrote it by hand and covered it with unit tests. | Ni kitendakazi kimoja tu, PostJournal, kinachoruhusiwa kuandika mistari ya jarida. Kinakataa ingizo lolote ambalo debit na credit zake hazilingani. Nilikiandika kwa mkono na kukiwekea unit tests. |
+| building-scalable-systems.content[7] | ## Money in whole cents | ## Pesa kwa senti kamili |
+| building-scalable-systems.content[8] | Money is stored in whole cents, never as floating-point numbers. A floating-point number can't hold most decimal fractions of a shilling exactly, so a long column of them stops adding up to the right total. Whole cents always do. | Pesa huhifadhiwa kwa senti kamili, kamwe si kama namba za floating-point. Namba ya floating-point haiwezi kushika kwa usahihi sehemu nyingi za desimali za shilingi, kwa hivyo safu ndefu ya namba hizo huacha kujumlika kuwa jumla sahihi. Senti kamili hujumlika sawa kila mara. |
+| building-scalable-systems.content[9] | ## Nothing stored that can go stale | ## Hakuna kinachohifadhiwa kinachoweza kupitwa na wakati |
+| building-scalable-systems.content[10] | Stock movements are append-only, so a correction is a new movement, not an edit to an old one. Reports are calculated when they're read, never stored. | Maingizo ya stoki huongezwa tu na hayahaririwi, kwa hivyo marekebisho ni ingizo jipya, si kubadilisha ingizo la zamani. Ripoti hukokotolewa zinaposomwa, kamwe hazihifadhiwi. |
+| building-scalable-systems.content[11] | ## One install, many shops | ## Usakinishaji mmoja, maduka mengi |
+| building-scalable-systems.content[12] | Every table is scoped to a business, so one install can serve many shops. | Kila jedwali limewekewa mipaka ya biashara moja, kwa hivyo usakinishaji mmoja unaweza kuhudumia maduka mengi. |
+| ai-integration-patterns.title | Building Kahawa Smart | Kujenga Kahawa Smart |
+| ai-integration-patterns.excerpt | A model that flags coffee leaf rust from a photo, and a chatbot grounded in a RAG pipeline. My university demonstration project. | Modeli inayogundua kutu ya majani ya kahawa kutoka kwenye picha, na chatbot inayotegemea mfumo wa RAG. Mradi wangu wa maonyesho wa chuo kikuu. |
+| ai-integration-patterns.content[0] | Kahawa Smart was my university demonstration project. Coffee leaf rust spreads fast, and a smallholder farmer often can't get an expert to look at a leaf in time. | Kahawa Smart ulikuwa mradi wangu wa maonyesho wa chuo kikuu. Kutu ya majani ya kahawa huenea haraka, na mkulima mdogo mara nyingi hawezi kupata mtaalamu wa kukagua jani kwa wakati. |
+| ai-integration-patterns.content[1] | ## The model | ## Modeli |
+| ai-integration-patterns.content[2] | I built the model in TensorFlow. Give it a photo of a coffee leaf and it flags leaf rust. It looks for that one disease, not every disease a coffee plant can get. | Nilijenga modeli kwa TensorFlow. Ipe picha ya jani la kahawa nayo itaonyesha kama lina kutu ya majani. Inatafuta ugonjwa huo mmoja tu, si kila ugonjwa unaoweza kushambulia mmea wa kahawa. |
+| ai-integration-patterns.content[3] | ## The chatbot | ## Chatbot |
+| ai-integration-patterns.content[4] | The chatbot answers follow-up questions. I grounded it in a retrieval (RAG) pipeline, so its answers draw on retrieved material instead of the language model alone. | Chatbot inajibu maswali ya ziada. Niliiegemeza kwenye mfumo wa utafutaji (RAG), kwa hivyo majibu yake yanatokana na maandishi yaliyotafutwa badala ya modeli ya lugha peke yake. |
+| ai-integration-patterns.content[5] | ## The stack | ## Teknolojia |
+| ai-integration-patterns.content[6] | TensorFlow, Python, FastAPI, Groq, JavaScript and GSAP. | TensorFlow, Python, FastAPI, Groq, JavaScript na GSAP. |
+| security-first-architecture.title | Locking down a live shop | Kuimarisha usalama wa duka lililo hewani |
+| security-first-architecture.excerpt | What I fixed in the Pharimz Creatives shop after launch, starting with a request that could show one customer another customer's order. | Nilichorekebisha kwenye duka la Pharimz Creatives baada ya kuzinduliwa, kuanzia na ombi lililoweza kumwonyesha mteja mmoja oda ya mteja mwingine. |
+| security-first-architecture.content[0] | Pharimz Creatives is an online shop for a Kenyan streetwear and branding business. It takes orders and payment in shillings, including M-Pesa. After it went live, I went back and locked it down. | Pharimz Creatives ni duka la mtandaoni la biashara ya Kenya ya mavazi ya streetwear na chapa. Linapokea oda na malipo kwa shilingi, ikiwemo M-Pesa. Baada ya kuanza kufanya kazi hewani, nilirudi nikaimarisha usalama wake. |
+| security-first-architecture.content[1] | ## Another customer's order | ## Oda ya mteja mwingine |
+| security-first-architecture.content[2] | I found a hole where changing an ID in a request could expose another customer's order. Being logged in isn't enough. The server has to check that the order belongs to the person asking. I closed it. | Niligundua mwanya ambapo kubadilisha ID kwenye ombi kungeweza kufichua oda ya mteja mwingine. Kuwa umeingia kwenye akaunti hakutoshi. Seva lazima ihakikishe kuwa oda ni ya mtu anayeiomba. Niliziba mwanya huo. |
+| security-first-architecture.content[3] | ## M-Pesa callbacks | ## Callbacks za M-Pesa |
+| security-first-architecture.content[4] | Checkout uses M-Pesa STK Push, and M-Pesa confirms each payment with a callback. I verified those callbacks so a confirmation can't be faked. | Malipo yanatumia M-Pesa STK Push, na M-Pesa huthibitisha kila malipo kwa callback. Nilizihakiki callbacks hizo ili uthibitisho usiweze kughushiwa. |
+| security-first-architecture.content[5] | ## Row-level security | ## Row-level security |
+| security-first-architecture.content[6] | The shop's data sits in Supabase. I tightened its row-level security, the rules in the database that decide which rows each user can reach. | Data ya duka iko kwenye Supabase. Niliimarisha row-level security yake, yaani sheria ndani ya database zinazoamua ni safu zipi kila mtumiaji anaweza kufikia. |
+| security-first-architecture.content[7] | ## What I'd change | ## Ambacho ningebadilisha |
+| security-first-architecture.content[8] | All of this came after launch. On the next shop, I'll check who owns each record before the first customer arrives. | Haya yote yalifanyika baada ya uzinduzi. Kwenye duka linalofuata, nitakagua nani anamiliki kila rekodi kabla mteja wa kwanza hajafika. |
+| nextjs-performance-guide.title | Notes on Next.js performance | Maelezo kuhusu utendaji wa Next.js |
+| nextjs-performance-guide.excerpt | General notes on where a Next.js page can lose speed. | Maelezo ya jumla kuhusu mahali ukurasa wa Next.js unaweza kupoteza kasi. |
+| nextjs-performance-guide.content[0] | These are general notes, not results from a project of mine. | Haya ni maelezo ya jumla, si matokeo ya mradi wangu. |
+| nextjs-performance-guide.content[1] | ## Rendering | ## Uonyeshaji |
+| nextjs-performance-guide.content[2] | A page that rarely changes can be generated once at build time. A page that differs for each user has to be rendered on each request. | Ukurasa usiobadilika mara kwa mara unaweza kutengenezwa mara moja wakati wa build. Ukurasa unaotofautiana kwa kila mtumiaji lazima uonyeshwe kwa kila ombi. |
+| nextjs-performance-guide.content[3] | ## JavaScript sent to the browser | ## JavaScript inayotumwa kwa kivinjari |
+| nextjs-performance-guide.content[4] | @next/bundle-analyzer shows what ends up in the bundle. Dynamic imports keep code that isn't needed on first load out of it. | @next/bundle-analyzer huonyesha kinachoishia kwenye bundle. Dynamic imports huzuia msimbo usiohitajika kwenye upakiaji wa kwanza usiingie humo. |
+| nextjs-performance-guide.content[5] | ## Images | ## Picha |
+| nextjs-performance-guide.content[6] | next/image serves an image sized for the screen. The priority prop loads the main image at the top of the page first. | next/image hutoa picha yenye ukubwa unaofaa skrini. Prop ya priority hupakia kwanza picha kuu iliyo juu ya ukurasa. |
+| remote-engineering-excellence.title | Notes on remote work | Maelezo kuhusu kazi ya mbali |
+| remote-engineering-excellence.excerpt | General notes on writing things down when a team works apart. | Maelezo ya jumla kuhusu kuandika mambo pale timu inapofanya kazi kutoka maeneo tofauti. |
+| remote-engineering-excellence.content[0] | These are general notes, not lessons from a team I've worked on. | Haya ni maelezo ya jumla, si mafunzo kutoka kwa timu niliyowahi kufanya nayo kazi. |
+| remote-engineering-excellence.content[1] | ## Write it down | ## Iandike |
+| remote-engineering-excellence.content[2] | A written proposal can be read whenever someone comes online. A meeting can't. Meetings are worth keeping for decisions that need a back-and-forth. | Pendekezo lililoandikwa linaweza kusomwa wakati wowote mtu anapoingia mtandaoni. Mkutano hauwezi. Mikutano inafaa kubakizwa kwa maamuzi yanayohitaji majadiliano ya kwenda na kurudi. |
+| remote-engineering-excellence.content[3] | ## Say why | ## Eleza sababu |
+| remote-engineering-excellence.content[4] | A teammate who wasn't there needs the reason for a decision as well as the decision itself. | Mwenzako wa timu ambaye hakuwepo anahitaji sababu ya uamuzi pamoja na uamuzi wenyewe. |

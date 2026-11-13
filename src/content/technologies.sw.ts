@@ -16,7 +16,7 @@ export const technologyContent: TechnologyCategory[] = [
     items: ['Node.js', 'Express', 'GraphQL', 'REST APIs', 'WebSockets'],
   },
   {
-    name: 'Data',
+    name: 'Hifadhidata',
     items: ['PostgreSQL', 'MongoDB', 'Redis', 'Prisma', 'TimescaleDB'],
   },
   {

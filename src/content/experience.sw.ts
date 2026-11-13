@@ -1,46 +1,41 @@
 import type { ExperienceEntry } from './experience'
 
-// Placeholders are carried across unchanged. `period` is digits and an en dash,
-// so it is identical in both locales; only "Present" is translated.
+// Charles's three real roles, matching experience.en.ts entry for entry.
+// Highlights only say what the facts support, so some roles have fewer than
+// three (Fiberlink has none). Translated by Claude; check before relying on it.
 
 export const experienceContent: ExperienceEntry[] = [
   {
     id: 'exp-1',
-    role: 'Mhandisi Mkuu wa Programu',
-    organization: '[Shirika Lako]',
-    period: '2024 — Sasa',
+    role: 'Msanidi programu huru',
+    organization: 'Najiajiri',
+    period: 'Aprili 2025 hadi sasa',
     description:
-      'Kuongoza utengenezaji wa suluhisho za programu za kiwango cha kampuni kwa mkazo wa upanuzi, usalama, na matumizi ya mtumiaji.',
+      'Kazi za programu kwa wateja, sambamba na uendeshaji katika biashara ya familia.',
     highlights: [
-      'Nilibuni na kuwasilisha mifumo iliyo hewani inayohudumia maelfu ya watumiaji',
-      'Niliweka viwango vya uhandisi na taratibu za kukagua msimbo',
-      'Niliwafunza wanachama wa timu mbinu za kisasa za utengenezaji',
+      'Ninahifadhi tovuti za wateja kwenye seva za Ubuntu',
+      'VPS yangu ya Linux inaendesha Docker, Nginx na Caddy',
+      'Masasisho hutolewa kupitia GitHub Actions',
     ],
   },
   {
     id: 'exp-2',
-    role: 'Mhandisi wa Full-Stack',
-    organization: '[Shirika la Awali]',
-    period: '2022 — 2024',
+    role: 'Uendeshaji',
+    organization: 'Biashara ya familia',
+    period: 'Mei 2023 hadi sasa',
     description:
-      'Nilijenga na kudumisha programu kamili katika upande wa mbele, upande wa nyuma, na miundombinu ya wingu.',
+      'Ninafanya kazi ya uendeshaji katika biashara ya familia, inayoshughulikia mabomba na mitambo ya biogesi.',
     highlights: [
-      'Nilitengeneza programu za wavuti zinazoitikia kwa React na Next.js',
-      'Nilibuni API za RESTful na GraphQL kwa uunganishaji wa wateja',
-      'Nilitekeleza mifereji ya CI/CD iliyopunguza muda wa usambazaji kwa kiasi kikubwa',
+      'Kazi ya mabomba na mitambo ya biogesi kwa takriban wateja wakubwa 12',
     ],
   },
   {
     id: 'exp-3',
-    role: 'Mtengenezaji wa Programu',
-    organization: '[Shirika la Mapema]',
-    period: '2020 — 2022',
+    role: 'Usaidizi wa mtandao',
+    organization: 'Fiberlink',
+    period: 'Mafunzo kazini',
     description:
-      'Nilichangia katika utengenezaji wa bidhaa katika mzunguko mzima wa programu, kutoka mahitaji hadi usambazaji.',
-    highlights: [
-      'Nilishirikiana na timu za taaluma mbalimbali katika kuwasilisha vipengele',
-      'Niliboresha utendaji wa programu na maswali ya hifadhidata',
-      'Nilishiriki katika michakato ya utengenezaji wa agile',
-    ],
+      'Mafunzo kazini ya usaidizi wa mtandao katika Fiberlink.',
+    highlights: [],
   },
 ]

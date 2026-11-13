@@ -15,7 +15,7 @@ export const projectContent: Project[] = [
     title: 'Salio',
     status: 'building',
     oneLiner:
-      'A point-of-sale system for Kenyan shops with real double-entry accounting underneath.',
+      'A point-of-sale system for Kenyan shops with double-entry accounting underneath.',
     problem:
       'Small shops run a till and a separate set of books, and the two drift apart. Month-end reconciliation is where the errors and the hours go.',
     context: "I'm building it around a family spare-parts shop, for owners who aren't accountants.",

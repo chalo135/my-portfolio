@@ -9,7 +9,11 @@ export const writingContent: WritingPost[] = [
     category: 'System Design',
     date: '2025-11-15',
     readTime: '1 min',
-    content: `Salio is a point-of-sale system I'm building for Kenyan shops, with double-entry accounting underneath. It's still in progress. These are the rules I set early, because they're hard to add once data exists.
+    content: `Salio is a point-of-sale system I'm building for Kenyan shops, with double-entry accounting underneath. I'm building it around a family spare-parts shop, for owners who aren't accountants. It's still in progress. These are its rules. Rules like these are hard to add once data exists.
+
+## The stack
+
+C# on .NET 10, with ASP.NET Core and EF Core, over PostgreSQL 16. I'm learning C# by building it.
 
 ## One transaction per sale
 
@@ -19,9 +23,13 @@ Every sale is one database transaction. It writes the receipt, the stock movemen
 
 Only one function, PostJournal, is allowed to write journal lines. It refuses any entry whose debits and credits don't balance. I wrote it by hand and covered it with unit tests.
 
-## No numbers that can go stale
+## Money in whole cents
 
-Money is stored in whole cents, never as floating-point numbers. Stock movements are append-only, and reports are calculated when they're read, never stored.
+Money is stored in whole cents, never as floating-point numbers. A floating-point number can't hold most decimal fractions of a shilling exactly, so a long column of them stops adding up to the right total. Whole cents always do.
+
+## Nothing stored that can go stale
+
+Stock movements are append-only, so a correction is a new movement, not an edit to an old one. Reports are calculated when they're read, never stored.
 
 ## One install, many shops
 
@@ -29,7 +37,7 @@ Every table is scoped to a business, so one install can serve many shops.`,
   },
   {
     slug: 'ai-integration-patterns',
-    title: 'What I built for Kahawa Smart',
+    title: 'Building Kahawa Smart',
     excerpt:
       'A model that flags coffee leaf rust from a photo, and a chatbot grounded in a RAG pipeline. My university demonstration project.',
     category: 'AI',
@@ -39,7 +47,7 @@ Every table is scoped to a business, so one install can serve many shops.`,
 
 ## The model
 
-I used TensorFlow for a model that flags coffee leaf rust from a photo of a leaf. It looks for that one disease, not every disease a coffee plant can get.
+I built the model in TensorFlow. Give it a photo of a coffee leaf and it flags leaf rust. It looks for that one disease, not every disease a coffee plant can get.
 
 ## The chatbot
 
@@ -54,7 +62,7 @@ TensorFlow, Python, FastAPI, Groq, JavaScript and GSAP.`,
     title: 'Locking down a live shop',
     excerpt:
       "What I fixed in the Pharimz Creatives shop after launch, starting with a request that could show one customer another customer's order.",
-    category: 'Cybersecurity',
+    category: 'Security',
     date: '2025-08-20',
     readTime: '1 min',
     content: `Pharimz Creatives is an online shop for a Kenyan streetwear and branding business. It takes orders and payment in shillings, including M-Pesa. After it went live, I went back and locked it down.

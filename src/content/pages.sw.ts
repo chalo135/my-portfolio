@@ -8,39 +8,39 @@ export const pagesContent: PagesContent = {
     about: {
       title: 'Kuhusu',
       description:
-        'Mimi ni Charles Ndirangu. Ninafanya kazi katika safu zote, hasa kwenye mifumo ambayo biashara ndogo na za kati za Kenya hutegemea kila siku.',
+        'Mimi ni Charles Ndirangu, mhandisi wa programu jijini Nairobi. Ninaunda programu kwa biashara ndogo za Kenya, ikiwemo duka la mtandaoni lililo hewani na mfumo wa mauzo ambao bado ninaujenga.',
     },
     capabilities: {
       title: 'Uwezo',
-      description: 'Uwezo wa uhandisi wa kiwango cha kampuni katika safu nzima ya programu.',
+      description: 'Malipo ya M-Pesa kwenye duka lililo hewani, na Linux VPS yangu mwenyewe yenye Docker na uzinduzi kupitia GitHub Actions.',
     },
     contact: {
       title: 'Mawasiliano',
-      description: 'Wasiliana nami kuhusu malipo, ERP, na kazi ya uhandisi wa full-stack.',
+      description: 'Ninapatikana sasa kwa nafasi za full-stack za kazi ya mbali, nafasi za IT za ofisini, na miradi ya kujitegemea.',
     },
     experience: {
       title: 'Uzoefu',
-      description: 'Uzoefu wa kitaaluma wa kujenga mifumo ya programu ya kampuni.',
+      description: 'Kazi ya kujitegemea ya programu tangu Aprili 2025, shughuli za biashara ya familia, na mafunzo kwa vitendo ya usaidizi wa mitandao.',
     },
     philosophy: {
       title: 'Falsafa',
-      description: 'Kanuni zinazoongoza kila mfumo ninaoujenga.',
+      description: 'Jinsi ninavyounda programu, kwa mifano kutoka Salio na Pharimz Creatives.',
     },
     projects: {
       title: 'Miradi',
-      description: 'Bidhaa za programu za kampuni zilizoundwa kwa usahihi na ufundi.',
+      description: 'Mfumo wa mauzo wenye uhasibu wa kuingiza mara mbili, duka la M-Pesa lililo hewani, na modeli ya kutu ya majani ya kahawa.',
     },
     resume: {
       title: 'Wasifu',
-      description: 'Wasifu wa kitaaluma na sifa.',
+      description: 'Wasifu wangu: kazi ya kujitegemea ya programu tangu Aprili 2025 na shahada ya BSc ya Teknolojia ya Kompyuta.',
     },
     technologies: {
       title: 'Teknolojia',
-      description: 'Zana na teknolojia zinazotumika kujenga programu za kiwango cha kampuni.',
+      description: 'Orodha ya lugha, frameworks na zana. Kila ukurasa wa mradi unaonyesha teknolojia zake.',
     },
     writing: {
       title: 'Maandishi',
-      description: 'Mawazo kuhusu uhandisi wa programu, usanifu, AI, na kujenga bidhaa.',
+      description: 'Maelezo kuhusu vitabu vya hesabu vya Salio, kulinda Pharimz Creatives na kujenga Kahawa Smart.',
     },
     projectNotFound: 'Mradi Haukupatikana',
     articleNotFound: 'Makala Haikupatikana',
@@ -49,9 +49,9 @@ export const pagesContent: PagesContent = {
   projects: {
     hero: {
       label: 'Miradi',
-      title: 'Bidhaa zilizoundwa kudumu.',
+      title: 'Nilichokijenga.',
       description:
-        'Kila mradi hushughulikiwa kama uzinduzi wa bidhaa — umebuniwa, umeundwa, na umewasilishwa kwa viwango vya kampuni.',
+        'Duka la mtandaoni lililo hewani linalopokea M-Pesa, mfumo wa mauzo ambao bado ninaujenga, na mradi wa chuo kikuu unaotambua kutu ya majani ya kahawa.',
     },
     backToWork: '← Kazi',
     groups: {
@@ -80,9 +80,9 @@ export const pagesContent: PagesContent = {
   writing: {
     hero: {
       label: 'Maandishi',
-      title: 'Maarifa ya uhandisi.',
+      title: 'Maelezo kutoka kazini.',
       description:
-        'Kuchunguza ufundi wa uhandisi wa programu — usanifu, utendaji, usalama, uunganishaji wa AI, na kujenga bidhaa zenye maana.',
+        'Maelezo kuhusu vitabu vya hesabu vya Salio, kulinda Pharimz Creatives na kujenga Kahawa Smart.',
     },
     backToWriting: '← Maandishi',
     read: 'kusoma',
@@ -91,27 +91,27 @@ export const pagesContent: PagesContent = {
   capabilities: {
     hero: {
       label: 'Uwezo',
-      title: 'Uhandisi katika safu nzima.',
+      title: 'Ninachoweza kufanya.',
       description:
-        'Utaalamu wa kina unaojumuisha upande wa mbele, upande wa nyuma, wingu, AI, usalama, na ubunifu wa mifumo — kwa viwango vya kampuni.',
+        'Upande wa mbele na wa nyuma wa tovuti wenye malipo ya M-Pesa, pamoja na Linux VPS yangu mwenyewe yenye Docker na uzinduzi kupitia GitHub Actions.',
     },
   },
 
   technologies: {
     hero: {
       label: 'Teknolojia',
-      title: 'Zana zilizochaguliwa kwa makusudi.',
+      title: 'Zana na lugha.',
       description:
-        'Teknolojia ni njia, si lengo. Kila zana katika safu hii imechaguliwa kwa uaminifu, utendaji, na uwezo wa kudumishwa kwa muda mrefu.',
+        'Orodha ya lugha, frameworks na zana. Kila ukurasa wa mradi unaonyesha kile mradi huo unatumia.',
     },
   },
 
   experience: {
     hero: {
       label: 'Uzoefu',
-      title: 'Rekodi ya kuwasilisha.',
+      title: 'Nilipofanya kazi.',
       description:
-        'Kujenga mifumo ya programu katika mazingira ya kampuni, biashara changa, na serikali — kwa mkazo wa kudumu kwenye ubora na athari.',
+        'Utengenezaji wa programu wa kujitegemea tangu Aprili 2025, shughuli za biashara ya familia tangu Mei 2023, na mafunzo kwa vitendo ya usaidizi wa mitandao katika Fiberlink.',
     },
   },
 
@@ -120,10 +120,10 @@ export const pagesContent: PagesContent = {
       label: 'Wasifu',
       title: 'Charles Ndirangu',
       description:
-        'Mhandisi wa Programu aliyebobea katika mifumo ya kiwango cha kampuni, utengenezaji wa full-stack, na usanifu wa programu wenye akili.',
+        'Mhandisi wa programu jijini Nairobi. Ninaunda programu kwa biashara ndogo za Kenya, ikiwemo duka la mtandaoni lililo hewani na mfumo wa mauzo ambao bado ninaujenga. Ninapatikana sasa.',
     },
     experienceHeading: 'Uzoefu',
-    capabilitiesHeading: 'Uwezo Msingi',
+    capabilitiesHeading: 'Uwezo',
     technologiesHeading: 'Teknolojia',
   },
 
@@ -134,9 +134,9 @@ export const pagesContent: PagesContent = {
 
   contact: {
     label: 'Mawasiliano',
-    title: 'Tujenge programu yenye maana.',
-    lead: 'Niko wazi kwa kazi za kampuni, nafasi za mbali, na ushirikiano wa bidhaa zenye malengo makubwa.',
-    ctaLabel: 'Anzisha Mazungumzo',
+    title: 'Ninapatikana sasa.',
+    lead: 'Niko wazi kwa nafasi za full-stack za kazi ya mbali, nafasi za IT za ofisini, na miradi ya kujitegemea.',
+    ctaLabel: 'Nitumie barua pepe',
   },
 
   notFound: {

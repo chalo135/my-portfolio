@@ -11,111 +11,122 @@ import type { WritingPost } from './writing'
 export const writingContent: WritingPost[] = [
   {
     slug: 'building-scalable-systems',
-    title: 'Kujenga Mifumo Inayopanuka: Mafunzo Kutoka Kwenye Uzalishaji',
+    title: 'Jinsi ninavyoweka hesabu za Salio zikiwa sawa',
     excerpt:
-      'Mifumo ya usanifu na mbinu za vitendo za kubuni mifumo inayokua pamoja na shirika lako.',
+      'Kanuni za muundo katika Salio, mfumo wangu wa mauzo (point-of-sale), zinazozuia kaunta ya mauzo na hesabu zisitofautiane.',
     category: 'Ubunifu wa Mifumo',
     date: '2025-11-15',
-    readTime: '8 min',
-    content: `Upanuzi si kipengele unachoongeza — ni sifa unayoibuni ndani ya mfumo wako tangu mwanzo. Baada ya kujenga na kudumisha mifumo iliyo hewani kwa kiwango kikubwa, mifumo kadhaa hujitokeza mara kwa mara kama muhimu kwa mafanikio ya muda mrefu.
+    readTime: '1 min',
+    content: `Salio ni mfumo wa mauzo (point-of-sale) ninaoujenga kwa ajili ya maduka ya Kenya, wenye uhasibu wa double-entry chini yake. Ninaujenga kwa kuzingatia duka la familia la vipuri, kwa ajili ya wenye maduka ambao si wahasibu. Bado haujakamilika. Hizi ndizo kanuni zake. Kanuni kama hizi ni ngumu kuziongeza baada ya data kuwepo.
 
-## Anza na Mipaka
+## Teknolojia
 
-Mipaka wazi ya huduma huzuia mtego wa mfumo mmoja mkubwa huku ikiepuka utata wa huduma ndogo za mapema mno. Weka mipaka kulingana na uwezo wa kibiashara, si safu za kiufundi.
+C# kwenye .NET 10, pamoja na ASP.NET Core na EF Core, juu ya PostgreSQL 16. Ninajifunza C# kwa kuujenga.
 
-## Buni kwa Kutegemea Hitilafu
+## Muamala mmoja kwa kila uuzaji
 
-Kila kitegemezi cha nje kitashindwa. Vizuizi vya mzunguko, majaribio upya yenye ucheleweshaji unaoongezeka, na kushuka kwa hadhi kwa upole si hiari — ni msingi.
+Kila uuzaji ni muamala mmoja wa database. Unaandika risiti, ingizo la stoki na ingizo la jarida lililosawazishwa kwa pamoja, au hauandiki chochote. Hakuna usawazishaji kati ya kaunta na vitabu vya hesabu, kwa sababu kuna seti moja tu ya vitabu.
 
-## Pima Kila Kitu
+## Mlango mmoja wa kuingia kwenye leja
 
-Huwezi kuboresha usichoweza kupima. Wekeza mapema katika ufuatiliaji: kumbukumbu zilizopangwa, ufuatiliaji uliosambaa, na dashibodi za vipimo vyenye maana.`,
+Ni kitendakazi kimoja tu, PostJournal, kinachoruhusiwa kuandika mistari ya jarida. Kinakataa ingizo lolote ambalo debit na credit zake hazilingani. Nilikiandika kwa mkono na kukiwekea unit tests.
+
+## Pesa kwa senti kamili
+
+Pesa huhifadhiwa kwa senti kamili, kamwe si kama namba za floating-point. Namba ya floating-point haiwezi kushika kwa usahihi sehemu nyingi za desimali za shilingi, kwa hivyo safu ndefu ya namba hizo huacha kujumlika kuwa jumla sahihi. Senti kamili hujumlika sawa kila mara.
+
+## Hakuna kinachohifadhiwa kinachoweza kupitwa na wakati
+
+Maingizo ya stoki huongezwa tu na hayahaririwi, kwa hivyo marekebisho ni ingizo jipya, si kubadilisha ingizo la zamani. Ripoti hukokotolewa zinaposomwa, kamwe hazihifadhiwi.
+
+## Usakinishaji mmoja, maduka mengi
+
+Kila jedwali limewekewa mipaka ya biashara moja, kwa hivyo usakinishaji mmoja unaweza kuhudumia maduka mengi.`,
   },
   {
     slug: 'ai-integration-patterns',
-    title: 'Mifumo ya Kuunganisha AI kwa Programu Zilizo Hewani',
+    title: 'Kujenga Kahawa Smart',
     excerpt:
-      'Jinsi ya kuunganisha modeli kubwa za lugha katika mifumo iliyo hewani kwa uwajibikaji na ufanisi.',
+      'Modeli inayogundua kutu ya majani ya kahawa kutoka kwenye picha, na chatbot inayotegemea mfumo wa RAG. Mradi wangu wa maonyesho wa chuo kikuu.',
     category: 'AI',
     date: '2025-10-02',
-    readTime: '10 min',
-    content: `Kuunganisha AI katika programu zilizo hewani kunahitaji zaidi ya kuita API. Kunahitaji usanifu wa makini kuhusu uaminifu, usimamizi wa gharama, na imani ya mtumiaji.
+    readTime: '1 min',
+    content: `Kahawa Smart ulikuwa mradi wangu wa maonyesho wa chuo kikuu. Kutu ya majani ya kahawa huenea haraka, na mkulima mdogo mara nyingi hawezi kupata mtaalamu wa kukagua jani kwa wakati.
 
-## RAG dhidi ya Kurekebisha Modeli
+## Modeli
 
-Uzalishaji Unaoongezwa na Utafutaji (RAG) hutoa unyumbufu na uwazi. Kurekebisha modeli kunafaa kwa mitindo ya lugha ya sekta maalum. Mifumo mingi iliyo hewani hunufaika na RAG kama hatua ya kuanzia.
+Nilijenga modeli kwa TensorFlow. Ipe picha ya jani la kahawa nayo itaonyesha kama lina kutu ya majani. Inatafuta ugonjwa huo mmoja tu, si kila ugonjwa unaoweza kushambulia mmea wa kahawa.
 
-## Vizuizi Ni Muhimu
+## Chatbot
 
-Tekeleza uthibitishaji wa pembejeo, uchujaji wa matokeo, na tabia mbadala. Watumiaji hawapaswi kamwe kukutana na hitilafu mbichi za modeli — wanapaswa kupata kushuka kwa hadhi kwa upole.
+Chatbot inajibu maswali ya ziada. Niliiegemeza kwenye mfumo wa utafutaji (RAG), kwa hivyo majibu yake yanatokana na maandishi yaliyotafutwa badala ya modeli ya lugha peke yake.
 
-## Uelewa wa Gharama
+## Teknolojia
 
-Matumizi ya tokeni hukua na idadi ya watumiaji. Hifadhi majibu, kusanya maombi pamoja, na tumia modeli ndogo kwa kazi za uainishaji kabla ya kuelekeza kwenye modeli kubwa kwa uzalishaji.`,
+TensorFlow, Python, FastAPI, Groq, JavaScript na GSAP.`,
   },
   {
     slug: 'security-first-architecture',
-    title: 'Usanifu Unaotanguliza Usalama kwa Programu za Kisasa',
+    title: 'Kuimarisha usalama wa duka lililo hewani',
     excerpt:
-      'Kufuma usalama ndani ya usanifu wako badala ya kuuchukulia kama orodha ya mwisho ya kukagua.',
-    category: 'Usalama wa Mtandao',
+      'Nilichorekebisha kwenye duka la Pharimz Creatives baada ya kuzinduliwa, kuanzia na ombi lililoweza kumwonyesha mteja mmoja oda ya mteja mwingine.',
+    category: 'Usalama',
     date: '2025-08-20',
-    readTime: '7 min',
-    content: `Usalama hauwezi kuongezwa kwenye programu kabla ya uzinduzi. Lazima ufumwe ndani ya kila uamuzi wa usanifu tangu siku ya kwanza.
+    readTime: '1 min',
+    content: `Pharimz Creatives ni duka la mtandaoni la biashara ya Kenya ya mavazi ya streetwear na chapa. Linapokea oda na malipo kwa shilingi, ikiwemo M-Pesa. Baada ya kuanza kufanya kazi hewani, nilirudi nikaimarisha usalama wake.
 
-## Uthibitishaji dhidi ya Uidhinishaji
+## Oda ya mteja mwingine
 
-Uthibitishaji huthibitisha utambulisho. Uidhinishaji huamua ufikiaji. Kuchanganya haya mawili husababisha akaunti zenye ruhusa kupita kiasi na udhaifu wa kukwepa uidhinishaji.
+Niligundua mwanya ambapo kubadilisha ID kwenye ombi kungeweza kufichua oda ya mteja mwingine. Kuwa umeingia kwenye akaunti hakutoshi. Seva lazima ihakikishe kuwa oda ni ya mtu anayeiomba. Niliziba mwanya huo.
 
-## Kanuni za Zero Trust
+## Callbacks za M-Pesa
 
-Usiamini kamwe, thibitisha daima. Kila ombi — la ndani au la nje — linapaswa kuthibitishwa na kuidhinishwa bila kujali lilikotoka kwenye mtandao.
+Malipo yanatumia M-Pesa STK Push, na M-Pesa huthibitisha kila malipo kwa callback. Nilizihakiki callbacks hizo ili uthibitisho usiweze kughushiwa.
 
-## Usimbaji Fiche Kila Mahali
+## Row-level security
 
-Data iliyohifadhiwa, data inayosafiri, na data inayotumika (pale inapowezekana) zote zinapaswa kusimbwa kwa algoriti za kisasa na usimamizi sahihi wa funguo.`,
+Data ya duka iko kwenye Supabase. Niliimarisha row-level security yake, yaani sheria ndani ya database zinazoamua ni safu zipi kila mtumiaji anaweza kufikia.
+
+## Ambacho ningebadilisha
+
+Haya yote yalifanyika baada ya uzinduzi. Kwenye duka linalofuata, nitakagua nani anamiliki kila rekodi kabla mteja wa kwanza hajafika.`,
   },
   {
     slug: 'nextjs-performance-guide',
-    title: 'Utendaji wa Next.js: Mwongozo wa Kiuhandisi wa Vitendo',
-    excerpt:
-      'Mbinu madhubuti za kufikia utendaji wa hali ya juu katika programu za Next.js.',
+    title: 'Maelezo kuhusu utendaji wa Next.js',
+    excerpt: 'Maelezo ya jumla kuhusu mahali ukurasa wa Next.js unaweza kupoteza kasi.',
     category: 'Next.js',
     date: '2025-07-10',
-    readTime: '9 min',
-    content: `Utendaji ni faida ya ushindani. Katika programu za Next.js, uboreshaji wa utendaji unahusisha mkakati wa uonyeshaji, ukubwa wa kifurushi, na tabia wakati wa utekelezaji.
+    readTime: '1 min',
+    content: `Haya ni maelezo ya jumla, si matokeo ya mradi wangu.
 
-## Chagua Njia ya Uonyeshaji kwa Busara
+## Uonyeshaji
 
-Uzalishaji tuli kwa maudhui yasiyobadilika mara kwa mara. Uonyeshaji upande wa seva kwa kurasa za kibinafsi. Upande wa mteja kwa vipengele vyenye mwingiliano mkubwa. Mbinu mchanganyiko mara nyingi hutoa matokeo bora.
+Ukurasa usiobadilika mara kwa mara unaweza kutengenezwa mara moja wakati wa build. Ukurasa unaotofautiana kwa kila mtumiaji lazima uonyeshwe kwa kila ombi.
 
-## Uchambuzi wa Kifurushi
+## JavaScript inayotumwa kwa kivinjari
 
-Kagua kifurushi chako mara kwa mara kwa @next/bundle-analyzer. Uingizaji wenye nguvu na ugawaji wa msimbo kwa njia huondoa JavaScript isiyohitajika kutoka upakiaji wa awali.
+@next/bundle-analyzer huonyesha kinachoishia kwenye bundle. Dynamic imports huzuia msimbo usiohitajika kwenye upakiaji wa kwanza usiingie humo.
 
-## Uboreshaji wa Picha
+## Picha
 
-Tumia next/image kwa ukubwa sahihi, miundo ya kisasa, na upakiaji wa kipaumbele kwa maudhui yaliyo juu ya ukurasa. Picha mara nyingi ndizo kizuizi kikubwa zaidi cha utendaji.`,
+next/image hutoa picha yenye ukubwa unaofaa skrini. Prop ya priority hupakia kwanza picha kuu iliyo juu ya ukurasa.`,
   },
   {
     slug: 'remote-engineering-excellence',
-    title: 'Ubora wa Uhandisi wa Mbali',
-    excerpt: 'Kujenga mbinu bora za uhandisi katika timu zilizosambaa.',
-    category: 'Uhandisi wa Mbali',
+    title: 'Maelezo kuhusu kazi ya mbali',
+    excerpt: 'Maelezo ya jumla kuhusu kuandika mambo pale timu inapofanya kazi kutoka maeneo tofauti.',
+    category: 'Kazi ya mbali',
     date: '2025-05-28',
-    readTime: '6 min',
-    content: `Uhandisi wa mbali unahitaji mawasiliano ya makusudi, mitiririko inayotanguliza kutokuwa wa wakati mmoja, na utamaduni wa kuandika nyaraka ambao timu zilizo mahali pamoja mara nyingi huuchukulia kawaida.
+    readTime: '1 min',
+    content: `Haya ni maelezo ya jumla, si mafunzo kutoka kwa timu niliyowahi kufanya nayo kazi.
 
-## Kutokuwa wa Wakati Mmoja kwa Chaguo-msingi
+## Iandike
 
-Si kila mazungumzo yanahitaji mkutano. Andika mapendekezo wazi, tumia mijadala yenye nyuzi, na hifadhi muda wa pamoja kwa maamuzi tata.
+Pendekezo lililoandikwa linaweza kusomwa wakati wowote mtu anapoingia mtandaoni. Mkutano hauwezi. Mikutano inafaa kubakizwa kwa maamuzi yanayohitaji majadiliano ya kwenda na kurudi.
 
-## Nyaraka kama Miundombinu
+## Eleza sababu
 
-Kama hakijaandikwa, hakipo kwa wanachama wa timu walio mbali. Shughulikia nyaraka kwa uangalifu uleule unaotumia kwa msimbo.
-
-## Eleza Muktadha kwa Wingi
-
-Wahandisi walio mbali hawana muktadha wa mazungumzo ya njiani. Shiriki "kwa nini" nyuma ya maamuzi, si "nini" tu. Muktadha huwezesha maamuzi bora ya kujitegemea.`,
+Mwenzako wa timu ambaye hakuwepo anahitaji sababu ya uamuzi pamoja na uamuzi wenyewe.`,
   },
 ]

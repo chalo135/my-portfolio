@@ -29,7 +29,7 @@ export const philosophyContent: PhilosophyContent = {
     {
       id: 'user-centered',
       title: 'User-Centered Design',
-      headline: 'Built for the person at the till.',
+      headline: 'Built for shop owners and their customers.',
       description:
         "I'm building Salio for shop owners who aren't accountants. On Pharimz Creatives, checkout takes M-Pesa STK Push, because that's how most customers pay.",
       mark: 'Mtumiaji',
@@ -45,7 +45,7 @@ export const philosophyContent: PhilosophyContent = {
     {
       id: 'security',
       title: 'Security',
-      headline: 'Fixed after launch.',
+      headline: 'Orders and payments locked down.',
       description:
         "On Pharimz Creatives I closed a hole where changing an ID in a request could expose another customer's order. I verified M-Pesa callbacks so a payment can't be faked, and tightened Supabase row-level security.",
       mark: 'Usalama',
@@ -53,7 +53,7 @@ export const philosophyContent: PhilosophyContent = {
     {
       id: 'maintainability',
       title: 'Maintainability',
-      headline: 'Code for the next engineer.',
+      headline: 'Append-only stock, money in whole cents.',
       description:
         "In Salio, stock movements are append-only and reports are calculated when they're read, never stored. Money is kept in whole cents, never floating-point numbers.",
       mark: 'Udumishaji',
@@ -61,7 +61,7 @@ export const philosophyContent: PhilosophyContent = {
     {
       id: 'innovation',
       title: 'New tools',
-      headline: 'I keep up with current tools.',
+      headline: 'A model that spots leaf rust.',
       description:
         'For Kahawa Smart, my university project, I built a TensorFlow model that flags coffee leaf rust from a photo of a leaf, and a chatbot grounded in a RAG pipeline.',
       mark: 'Ubunifu',
@@ -70,7 +70,7 @@ export const philosophyContent: PhilosophyContent = {
 
   intro: {
     headline: 'Engineering Philosophy',
-    subheadline: 'Each principle points to something I built.',
+    subheadline: 'Most of these point to something I built.',
     description:
       "The examples come from Salio, the point of sale I'm building in C#; Pharimz Creatives, an online shop that's live; and Kahawa Smart, my university project.",
     /** "Njia" — the way, the path: the discipline behind the principles. */

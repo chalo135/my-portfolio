@@ -5,15 +5,15 @@ export const pagesContent: PagesContent = {
     about: {
       title: 'About',
       description:
-        "I'm Charles Ndirangu, a software engineer in Nairobi. I build online shops and point-of-sale software for small Kenyan businesses.",
+        "I'm Charles Ndirangu, a software engineer in Nairobi. I build software for small Kenyan businesses, including a live online shop and a point of sale I'm still building.",
     },
     capabilities: {
       title: 'Capabilities',
-      description: 'What I can do on the frontend and backend, and the projects that show it.',
+      description: 'M-Pesa checkout on a live shop, and my own Linux VPS with Docker and GitHub Actions deploys.',
     },
     contact: {
       title: 'Contact',
-      description: "I'm available now for remote full-stack roles and onsite IT roles.",
+      description: "I'm available now for remote full-stack roles, onsite IT roles and freelance projects.",
     },
     experience: {
       title: 'Experience',
@@ -28,16 +28,16 @@ export const pagesContent: PagesContent = {
       description: 'A point of sale with double-entry accounting, a live M-Pesa shop, and a coffee leaf rust model.',
     },
     resume: {
-      title: 'Resume',
-      description: 'My resume: freelance software work since April 2025 and a BSc in Computer Technology.',
+      title: 'Résumé',
+      description: 'My résumé: freelance software work since April 2025 and a BSc in Computer Technology.',
     },
     technologies: {
       title: 'Technologies',
-      description: "The tools I've used on real projects, including my own Linux VPS.",
+      description: 'A list of languages, frameworks and tools. Each project page shows its own stack.',
     },
     writing: {
       title: 'Writing',
-      description: 'Short notes on security, AI and building for the web.',
+      description: "Notes on Salio's books, securing Pharimz Creatives and building Kahawa Smart.",
     },
     projectNotFound: 'Project Not Found',
     articleNotFound: 'Article Not Found',
@@ -79,7 +79,7 @@ export const pagesContent: PagesContent = {
       label: 'Writing',
       title: 'Notes from the work.',
       description:
-        'Short notes on security, AI and building for the web.',
+        "Notes on Salio's books, securing Pharimz Creatives and building Kahawa Smart.",
     },
     backToWriting: '← Writing',
     read: 'read',
@@ -97,9 +97,9 @@ export const pagesContent: PagesContent = {
   technologies: {
     hero: {
       label: 'Technologies',
-      title: 'What I use.',
+      title: 'Tools and languages.',
       description:
-        'The tools behind Salio, Pharimz Creatives and Kahawa Smart, and the Linux VPS I run myself.',
+        'A list of languages, frameworks and tools. Each project page shows what that project uses.',
     },
   },
 
@@ -114,13 +114,13 @@ export const pagesContent: PagesContent = {
 
   resume: {
     hero: {
-      label: 'Resume',
+      label: 'Résumé',
       title: 'Charles Ndirangu',
       description:
-        'Software engineer in Nairobi. I build online shops and point-of-sale software for small Kenyan businesses. Available now.',
+        "Software engineer in Nairobi. I build software for small Kenyan businesses, including a live online shop and a point of sale I'm still building. Available now.",
     },
     experienceHeading: 'Experience',
-    capabilitiesHeading: 'Core Capabilities',
+    capabilitiesHeading: 'Capabilities',
     technologiesHeading: 'Technologies',
   },
 

@@ -9,74 +9,73 @@ export const philosophyContent: PhilosophyContent = {
     {
       id: 'quality',
       title: 'Ubora',
-      headline: 'Ubora haujadiliwi.',
+      headline: 'Hesabu lazima ziwiane.',
       description:
-        'Kila mstari wa msimbo, kila mwingiliano, kila uamuzi wa usanifu unaonyesha dhamira ya kujenga programu inayostahimili wakati. Ubora si hatua moja — ni msingi wenyewe.',
+        'Katika Salio, ni kitendakazi kimoja tu, PostJournal, kinachoweza kuandika mistari ya jarida. Kinakataa ingizo lolote ambalo debiti na krediti zake haziwiani, na nimekiandikia unit tests.',
       mark: 'Ubora',
     },
     {
       id: 'craftsmanship',
-      title: 'Ufundi',
-      headline: 'Programu ni ufundi.',
+      title: 'Kumaliza kazi',
+      headline: 'Ninamaliza kazi ipasavyo.',
       description:
-        'Kama ufundi mwingine wowote wa hali ya juu, uhandisi wa programu unahitaji uvumilivu, usahihi, na fahari katika kazi. Ninaukabili kila mradi kwa nidhamu ya fundi na uangalifu wa mhandisi.',
+        'Ninaijali kazi na ninaifikisha mwisho. Mifano iko kwenye kanuni nyingine za ukurasa huu.',
       mark: 'Ufundi',
     },
     {
       id: 'scalability',
       title: 'Upanuzi',
-      headline: 'Imejengwa kukua.',
+      headline: 'Usakinishaji mmoja, maduka mengi.',
       description:
-        'Mifumo lazima ikue pamoja na mashirika inayohudumia. Ninabuni miundo inayopanuka kwa upana — kwa watumiaji, data, na utata — bila kuhitaji kuandikwa upya kabisa.',
+        'Kila jedwali katika Salio linahusishwa na biashara moja, hivyo usakinishaji mmoja unaweza kuhudumia maduka mengi.',
       mark: 'Upanuzi',
     },
     {
       id: 'user-centered',
       title: 'Ubunifu Unaomlenga Mtumiaji',
-      headline: 'Teknolojia inawahudumia watu.',
+      headline: 'Imejengwa kwa ajili ya wenye maduka na wateja wao.',
       description:
-        'Usanifu mzuri kabisa hauna maana ikiwa matumizi yanawaangusha watumiaji wake. Ninatanguliza uwazi, ufikivu, na ubunifu unaoeleweka kwa urahisi katika kila kiolesura ninachojenga.',
+        'Ninajenga Salio kwa ajili ya wenye maduka ambao si wahasibu. Kwenye Pharimz Creatives, malipo hufanywa kwa M-Pesa STK Push, kwa sababu hivyo ndivyo wateja wengi wanavyolipa.',
       mark: 'Mtumiaji',
     },
     {
       id: 'performance',
       title: 'Kasi',
-      headline: 'Kasi ni kipengele.',
-      description:
-        'Utendaji ni heshima kwa muda na rasilimali za mtumiaji. Ninaboresha kila safu — kutoka maswali ya hifadhidata hadi mizunguko ya uonyeshaji — ili kutoa matumizi yanayohisi ya papo hapo.',
+      headline: 'Iwe na kasi.',
+      description: 'Bado sina kazi ya utendaji iliyopimwa ya kuonyesha.',
       mark: 'Kasi',
     },
     {
       id: 'security',
       title: 'Usalama',
-      headline: 'Uaminifu tangu mwanzo.',
+      headline: 'Oda na malipo vimelindwa.',
       description:
-        'Usalama unafumwa ndani ya usanifu tangu siku ya kwanza, hauongezwi tu kabla ya uzinduzi. Ninajenga mifumo inayolinda data, inayohifadhi faragha, na inayostahimili vitisho vinavyobadilika.',
+        'Kwenye Pharimz Creatives nilifunga mwanya ambapo kubadilisha ID kwenye ombi kungeweza kufichua oda ya mteja mwingine. Nilithibitisha callbacks za M-Pesa ili malipo yasiweze kughushiwa, na nikaimarisha row-level security ya Supabase.',
       mark: 'Usalama',
     },
     {
       id: 'maintainability',
       title: 'Udumishaji',
-      headline: 'Andika msimbo kwa ajili ya mhandisi ajaye.',
+      headline: 'Stoku huongezwa tu, pesa kwa senti kamili.',
       description:
-        'Msimbo unaosomeka, wenye maelezo mazuri, na uliopangwa kwa uangalifu huhakikisha mifumo inabaki rahisi kubadilishwa muda mrefu baada ya uzinduzi. Timu zijazo zirithi uwazi, si mkanganyiko.',
+        'Katika Salio, mienendo ya stoku huongezwa tu, haibadilishwi (append-only), na ripoti hukokotolewa zinaposomwa, hazihifadhiwi kamwe. Pesa huhifadhiwa kwa senti kamili, kamwe si kwa namba za floating-point.',
       mark: 'Udumishaji',
     },
     {
       id: 'innovation',
-      title: 'Ubunifu',
-      headline: 'Maendeleo yenye kusudi.',
+      title: 'Zana mpya',
+      headline: 'Modeli inayotambua kutu ya majani.',
       description:
-        'Ubunifu si upya kwa ajili ya upya tu. Ninachukua teknolojia mpya zinaposuluhisha matatizo halisi, zinapoboresha matokeo, au zinapofungua uwezo ambao awali haukuwezekana.',
+        'Kwa Kahawa Smart, mradi wangu wa chuo kikuu, nilijenga modeli ya TensorFlow inayotambua kutu ya majani ya kahawa kutoka kwenye picha ya jani, na chatbot inayotegemea RAG pipeline.',
       mark: 'Ubunifu',
     },
   ],
 
   intro: {
     headline: 'Falsafa ya Uhandisi',
-    subheadline: 'Kanuni zinazoongoza kila mfumo ninaoujenga.',
+    subheadline: 'Nyingi kati ya hizi zinaonyesha kitu nilichojenga.',
     description:
-      'Uhandisi wa programu ni zaidi ya kuandika msimbo — ni sanaa yenye nidhamu ya kutatua matatizo tata kwa suluhisho maridadi na za kudumu. Kanuni hizi zinaeleza jinsi ninavyoukabili kila mradi, kutoka usanifu wa awali hadi uzinduzi wa mwisho.',
+      'Mifano inatoka Salio, mfumo wa mauzo (point of sale) ninaoujenga kwa C#; Pharimz Creatives, duka la mtandaoni lililo hewani; na Kahawa Smart, mradi wangu wa chuo kikuu.',
     mark: 'Njia',
   },
 }

@@ -7,14 +7,14 @@ export const experienceContent: ExperienceEntry[] = [
   {
     id: 'exp-1',
     role: 'Freelance software developer',
-    organization: 'Freelance',
+    organization: 'Self-employed',
     period: 'Apr 2025 to now',
     description:
-      'I build software for clients and host their sites on servers I run myself.',
+      'Software work for clients, alongside operations in the family business.',
     highlights: [
-      'Hosted client sites on Ubuntu servers',
-      'Ran my own Linux VPS with Docker, Nginx and Caddy',
-      'Deployed with GitHub Actions',
+      'Host client sites on Ubuntu servers',
+      'My own Linux VPS runs Docker, Nginx and Caddy',
+      'Deploys go out through GitHub Actions',
     ],
   },
   {

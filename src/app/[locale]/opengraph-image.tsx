@@ -31,9 +31,9 @@ export function generateStaticParams() {
 export const dynamicParams = false
 
 // generateImageMetadata would give a per-locale alt, but it adds a hidden
-// [__metadata_id__] segment that `output: 'export'` cannot prerender. The name
-// alone reads the same in both locales.
-export const alt = getSite(defaultLocale).site.name
+// [__metadata_id__] segment that `output: 'export'` cannot prerender. So both
+// locales share one alt: the name and role from the default locale.
+export const alt = `${getSite(defaultLocale).site.name}, ${getSite(defaultLocale).site.role}`
 
 // Rendered at build time. Satori cannot read CSS variables, so the card is a
 // literal copy of the hero board: white lettering on crimson.

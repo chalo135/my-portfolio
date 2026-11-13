@@ -30,7 +30,6 @@ export const capabilityContent: Capability[] = [
     areas: [
       'Ubuntu',
       'Docker',
-      'CI/CD Pipelines',
       'Nginx',
       'Caddy',
       'GitHub Actions',
@@ -43,7 +42,7 @@ export const capabilityContent: Capability[] = [
       'For Kahawa Smart, my university project: a TensorFlow model that flags coffee leaf rust, and a chatbot grounded in a RAG pipeline.',
     areas: [
       'LLM Integration',
-      'RAG Systems',
+      'RAG Pipeline',
       'TensorFlow',
       'Groq',
       'Image Classification',
@@ -68,20 +67,20 @@ export const capabilityContent: Capability[] = [
     title: 'System Design',
     description:
       "I haven't built a large-scale system yet. Salio's design is under Databases.",
-    areas: ['Double-Entry Accounting'],
+    areas: [],
   },
   {
     id: 'databases',
     title: 'Databases',
     description:
-      'Salio runs on PostgreSQL 16: one transaction per sale, money in whole cents, every table scoped to a business. Pharimz runs on Supabase.',
+      'Salio runs on PostgreSQL 16: one transaction per sale, money in whole cents, every table scoped to a business. Pharimz Creatives runs on Supabase.',
     areas: [
       'PostgreSQL',
       'Supabase',
       'EF Core',
       'Data Modeling',
       'Transactions',
-      'Migrations',
+      'Double-Entry Accounting',
     ],
   },
   {
@@ -95,7 +94,7 @@ export const capabilityContent: Capability[] = [
     id: 'ui-engineering',
     title: 'UI Engineering',
     description:
-      'Responsive layouts on this site, and GSAP animation on Kahawa Smart.',
+      'GSAP animation on Kahawa Smart, and responsive layouts on this site.',
     areas: ['GSAP', 'Responsive Design'],
   },
 ]

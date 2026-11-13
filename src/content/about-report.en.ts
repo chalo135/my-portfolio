@@ -1,7 +1,7 @@
 import type { AboutReportCopy } from './about-report'
 
 const introOpening =
-  "I'm Charles Ndirangu, Chalo to most people. I'm a software engineer in Nairobi. I build point-of-sale and accounting software for Kenyan shops, and I've put M-Pesa checkout into a live one."
+  "I'm Charles Ndirangu, Chalo to most people, a software engineer in Nairobi. I'm building Salio, a point-of-sale system with double-entry accounting. On Pharimz Creatives, a live online shop with M-Pesa checkout, I closed a hole that could expose another customer's order."
 const introReport =
   'I also work in Power BI, so this section is a report about me. Click a status, a bar or a project to filter it. The data model, the DAX measures and the Power Query steps behind it are on the other pages'
 
@@ -15,7 +15,7 @@ export const aboutReportCopy: AboutReportCopy = {
   kinds: {
     salio: 'Point of sale',
     pharimz: 'Online shop',
-    'kahawa-smart': 'AI app',
+    'kahawa-smart': 'Leaf rust detection',
   },
 
   areaLabels: {
