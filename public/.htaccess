@@ -54,8 +54,6 @@ ErrorDocument 404 /404.html
 <IfModule mod_mime.c>
   AddType application/manifest+json .webmanifest
   AddType image/avif .avif
-  AddType video/mp4 .mp4
-  AddType video/webm .webm
   AddType font/woff2 .woff2
 </IfModule>
 
@@ -77,7 +75,7 @@ ErrorDocument 404 /404.html
   <FilesMatch "\.(js|css|woff2)$">
     Header set Cache-Control "public, max-age=31536000, immutable"
   </FilesMatch>
-  <FilesMatch "(\.(png|jpe?g|webp|avif|gif|svg|ico|mp4|webm)|^opengraph-image)$">
+  <FilesMatch "(\.(png|jpe?g|webp|avif|gif|svg|ico)|^opengraph-image)$">
     Header set Cache-Control "public, max-age=2592000"
   </FilesMatch>
 </IfModule>

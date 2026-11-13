@@ -25,6 +25,7 @@ export default function RootNotFound() {
     // The script mutates data-theme before React hydrates.
     <html lang="en" suppressHydrationWarning className={fontVariables}>
       <head>
+        <title>{copy.title}</title>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body className="bg-bg text-fg antialiased">

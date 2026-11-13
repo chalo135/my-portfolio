@@ -15,10 +15,6 @@ const nextConfig: NextConfig = {
   images: {
     // The default loader needs a server. Images are served as they are.
     unoptimized: true,
-    remotePatterns: [
-      { protocol: 'https', hostname: 'avatars.githubusercontent.com' },
-      { protocol: 'https', hostname: 'i.scdn.co' },
-    ],
   },
   // redirects() can't run in a static export; the redirects now live in public/.htaccess.
 }

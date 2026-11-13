@@ -8,7 +8,7 @@ export function localeHref(href: string, locale: Locale): string {
   return `/${locale}${href === '/' ? '' : href}`
 }
 
-/** Reads the locale out of a pathname like `/sw/projects/salio`. Returns null
+/** Reads the locale out of a pathname like `/sw/work`. Returns null
  *  when the path carries no locale segment, so callers can decide on a fallback
  *  rather than silently getting `en`. */
 export function localeFromPathname(pathname: string): Locale | null {
@@ -17,7 +17,7 @@ export function localeFromPathname(pathname: string): Locale | null {
 }
 
 /** Swaps the leading locale segment for `target`, preserving the rest of the
- *  path. `/sw/projects/salio` → `/en/projects/salio`. A path with no locale
+ *  path. `/sw/work` → `/en/work`. A path with no locale
  *  segment falls back to the target locale's home. */
 export function swapLocaleInPathname(pathname: string, target: Locale): string {
   const current = localeFromPathname(pathname)

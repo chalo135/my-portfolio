@@ -11,32 +11,20 @@ import {
 
 export type Theme = 'dark' | 'light'
 
-/** localStorage key. Shared with the pre-paint script in app/layout.tsx —
- *  if you change it here, change it there too. */
+/** localStorage key. Shared with the pre-paint script in app/[locale]/layout.tsx
+ *  and app/not-found.tsx; if you change it here, change it there too. */
 export const THEME_STORAGE_KEY = 'theme'
 
 interface LenisLike {
-  scrollTo: (target: number | string, options?: Record<string, unknown>) => void
   stop: () => void
   start: () => void
   destroy: () => void
 }
 
-/** Where on screen the last toggle came from, in client coordinates. The water
- *  trail canvas uses it to burst the theme change outward from the button. */
-export interface ToggleOrigin {
-  x: number
-  y: number
-  /** Bumped on every toggle so consumers can tell two bursts at the same point apart. */
-  id: number
-}
-
 interface ExperienceContextValue {
   theme: Theme
-  toggleOrigin: ToggleOrigin | null
-  toggleTheme: (origin?: { x: number; y: number }) => void
+  toggleTheme: () => void
   reducedMotion: boolean
-  scrollTo: (target: number | string) => void
   /** Pause/resume Lenis — used by the full-screen menu's scroll lock. */
   setScrollLocked: (locked: boolean) => void
 }
@@ -49,7 +37,6 @@ export function ExperienceProvider({ children }: { children: React.ReactNode }) 
   // the inline script in layout.tsx; the effect below adopts it on mount rather
   // than resolving it a second time.
   const [theme, setThemeState] = useState<Theme>('light')
-  const [toggleOrigin, setToggleOrigin] = useState<ToggleOrigin | null>(null)
   const [reducedMotion, setReducedMotion] = useState(false)
   const adopted = useRef(false)
   const lenisRef = useRef<LenisLike | null>(null)
@@ -113,7 +100,7 @@ export function ExperienceProvider({ children }: { children: React.ReactNode }) 
     }
   }, [reducedMotion])
 
-  const toggleTheme = useCallback((origin?: { x: number; y: number }) => {
+  const toggleTheme = useCallback(() => {
     setThemeState((prev) => {
       const next: Theme = prev === 'dark' ? 'light' : 'dark'
       try {
@@ -123,22 +110,6 @@ export function ExperienceProvider({ children }: { children: React.ReactNode }) 
       }
       return next
     })
-    if (origin) {
-      setToggleOrigin((prev) => ({ ...origin, id: (prev?.id ?? 0) + 1 }))
-    }
-  }, [])
-
-  const scrollTo = useCallback((target: number | string) => {
-    const lenis = lenisRef.current
-    if (lenis) {
-      lenis.scrollTo(target, { duration: 1.2 })
-      return
-    }
-    if (typeof target === 'number') {
-      window.scrollTo({ top: target, behavior: 'smooth' })
-    } else {
-      document.querySelector(target)?.scrollIntoView({ behavior: 'smooth' })
-    }
   }, [])
 
   const setScrollLocked = useCallback((locked: boolean) => {
@@ -152,10 +123,8 @@ export function ExperienceProvider({ children }: { children: React.ReactNode }) 
     <ExperienceContext.Provider
       value={{
         theme,
-        toggleOrigin,
         toggleTheme,
         reducedMotion,
-        scrollTo,
         setScrollLocked,
       }}
     >

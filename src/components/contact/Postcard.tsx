@@ -17,7 +17,8 @@ export default function Postcard({ name, copy }: { name: string; copy: ContactCo
         width={220}
         height={20}
         tilt={-28}
-        className="pointer-events-none right-[-8px] top-[-40px] z-10 sm:right-[-24px]"
+        // Hidden under 640px: there it would lie across the intro text.
+        className="pointer-events-none right-[-24px] top-[-40px] z-10 max-sm:hidden"
       />
     </div>
   )

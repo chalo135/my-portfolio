@@ -44,37 +44,13 @@ const config: Config = {
         mono: ['"Cascadia Mono"', 'Consolas', '"SF Mono"', 'monospace'],
       },
       boxShadow: {
-        paper: '0 14px 28px rgb(var(--shadow-rgb) / 0.16)',
+        // Not 'paper': that is also a colour key, so shadow-paper would mean a
+        // paper-coloured shadow.
+        sheet: '0 14px 28px rgb(var(--shadow-rgb) / 0.16)',
         sticky: '0 10px 18px rgb(var(--shadow-rgb) / 0.12)',
         postcard: '0 18px 36px rgb(var(--shadow-rgb) / 0.16)',
         card: '0 16px 30px rgb(var(--shadow-rgb) / 0.25)',
         disc: '0 6px 14px rgb(var(--shadow-rgb) / 0.14)',
-      },
-      spacing: {
-        'section': 'clamp(6rem, 15vh, 12rem)',
-        'section-sm': 'clamp(4rem, 10vh, 8rem)',
-      },
-      maxWidth: {
-        content: '1360px',
-        measure: '68ch',
-      },
-      // Labels are sentence case at normal tracking. The tracked-out label was
-      // template chrome; the name stays so the call sites need not change.
-      letterSpacing: {
-        label: 'normal',
-      },
-      transitionTimingFunction: {
-        cinematic: 'cubic-bezier(0.16, 1, 0.3, 1)',
-        luxury: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-      },
-      animation: {
-        'fade-up': 'fade-up 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-      },
-      keyframes: {
-        'fade-up': {
-          from: { opacity: '0', transform: 'translateY(40px)' },
-          to: { opacity: '1', transform: 'translateY(0)' },
-        },
       },
     },
   },

@@ -32,12 +32,7 @@ next-env.d.ts
 *.sln
 *.sw?
 
-# Large local-only binaries. These must never sit inside the project root:
-# Next's dev watcher and `next build`'s output file tracing both walk it, and
-# half a gigabyte of binary there is a measurable stall on every start.
-# They have been moved to ../_local-assets/.
-*.mp4
-!public/videos/*.mp4
+# Large local-only binaries never belong in the project root.
 *.exe
 *.msi
 *.zip

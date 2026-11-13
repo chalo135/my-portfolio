@@ -11,7 +11,7 @@
 //   4. Every canonical and hreflang URL is on the live origin, ends in `/`,
 //      and resolves the same way.
 //
-// Routes, slugs, locales and the origin are read from the source files, so
+// Routes, locales and the origin are read from the source files, so
 // this script has no list of its own to keep in sync.
 
 import { existsSync, statSync } from 'node:fs'

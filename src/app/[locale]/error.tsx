@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react'
 import Link from 'next/link'
+import { pillClasses } from '@/components/bench/Pill'
 import { usePathname } from 'next/navigation'
 import { getPages } from '@/content/pages'
 import { defaultLocale } from '@/i18n/config'
@@ -33,23 +34,16 @@ export default function Error({
   }, [error])
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center gap-6 px-[var(--section-padding)] text-center">
-      <h1 className="max-w-2xl text-balance text-4xl font-bold text-fg">
+    <main className="flex min-h-screen flex-col items-center justify-center gap-6 px-4 text-center">
+      <h1 className="max-w-2xl text-balance text-[clamp(36px,5vw,56px)] font-bold leading-[1.05] tracking-[-0.02em] text-fg">
         {copy.title}
       </h1>
-      <p className="max-w-measure text-sm leading-relaxed text-fg/90">{copy.body}</p>
-      <div className="mt-4 flex flex-wrap items-center justify-center gap-6">
-        <button
-          type="button"
-          onClick={reset}
-          className="border border-fg/20 px-6 py-3 font-sans text-xs tracking-label text-fg transition-colors duration-150 ease-out hover:border-accent hover:text-accent"
-        >
+      <p className="max-w-[56ch] text-[19px] leading-[1.5] text-fg-muted">{copy.body}</p>
+      <div className="mt-2 flex flex-wrap items-center justify-center gap-3">
+        <button type="button" onClick={reset} className={pillClasses('primary')}>
           {copy.retry}
         </button>
-        <Link
-          href={localeHref('/', locale)}
-          className="font-sans text-xs tracking-label text-fg transition-colors duration-150 ease-out hover:text-accent underline decoration-fg/30 underline-offset-4 hover:decoration-current"
-        >
+        <Link href={localeHref('/', locale)} className={pillClasses('default', 'min-h-[50px]')}>
           {copy.home}
         </Link>
       </div>

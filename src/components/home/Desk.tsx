@@ -13,9 +13,12 @@ import { logo } from '@/content/site'
 import HeroCard from './HeroCard'
 import StaticCard from './StaticCard'
 
-// Shown from 900px; the "wide" ones only from 1200px, so no text touches an
-// object on narrower desks.
+// Shown from 900px. Between 900 and 1199px the sheet and the card leave little
+// room, so the pencil, leaf, sprocket and sticky note wait for 1200px (as the
+// brief says) and the notebook, phone and wrench for 1100px (measured: below
+// that they sit under the heading). No text touches an object at any width.
 const onDesk = 'hidden min-[900px]:block'
+const onMidDesk = 'hidden min-[1100px]:block'
 const onWideDesk = 'hidden min-[1200px]:block'
 
 /**
@@ -34,13 +37,13 @@ export default function Desk({
   photo?: string
 }) {
   return (
-    <div className="relative mx-auto flex max-w-[1360px] flex-col items-center px-4 pb-10 pt-6 min-[900px]:block min-[900px]:h-[780px] min-[900px]:p-0">
+    <div className="relative mx-auto flex max-w-[1360px] flex-col items-center px-4 pb-10 pt-6 min-[900px]:block min-[900px]:h-[780px] min-[900px]:overflow-x-clip min-[900px]:p-0">
       {/* Objects, back to front. */}
-      <BenchObject name="notebook" label={copy.notebookLabel} width={170} height={220} tilt={-8} className={onDesk} style={{ left: '3%', top: '4%' }} />
-      <BenchObject name="phone" width={86} height={164} tilt={10} className={onDesk} style={{ left: '19%', top: '3%' }} />
+      <BenchObject name="notebook" label={copy.notebookLabel} width={170} height={220} tilt={-8} className={onMidDesk} style={{ left: '3%', top: '4%' }} />
+      <BenchObject name="phone" width={86} height={164} tilt={10} className={onMidDesk} style={{ left: '19%', top: '3%' }} />
       <BenchObject name="mug" width={124} height={104} className={onDesk} style={{ left: '69%', top: '1%' }} />
       <BenchObject name="pencil" width={196} height={18} tilt={32} className={onWideDesk} style={{ left: '15%', top: '40%' }} />
-      <BenchObject name="wrench" width={250} height={72} tilt={-20} className={onDesk} style={{ left: '2%', top: '49%' }} />
+      <BenchObject name="wrench" width={250} height={72} tilt={-20} className={onMidDesk} style={{ left: '2%', top: '49%' }} />
       <BenchObject name="leaf" width={140} height={74} tilt={24} className={onWideDesk} style={{ left: '22%', top: '64%' }} />
       <BenchObject name="sprocket" width={124} height={124} tilt={12} className={onWideDesk} style={{ left: '88%', top: '78%' }} />
 
@@ -59,13 +62,15 @@ export default function Desk({
       <Link
         href={localeHref('/work', locale)}
         aria-label={copy.laptopLabel}
-        className={`${onDesk} absolute z-[5] rounded-[12px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-fg`}
-        style={{ left: '47%', top: '64%', width: 364, height: 240 }}
+        // Under 1200px the laptop sits further left and lower, clear of the
+        // card's notes.
+        className={`${onDesk} absolute left-[36%] top-[68%] z-[5] rounded-[12px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-fg min-[1200px]:left-[47%] min-[1200px]:top-[64%]`}
+        style={{ width: 364, height: 240 }}
       >
         <BenchObject name="laptop" width={364} height={240} tilt={-4} position="relative" />
       </Link>
 
-      <div className={`${onDesk} absolute z-[5]`} style={{ left: '22%', top: '82%' }}>
+      <div className={`${onDesk} absolute left-[1%] top-[82%] z-[5] min-[1200px]:left-[22%]`}>
         <HandNote size={28} arrow="arrow-curve" arrowPosition="after">
           {copy.noteLaptop}
         </HandNote>
@@ -99,7 +104,7 @@ export default function Desk({
         </HeroCard>
       </div>
 
-      <div aria-hidden className={`${onDesk} absolute z-[5]`} style={{ left: '77%', top: '58%' }}>
+      <div aria-hidden className={`${onDesk} absolute left-[77%] top-[57%] z-[5] min-[1200px]:top-[58%]`}>
         <HandNote size={30} arrow="arrow-up" arrowPosition="before">
           {copy.noteMe}
         </HandNote>

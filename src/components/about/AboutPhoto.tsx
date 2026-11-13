@@ -36,7 +36,8 @@ export default function AboutPhoto({ alt, caption }: { alt: string; caption: str
         width={124}
         height={104}
         tilt={18}
-        className="bottom-[-48px] right-[-8px] z-10 sm:bottom-[-60px] sm:right-[-40px]"
+        // Hidden under 640px: there it would cover the caption.
+        className="bottom-[-60px] right-[-40px] z-10 max-sm:hidden"
       />
     </div>
   )

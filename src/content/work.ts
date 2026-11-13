@@ -46,7 +46,7 @@ interface ProjectBase {
 
 /**
  * In this order. Pharimz Creatives has no `url`: the brief allowed the link
- * only if https://pharimzcreatives.co.ke works, and on 13 Nov 2026 it refused
+ * only if pharimzcreatives.co.ke works, and on 13 Nov 2026 it refused
  * the connection. Add it back here when the site is up.
  */
 const projectBases: ProjectBase[] = [

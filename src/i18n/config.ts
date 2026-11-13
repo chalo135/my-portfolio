@@ -32,7 +32,3 @@ export const localeOgTags: Record<Locale, string> = {
   sw: 'sw_KE',
 }
 
-/** The other locale. With exactly two, this is total rather than a lookup. */
-export function otherLocale(locale: Locale): Locale {
-  return locale === 'en' ? 'sw' : 'en'
-}

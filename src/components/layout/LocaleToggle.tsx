@@ -54,7 +54,7 @@ export default function LocaleToggle({
               aria-current={isActive ? 'true' : undefined}
               tabIndex={tabIndex}
               className={cn(
-                'flex min-h-[44px] min-w-[32px] items-center justify-center px-1 transition-colors duration-150 ease-out hover:underline',
+                'flex min-h-[44px] min-w-[44px] items-center justify-center px-1 transition-colors duration-150 ease-out hover:underline',
                 isActive ? 'text-fg' : 'text-fg-muted hover:text-fg'
               )}
             >

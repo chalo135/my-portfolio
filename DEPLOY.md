@@ -8,9 +8,9 @@ hosting.com serves those files. Nothing runs on the server, so you don't need No
   `.github/workflows/deploy.yml`.
 - Redirects and cache headers live in `public/.htaccess`, not `next.config.ts`.
 
-> **Before your first automatic deploy:** `main` is still the July baseline.
-> The current site is on `izanami-redesign`. Merge it into `main`, or change
-> the deploy branch, or the workflow will ship the old site.
+> **Before your first automatic deploy:** the Workbench redesign is on the
+> `workbench` branch. Merge it into `main` (or change the deploy branch) when
+> you're ready: a push to `main` deploys.
 
 ---
 
@@ -134,7 +134,7 @@ curl -sI http://$S/en/ | grep -iE '^(HTTP|location)'
 curl -sI https://www.$S/en/ | grep -iE '^(HTTP|location)'
 # 301 to /en/
 curl -sI https://$S/ | grep -iE '^(HTTP|location)'
-# Each old flat path: one 301 to its /en/ page
+# Each old path: one 301 to its new /en/ page (Work, About or Home)
 for p in projects philosophy about capabilities technologies experience writing resume contact projects/salio writing/ai-integration-patterns; do
   printf '%-34s ' "/$p"; curl -s -o /dev/null -w '%{http_code} %{redirect_url}\n' https://$S/$p
 done
@@ -153,8 +153,6 @@ JS=$(curl -s https://$S/en/ | grep -o '/_next/static/chunks/[^"]*\.js' | head -1
 curl -sI https://$S$JS | grep -i cache-control
 # A page: Cache-Control: no-cache
 curl -sI https://$S/en/ | grep -i cache-control
-# Hero video streams: 206
-curl -s -o /dev/null -w '%{http_code}\n' -H 'Range: bytes=0-1' https://$S/videos/sunny.mp4
 # Both 200
 curl -s -o /dev/null -w '%{http_code} sitemap\n' https://$S/sitemap.xml
 curl -s -o /dev/null -w '%{http_code} robots\n' https://$S/robots.txt

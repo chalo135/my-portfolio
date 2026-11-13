@@ -38,7 +38,7 @@ export default function GlobalError({
           Something went wrong.
         </h1>
         <p style={{ color: '#6B6458' /* --fg-muted-rgb (light) */, maxWidth: '38ch', lineHeight: 1.6 }}>
-          {error.message || 'Reload the page to try again.'}
+          Reload the page to try again.
         </p>
         <button
           type="button"
