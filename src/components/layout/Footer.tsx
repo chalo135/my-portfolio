@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { contact, getSite } from '@/content/site'
 import { localeHref } from '@/lib/locale-href'
 import type { Locale } from '@/i18n/config'
+import { InstagramIcon, XIcon } from '@/components/bench/BrandIcons'
 
 const linkClass =
   'inline-flex min-h-[44px] items-center text-fg underline-offset-4 transition-colors duration-150 ease-out hover:underline [overflow-wrap:anywhere]'
@@ -42,6 +43,32 @@ export default function Footer({ locale }: { locale: Locale }) {
             <li>
               <a href={contact.github} target="_blank" rel="noopener noreferrer" className={linkClass}>
                 GitHub
+              </a>
+            </li>
+          ) : null}
+          {contact.twitter ? (
+            <li>
+              <a
+                href={contact.twitter}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Twitter"
+                className={`${linkClass} min-w-[44px] justify-center hover:text-accent`}
+              >
+                <XIcon size={20} />
+              </a>
+            </li>
+          ) : null}
+          {contact.instagram ? (
+            <li>
+              <a
+                href={contact.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className={`${linkClass} min-w-[44px] justify-center hover:text-accent`}
+              >
+                <InstagramIcon size={20} />
               </a>
             </li>
           ) : null}

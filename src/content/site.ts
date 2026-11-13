@@ -69,6 +69,9 @@ export const contact = {
   whatsapp: '254759260271' as string | undefined,
   github: 'https://github.com/chalo135' as string | undefined,
   linkedin: 'https://www.linkedin.com/in/charles-mwangi-ndirangu' as string | undefined,
+  /** Full profile URLs. While empty, the footer shows no icon for them. */
+  twitter: undefined as string | undefined,
+  instagram: undefined as string | undefined,
 }
 
 /** The logo text, in Caveat. Not translated. */
