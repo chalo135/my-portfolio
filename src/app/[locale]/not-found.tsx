@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { pillClasses } from '@/components/bench/Pill'
 import { getPages } from '@/content/pages'
 import { defaultLocale } from '@/i18n/config'
 import { localeHref } from '@/lib/locale-href'
@@ -12,15 +13,14 @@ export default function NotFound() {
   const { notFound: copy } = getPages(defaultLocale)
 
   return (
-    <section className="min-h-screen flex items-center justify-center section-padding text-center">
-      <div>
-        <span className="font-sans text-xs tracking-label text-fg-muted block mb-6">404</span>
-        <h1 className="font-display text-display-lg text-fg mb-6">{copy.title}</h1>
-        <p className="text-fg/90 mb-10">{copy.body}</p>
-        <Link
-          href={localeHref('/', defaultLocale)}
-          className="text-sm text-fg hover:text-accent transition-colors duration-150 ease-out underline decoration-fg/30 underline-offset-4 hover:decoration-current"
-        >
+    <section className="flex min-h-[70vh] items-center justify-center px-4 py-16 text-center">
+      <div className="flex flex-col items-center gap-6">
+        <p aria-hidden className="font-hand text-[34px] font-bold leading-none text-accent">404</p>
+        <h1 className="text-[clamp(48px,7vw,88px)] font-bold leading-[0.95] tracking-[-0.03em] text-fg">
+          {copy.title}
+        </h1>
+        <p className="text-[19px] text-fg-muted">{copy.body}</p>
+        <Link href={localeHref('/', defaultLocale)} className={pillClasses('primary')}>
           {copy.back}
         </Link>
       </div>

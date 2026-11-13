@@ -8,7 +8,7 @@ const colors: Record<StickyColor, string> = {
   green: 'bg-sticky-green',
   // Sand is the pill colour, fixed to its light value so it stays light on
   // the night desk like the other notes.
-  sand: 'bg-[#E9DFC8]',
+  sand: 'bg-pill',
   pink: 'bg-sticky-pink',
 }
 
@@ -32,7 +32,7 @@ export default function StickyNote({
 } & Record<string, unknown>) {
   return (
     <Tag
-      className={cn('relative text-paper-ink shadow-sticky', colors[color], className)}
+      className={cn('surface-light relative text-paper-ink shadow-sticky', colors[color], className)}
       style={{ transform: tilt ? `rotate(${tilt}deg)` : undefined, ...style }}
       {...rest}
     >

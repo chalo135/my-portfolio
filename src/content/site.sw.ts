@@ -6,6 +6,7 @@ export const siteContent: SiteContent = {
     role: 'TODO',
     location: 'TODO',
     description: 'TODO',
+    ogLine: 'TODO',
     status: 'TODO',
   },
 

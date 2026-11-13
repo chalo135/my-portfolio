@@ -22,6 +22,8 @@ export interface SiteIdentity {
   role: string
   location: string
   description: string
+  /** The OG card's second line. */
+  ogLine: string
   /** Shown by StatusLine on Home and Contact. */
   status: string
 }

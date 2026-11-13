@@ -22,7 +22,7 @@ export default function Paper({
 } & Record<string, unknown>) {
   return (
     <Tag
-      className={cn('relative bg-paper text-paper-ink shadow-paper', className)}
+      className={cn('surface-light relative bg-paper text-paper-ink shadow-paper', className)}
       style={{ transform: tilt ? `rotate(${tilt}deg)` : undefined, ...style }}
       {...rest}
     >

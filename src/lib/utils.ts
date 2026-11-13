@@ -3,17 +3,15 @@ import { extendTailwindMerge } from 'tailwind-merge'
 import { localeTags, type Locale } from '@/i18n/config'
 
 /**
- * tailwind-merge has to be told about the custom font sizes in
- * tailwind.config.ts. Without this it has no idea `text-display-xl` is a size,
- * classifies it as a text *colour*, and silently drops it whenever a real
- * colour follows in the same string — so `text-display-xl … text-fg` collapsed
- * to just `text-fg` and every display heading on the site rendered at the
- * default 16px. Any new key added to `theme.extend.fontSize` belongs here too.
+ * tailwind-merge (v2) already treats any `text-*` / `bg-*` word as a colour,
+ * so the colour tokens need nothing. It does not know the custom shadow keys
+ * in tailwind.config.ts; registering them lets a later shadow class override
+ * an earlier one.
  */
 const twMerge = extendTailwindMerge({
   extend: {
     classGroups: {
-      'font-size': [{ text: ['display-xl', 'display-lg', 'display-md', 'editorial'] }],
+      shadow: [{ shadow: ['paper', 'sticky', 'postcard', 'card', 'disc'] }],
     },
   },
 })

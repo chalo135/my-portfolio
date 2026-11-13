@@ -28,16 +28,16 @@ export default function GlobalError({
           gap: '1rem',
           padding: '2rem',
           textAlign: 'center',
-          background: '#FFFFFF', // --bg-rgb (light)
-          color: '#13274A', // --fg-rgb (light)
-          // Outside the layout, so no Cinzel: its fallback stack instead.
-          fontFamily: '"Trajan Pro", "Palatino Linotype", Palatino, Georgia, serif',
+          background: '#F5F1E6', // --bg-rgb (light)
+          color: '#2A2622', // --fg-rgb (light)
+          // Outside the layout, so no DM Sans: its fallback stack instead.
+          fontFamily: '"Segoe UI", Roboto, system-ui, sans-serif',
         }}
       >
-        <h1 style={{ fontSize: '1.75rem', fontWeight: 400 }}>
-          The site failed to load.
+        <h1 style={{ fontSize: '1.75rem', fontWeight: 700 }}>
+          Something went wrong.
         </h1>
-        <p style={{ color: '#4A5874' /* --fg-muted-rgb (light) */, maxWidth: '38ch', lineHeight: 1.6 }}>
+        <p style={{ color: '#6B6458' /* --fg-muted-rgb (light) */, maxWidth: '38ch', lineHeight: 1.6 }}>
           {error.message || 'Reload the page to try again.'}
         </p>
         <button
@@ -45,9 +45,11 @@ export default function GlobalError({
           onClick={reset}
           style={{
             marginTop: '0.5rem',
-            padding: '0.75rem 1.5rem',
-            border: '1px solid rgba(19, 39, 74, 0.15)', // --line (light)
-            background: 'transparent',
+            minHeight: 44,
+            padding: '0 18px',
+            border: 0,
+            borderRadius: 999,
+            background: '#E9DFC8', // --pill-rgb (light)
             color: 'inherit',
             font: 'inherit',
             cursor: 'pointer',

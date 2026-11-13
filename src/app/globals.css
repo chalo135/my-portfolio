@@ -2,82 +2,93 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Palette: cloak crimson. A white page, one bold crimson board, tunic-blue
-   lettering and a little relic gold. Every colour is space-separated RGB
-   channels so Tailwind can rebuild it as rgb(var(--x) / <alpha>) and opacity
-   modifiers keep working.
+/* Palette: the Workbench. A warm cream desk with real things on it. Every
+   colour is space-separated RGB channels so Tailwind can rebuild it as
+   rgb(var(--x) / <alpha>) and opacity modifiers keep working.
 
-   Light is the default for every first visit, whatever the OS prefers. Night
-   (oxblood, not black) only applies when the visitor has chosen it.
+   Light is the default for every first visit. Night only applies when the
+   visitor chooses it. In night the desk, text and pills darken; paper, prints,
+   sticky notes, tape, the stamp and the ID card keep their light colours, like
+   real objects on a dark desk (see .surface-light below). */
 
-   The light values are also bound to [data-theme='light'] so an element can
-   opt back into them inside a dark page — WaterTrailCanvas probes both palettes
-   that way. :root and [data-theme='dark'] have equal specificity, so the dark
-   block wins on <html data-theme="dark"> by coming second. */
+:root,
+[data-theme='light'],
+.surface-light {
+  --bg-rgb: 245 241 230; /* #F5F1E6 cream, the desk */
+  --paper-rgb: 251 247 238; /* #FBF7EE */
+  --surface-rgb: 251 247 238; /* = paper; was #F7F1F1 */
+  --elev-rgb: 233 223 200; /* = pill; was #EFE5E5 */
+  --fg-rgb: 42 38 34; /* #2A2622 warm near-black */
+  --fg-muted-rgb: 107 100 88; /* #6B6458 */
+  --accent-rgb: 168 20 28; /* #A8141C crimson */
+  --accent-deep-rgb: 122 15 21; /* #7A0F15 */
+  --on-accent-rgb: 255 255 255;
+  --highlight-rgb: 227 169 43; /* #E3A92B gold */
+  --on-highlight-rgb: 42 38 34;
+  --scrim-rgb: 245 241 230;
+  --pill-rgb: 233 223 200; /* #E9DFC8 sand */
+  --pill-hover-rgb: 223 210 180; /* #DFD2B4 */
+  --ok-rgb: 79 138 91; /* #4F8A5B leaf green */
+  --sticky-yellow-rgb: 244 216 122; /* #F4D87A */
+  --sticky-green-rgb: 207 227 198; /* #CFE3C6 */
+  --sticky-pink-rgb: 242 201 196; /* #F2C9C4 */
+  --paper-ink-rgb: 42 38 34; /* #2A2622, fixed in both themes */
+
+  --line: rgb(42 38 34 / 0.18);
+  /* Shadow colour: fg in light. Black in night, where fg is near-white and
+     an fg shadow would glow. Not a palette token. */
+  --shadow-rgb: 42 38 34;
+  --section-padding: clamp(1.5rem, 5vw, 4rem);
+  --max-width: 1360px;
+}
 
 :root,
 [data-theme='light'] {
-  --bg-rgb: 255 255 255; /* #FFFFFF */
-  --surface-rgb: 247 241 241; /* #F7F1F1 rose white — ink 13.3:1, muted 6.4:1, crimson 6.8:1 */
-  --elev-rgb: 239 229 229; /* #EFE5E5 — one step above surface */
-  --fg-rgb: 19 39 74; /* #13274A tunic blue — 14.8:1 on white, 7.0:1 on gold */
-  --fg-muted-rgb: 74 88 116; /* #4A5874 tunic haze — 7.1:1 on white. White or surface only */
-  --accent-rgb: 168 20 28; /* #A8141C cloak crimson — 7.6:1 on white */
-  --accent-deep-rgb: 122 15 21; /* #7A0F15 cloak shadow — 11.0:1 on white */
-  --on-accent-rgb: 255 255 255; /* text on crimson — 7.6:1 */
-  --highlight-rgb: 227 169 43; /* #E3A92B relic gold — a fill, never text on white (2.1:1) */
-  --on-highlight-rgb: 19 39 74; /* text on gold — 7.0:1 */
-  --scrim-rgb: 255 255 255;
-
-  /* The hero board and how much of the ambient media is multiplied into it.
-     Multiply only darkens, so white on crimson can only gain contrast. */
-  --board-rgb: 168 20 28;
-  --board-media: 0.3;
-
-  /* --line carries its own alpha and is never used with an opacity modifier. */
-  --line: rgb(19 39 74 / 0.15);
-
-  --section-padding: clamp(1.5rem, 5vw, 4rem);
-  --max-width: 1400px;
-
   color-scheme: light;
 }
 
-/* --- night: oxblood, explicit choice only. Gold does crimson's jobs. --- */
+/* --- night: bg, fg, fg-muted and pill take the old night values. --------
+   Crimson on the oxblood desk is 1.9:1, so in night the accent lightens to
+   #EC5D64 (5.1:1 on the desk) and text on it is paper-ink (4.5:1). Paper and
+   the other light objects put crimson back via .surface-light. */
 [data-theme='dark'] {
   --bg-rgb: 58 13 19; /* #3A0D13 */
-  --surface-rgb: 76 18 25; /* #4C1219 — text 13.9:1, gold 8.0:1 */
+  --surface-rgb: 76 18 25; /* #4C1219 */
   --elev-rgb: 92 24 32; /* #5C1820 */
-  --fg-rgb: 255 246 234; /* #FFF6EA — 15.7:1 */
-  --fg-muted-rgb: 230 194 187; /* #E6C2BB — 10.3:1 */
-  --accent-rgb: 237 181 71; /* #EDB547 — 9.1:1 as text */
-  --accent-deep-rgb: 237 181 71;
-  --on-accent-rgb: 58 13 19; /* oxblood on gold — 9.1:1 */
-  --highlight-rgb: 237 181 71;
-  --on-highlight-rgb: 58 13 19;
+  --fg-rgb: 255 246 234; /* #FFF6EA */
+  --fg-muted-rgb: 230 194 187; /* #E6C2BB */
+  --accent-rgb: 236 93 100; /* #EC5D64 */
+  --accent-deep-rgb: 236 93 100;
+  --on-accent-rgb: 42 38 34; /* paper-ink */
   --scrim-rgb: 58 13 19;
+  --pill-rgb: 76 18 25; /* #4C1219, the old night surface */
+  --pill-hover-rgb: 92 24 32; /* #5C1820 */
 
-  /* The gold board, with the rainy clip multiplied in. 0.11, not more:
-     multiply darkens gold, and at 0.25 oxblood on the result fell to 5.2:1.
-     0.11 keeps the worst pixel at about 7.2:1. */
-  --board-rgb: 237 181 71;
-  --board-media: 0.11;
-
-  --line: rgb(255 255 255 / 0.18);
+  --line: rgb(255 246 234 / 0.18);
+  --shadow-rgb: 0 0 0;
 
   color-scheme: dark;
 }
 
-/* Anything sitting on the board — the hero copy, and the header and status
-   strip while they are over it — is lettered in on-accent: white on crimson,
-   oxblood on gold. Text, muted text, hover colour, rules and focus rings all
-   follow, because they all read these tokens. */
-.signboard {
-  --fg-rgb: var(--on-accent-rgb);
-  --fg-muted-rgb: var(--on-accent-rgb);
-  --accent-rgb: var(--on-accent-rgb);
-  --accent-deep-rgb: var(--on-accent-rgb);
-  --line: rgb(var(--on-accent-rgb) / 0.3);
+/* Real objects keep their daylight colours on the night desk. Paper,
+   StickyNote and the ID card carry this class, so anything inside them
+   (text-fg, text-fg-muted, text-accent, a Pill) reads the light values. The
+   selector list at the top of the file binds them; this just keeps the
+   night block from reaching in. */
+[data-theme='dark'] .surface-light {
+  --bg-rgb: 245 241 230;
+  --surface-rgb: 251 247 238;
+  --elev-rgb: 233 223 200;
+  --fg-rgb: 42 38 34;
+  --fg-muted-rgb: 107 100 88;
+  --accent-rgb: 168 20 28;
+  --accent-deep-rgb: 122 15 21;
+  --on-accent-rgb: 255 255 255;
+  --scrim-rgb: 245 241 230;
+  --pill-rgb: 233 223 200;
+  --pill-hover-rgb: 223 210 180;
+  --line: rgb(42 38 34 / 0.18);
+  color-scheme: light;
 }
 
 * {
@@ -112,9 +123,7 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* Only the palette animates on toggle; the hero board crossfades in the
-     shader (WaterTrailCanvas) and the two are timed to roughly match. */
-  transition: background-color 600ms ease, color 600ms ease;
+  transition: background-color 400ms ease, color 400ms ease;
 }
 
 h1,
@@ -122,10 +131,6 @@ h2,
 h3,
 h4 {
   font-family: theme('fontFamily.display');
-  font-weight: 600;
-}
-
-h1 {
   font-weight: 700;
 }
 
@@ -135,12 +140,11 @@ h1 {
 }
 
 [data-theme='dark'] ::selection {
-  background: rgb(237 181 71);
-  color: rgb(58 13 19);
+  background: rgb(236 93 100);
+  color: rgb(42 38 34);
 }
 
-/* Ink on white and surface; white inside the crimson hero and oxblood inside
-   the gold one (via .signboard); gold everywhere else in night. */
+/* Ink on the desk and on paper; the night accent on the night desk. */
 :where(a, button, input, textarea, select, [tabindex]):focus-visible {
   outline: 2px solid rgb(var(--fg-rgb));
   outline-offset: 3px;
@@ -151,26 +155,14 @@ h1 {
   outline-color: rgb(var(--accent-rgb));
 }
 
-@layer components {
-  /* The ambient poster under the hero, multiplied into the board rather than
-     laid over it — crimson in light, gold in night, at --board-media opacity.
-     The DOM poster only shows until the canvas takes over (and for visitors
-     who never get the canvas); the shader does the same blend. */
-  .board-media {
-    opacity: var(--board-media);
-    mix-blend-mode: multiply;
-  }
+[data-theme='dark'] .surface-light :where(a, button, input, textarea, select, [tabindex]):focus-visible {
+  outline-color: rgb(var(--fg-rgb));
 }
 
 @layer utilities {
-  .glass-nav {
-    background: rgb(var(--bg-rgb) / 0.94);
-    border-bottom: 1px solid var(--line);
-  }
-
-  .glass-panel {
-    background: rgb(var(--surface-rgb));
-    border: 1px solid var(--line);
+  /* Object shadow: follows the outline of a cut-out photo or drawing. */
+  .drop-object {
+    filter: drop-shadow(0 10px 12px rgb(var(--shadow-rgb) / 0.18));
   }
 
   .text-balance {
@@ -189,10 +181,6 @@ h1 {
   .section-padding {
     padding-block: var(--section-padding);
     padding-inline: var(--section-padding);
-  }
-
-  .mask-reveal {
-    clip-path: inset(0 100% 0 0);
   }
 
   .hairline {
@@ -235,127 +223,18 @@ h1 {
   }
 }
 
-/* Scroll reveals */
-
-@media (prefers-reduced-motion: no-preference) {
-  html.js-ready .reveal-init {
-    opacity: 0;
-    transform: translateY(var(--reveal-y, 32px));
-    transition:
-      opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0s),
-      transform 1.1s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0s),
-      clip-path 1.1s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0s);
+/* Bench objects lift 6px on hover, on fine pointers only, and not at all
+   under reduced motion. `translate` is separate from `transform`, so the
+   tilt set inline is untouched. */
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .bench-lift {
+    transition: translate 350ms cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  html.js-ready .reveal-init.reveal-mask {
-    clip-path: inset(0 100% 0 0);
-  }
-
-  html.js-ready .reveal-init.reveal-in {
-    opacity: 1;
-    transform: none;
-    clip-path: inset(0 0% 0 0);
-  }
-}
-
-.canvas-painted {
-  color: transparent !important;
-  text-shadow: none !important;
-  -webkit-user-select: none;
-  user-select: none;
-}
-
-/* Theme-toggle glyphs */
-
-.theme-glyph-rain {
-  display: none;
-}
-
-[data-theme='dark'] .theme-glyph-sun {
-  display: none;
-}
-
-[data-theme='dark'] .theme-glyph-rain {
-  display: block;
-}
-
-/* Section heading rules */
-
-.rule-line {
-  height: 1px;
-  width: 100%;
-  transform-origin: left center;
-  background: var(--line);
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  html.js-ready .rule-line.rule-init {
-    transform: scaleX(0);
-    transition: transform 1.1s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0s);
-  }
-
-  html.js-ready .rule-line.rule-init.rule-in {
-    transform: scaleX(1);
-  }
-}
-
-/* Kiswahili watermark */
-
-.pillar-mark {
-  position: absolute;
-  top: 50%;
-  right: 0;
-  z-index: -1;
-  transform: translateY(-50%);
-  writing-mode: vertical-rl;
-  text-orientation: sideways;
-  font-family: theme('fontFamily.display');
-  font-weight: 500;
-  font-size: clamp(3rem, 8vw, 7rem);
-  line-height: 1;
-  letter-spacing: 0;
-  /* Tunic blue at 0.07 on white; cream at 0.08 on oxblood. */
-  color: rgb(var(--fg-rgb) / 0.07);
-  pointer-events: none;
-  user-select: none;
-  white-space: nowrap;
-}
-
-.pillar-mark-intro {
-  font-size: clamp(4rem, 12vw, 11rem);
-}
-
-[data-theme='dark'] .pillar-mark {
-  color: rgb(var(--fg-rgb) / 0.08);
-}
-
-@media (max-width: 767px) {
-  .pillar-mark {
-    display: none;
-  }
-}
-
-/* Ambient stills */
-
-@media (prefers-reduced-motion: no-preference) {
-  .ambient-kenburns {
-    transform-origin: center;
-    will-change: transform;
-    animation: ambient-kenburns 44s ease-in-out infinite alternate;
-  }
-}
-
-.ambient-paused {
-  animation-play-state: paused !important;
-}
-
-@keyframes ambient-kenburns {
-  from {
-    transform: scale(1.06) translate3d(0, 0, 0);
-  }
-
-  to {
-    transform: scale(1.16) translate3d(-1.5%, -1.2%, 0);
+  .bench-lift:hover,
+  a:hover > .bench-lift,
+  a:focus-visible > .bench-lift {
+    translate: 0 -6px;
   }
 }
 
@@ -380,114 +259,4 @@ h1 {
   overflow: visible;
   clip: auto;
   white-space: normal;
-}
-
-/* About report ("Chalo in data") */
-
-/* In night, crimson becomes gold and the Live swatch would match Building
-   now. It is drawn hollow there instead: same gold, told apart by shape. */
-[data-theme='dark'] .swatch-live {
-  background: transparent;
-  border: 2px solid rgb(var(--accent-rgb));
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  /* Bars and timeline lanes grow from the left once, staggered by --i. */
-  .report-grow {
-    transform-origin: left center;
-    animation: report-grow 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
-    animation-delay: calc(var(--i, 0) * 70ms);
-  }
-
-  /* Then follow filter changes. */
-  .report-bar {
-    transition: width 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .report-page-in {
-    animation: report-page-in 0.35s ease-out both;
-  }
-
-  .report-pop {
-    animation: report-pop 0.35s ease-out;
-  }
-
-  .report-tip {
-    animation: report-fade 0.15s ease-out both;
-  }
-
-  .report-row-in {
-    animation: report-row-in 0.35s ease-out both;
-    animation-delay: calc(var(--i, 0) * 50ms);
-  }
-
-  .report-box-in {
-    animation: report-fade 0.4s ease-out both;
-    animation-delay: calc(var(--i, 0) * 80ms);
-  }
-
-  /* Paths carry pathLength="1", so one dash covers the whole line. */
-  .report-line-draw {
-    stroke-dasharray: 1;
-    stroke-dashoffset: 1;
-    animation: report-draw 0.7s ease-out 0.35s forwards;
-  }
-}
-
-@keyframes report-grow {
-  from {
-    transform: scaleX(0);
-  }
-  to {
-    transform: scaleX(1);
-  }
-}
-
-@keyframes report-page-in {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-@keyframes report-pop {
-  0% {
-    transform: scale(1);
-  }
-  40% {
-    transform: scale(1.12);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-@keyframes report-fade {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes report-row-in {
-  from {
-    opacity: 0;
-    transform: translateX(-8px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-@keyframes report-draw {
-  to {
-    stroke-dashoffset: 0;
-  }
 }

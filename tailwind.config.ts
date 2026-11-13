@@ -13,69 +13,49 @@ const config: Config = {
       // opacity modifiers (`bg-bg/85`, `border-line/[0.06]`) working.
       colors: {
         bg: 'rgb(var(--bg-rgb) / <alpha-value>)',
+        paper: 'rgb(var(--paper-rgb) / <alpha-value>)',
         surface: 'rgb(var(--surface-rgb) / <alpha-value>)',
         elev: 'rgb(var(--elev-rgb) / <alpha-value>)',
         fg: 'rgb(var(--fg-rgb) / <alpha-value>)',
         'fg-muted': 'rgb(var(--fg-muted-rgb) / <alpha-value>)',
         accent: 'rgb(var(--accent-rgb) / <alpha-value>)',
         'accent-deep': 'rgb(var(--accent-deep-rgb) / <alpha-value>)',
-        // Text and icons on an accent fill: white on crimson, oxblood on gold.
         'on-accent': 'rgb(var(--on-accent-rgb) / <alpha-value>)',
-        // Relic gold: chips, badges, the download button, code highlights.
-        // A fill only — never text on white.
         highlight: 'rgb(var(--highlight-rgb) / <alpha-value>)',
         'on-highlight': 'rgb(var(--on-highlight-rgb) / <alpha-value>)',
         scrim: 'rgb(var(--scrim-rgb) / <alpha-value>)',
-        // The hero board: crimson in light, gold in night.
-        board: 'rgb(var(--board-rgb) / <alpha-value>)',
-        // --line already carries its own per-theme alpha (tunic blue at 0.15 light /
-        // white at 0.18 dark), so it is a resolved colour rather than bare channels.
+        pill: 'rgb(var(--pill-rgb) / <alpha-value>)',
+        'pill-hover': 'rgb(var(--pill-hover-rgb) / <alpha-value>)',
+        ok: 'rgb(var(--ok-rgb) / <alpha-value>)',
+        'sticky-yellow': 'rgb(var(--sticky-yellow-rgb) / <alpha-value>)',
+        'sticky-green': 'rgb(var(--sticky-green-rgb) / <alpha-value>)',
+        'sticky-pink': 'rgb(var(--sticky-pink-rgb) / <alpha-value>)',
+        'paper-ink': 'rgb(var(--paper-ink-rgb) / <alpha-value>)',
+        // Carries its own alpha; never used with an opacity modifier.
         line: 'var(--line)',
       },
-      // Two self-hosted variable webfonts via next/font, each exposed as a CSS
-      // variable by the root layout. The fallback stacks matter more than usual
-      // here: `display: 'swap'` paints them first, so they are picked to be the
-      // roundest thing likely to be installed rather than an arbitrary default.
+      // DM Sans for everything, headings included; Caveat for the hand.
+      // Both from next/font/google, exposed as CSS variables by the layout.
       fontFamily: {
-        // Display face — headings, project titles, the name and the
-        // philosophy watermark only. Cinzel is inscriptional Roman capitals:
-        // lowercase draws as small capitals, so it is never used for running
-        // text, nav, buttons, labels, tables or code.
-        display: [
-          'var(--font-display)',
-          '"Trajan Pro"',
-          '"Palatino Linotype"',
-          'Palatino',
-          'Georgia',
-          'serif',
-        ],
-
-        // Body copy, navigation, labels, footer.
-        sans: [
-          'var(--font-sans)',
-          '"Segoe UI"',
-          'Roboto',
-          'system-ui',
-          'sans-serif',
-        ],
-
-        // Code and tabular numbers only. Unchanged, still local.
+        display: ['var(--font-sans)', '"Segoe UI"', 'Roboto', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-sans)', '"Segoe UI"', 'Roboto', 'system-ui', 'sans-serif'],
+        hand: ['var(--font-hand)', '"Segoe Print"', '"Comic Sans MS"', 'cursive'],
+        // The DAX line only.
         mono: ['"Cascadia Mono"', 'Consolas', '"SF Mono"', 'monospace'],
       },
-      // Set for Cinzel: a touch of positive tracking (never more than 0.02em,
-      // and never negative — inscriptional capitals need their spacing).
-      fontSize: {
-        'display-xl': ['clamp(2.5rem, min(7.5vw, 11vh), 6rem)', { lineHeight: '1.05', letterSpacing: '0.01em' }],
-        'display-lg': ['clamp(2.25rem, 4.5vw, 3.75rem)', { lineHeight: '1.1', letterSpacing: '0.01em' }],
-        'display-md': ['clamp(1.75rem, 3vw, 2.5rem)', { lineHeight: '1.15', letterSpacing: '0.01em' }],
-        'editorial': ['clamp(1.0625rem, 1.3vw, 1.25rem)', { lineHeight: '1.65' }],
+      boxShadow: {
+        paper: '0 14px 28px rgb(var(--shadow-rgb) / 0.16)',
+        sticky: '0 10px 18px rgb(var(--shadow-rgb) / 0.12)',
+        postcard: '0 18px 36px rgb(var(--shadow-rgb) / 0.16)',
+        card: '0 16px 30px rgb(var(--shadow-rgb) / 0.25)',
+        disc: '0 6px 14px rgb(var(--shadow-rgb) / 0.14)',
       },
       spacing: {
         'section': 'clamp(6rem, 15vh, 12rem)',
         'section-sm': 'clamp(4rem, 10vh, 8rem)',
       },
       maxWidth: {
-        content: '1400px',
+        content: '1360px',
         measure: '68ch',
       },
       // Labels are sentence case at normal tracking. The tracked-out label was

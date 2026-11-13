@@ -6,6 +6,7 @@ export const siteContent: SiteContent = {
     role: 'Software developer',
     location: 'Nairobi, Kenya',
     description: 'I build websites and software for small businesses. Based in Nairobi, Kenya.',
+    ogLine: 'Software developer in Nairobi',
     status: 'Open to full-time roles and freelance work.',
   },
 

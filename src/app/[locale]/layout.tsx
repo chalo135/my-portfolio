@@ -1,38 +1,13 @@
 import type { Metadata, Viewport } from 'next'
-import { Nunito } from 'next/font/google'
-import localFont from 'next/font/local'
 import { notFound } from 'next/navigation'
 import '../globals.css'
+import { fontVariables } from '../fonts'
 import { ExperienceProvider } from '@/providers/ExperienceProvider'
 import { getSite } from '@/content/site'
 import { getPages } from '@/content/pages'
 import { siteUrl } from '@/lib/site-url'
 import { alternatesFor } from '@/lib/alternates'
 import { locales, isLocale, localeTags, localeOgTags } from '@/i18n/config'
-
-/**
- * Both faces are variable, so each is one self-hosted file covering every
- * weight the site uses rather than one file per weight. `display: 'swap'` means
- * text paints immediately in the fallback and reflows when the face lands —
- * WaterTrailCanvas waits for the display face before painting the hero
- * heading for exactly that reason.
- */
-// Cinzel, SIL Open Font License 1.1 — see src/app/fonts/cinzel/OFL.txt.
-const cinzel = localFont({
-  src: '../fonts/cinzel/Cinzel-Variable.ttf',
-  weight: '400 900',
-  style: 'normal',
-  display: 'swap',
-  variable: '--font-display',
-  fallback: ['Trajan Pro', 'Palatino Linotype', 'Palatino', 'Georgia', 'serif'],
-  adjustFontFallback: 'Times New Roman',
-})
-
-const nunito = Nunito({
-  subsets: ['latin'],
-  variable: '--font-sans',
-  display: 'swap',
-})
 
 /** Both locales prerender; there is no runtime locale negotiation anywhere. */
 export function generateStaticParams() {
@@ -72,9 +47,9 @@ export async function generateMetadata({
 }
 
 export const viewport: Viewport = {
-  // Cloak crimson (--accent-rgb / --board-rgb, light). One value: the site
-  // opens light for everyone, so the bar does not follow the OS scheme.
-  themeColor: '#A8141C',
+  // The cream desk (--bg-rgb, light). One value: the site opens light for
+  // everyone, so the bar does not follow the OS scheme.
+  themeColor: '#F5F1E6',
   // Light only at the document level so an OS in dark mode does not paint a
   // dark canvas before the stylesheet lands. [data-theme='dark'] sets
   // `color-scheme: dark` itself when a visitor chooses the night theme.
@@ -83,7 +58,7 @@ export const viewport: Viewport = {
 
 /** Stamps data-theme on <html> before first paint: a theme the visitor chose
  *  earlier (localStorage), otherwise light. prefers-color-scheme is
- *  deliberately not read — every first visit lands on the bright signboard. */
+ *  deliberately not read: every first visit lands on the cream desk. */
 const themeScript = `(function(){try{var t=localStorage.getItem('theme');if(t!=='dark'&&t!=='light'){t='light'}document.documentElement.setAttribute('data-theme',t)}catch(e){document.documentElement.setAttribute('data-theme','light')}try{document.documentElement.classList.add('js-ready')}catch(e){}})()`
 
 export default async function LocaleLayout({
@@ -107,7 +82,7 @@ export default async function LocaleLayout({
       // The script below mutates data-theme before React hydrates, which React
       // would otherwise flag as a server/client attribute mismatch.
       suppressHydrationWarning
-      className={`${cinzel.variable} ${nunito.variable}`}
+      className={fontVariables}
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
