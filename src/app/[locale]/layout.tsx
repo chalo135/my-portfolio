@@ -16,7 +16,7 @@ export function generateStaticParams() {
   return locales.map((locale) => ({ locale }))
 }
 
-/** Static export: any other locale is a 404, not a render attempt. */
+/** Any other locale is a 404, not a render attempt. */
 export const dynamicParams = false
 
 export async function generateMetadata({

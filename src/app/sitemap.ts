@@ -3,7 +3,7 @@ import { routePaths } from '@/content/site'
 import { locales } from '@/i18n/config'
 import { pageUrl, languagesFor } from '@/lib/alternates'
 
-// Static export: written to out/sitemap.xml at build time.
+// Generated once at build time and served as a static file.
 export const dynamic = 'force-static'
 
 /** The four pages, in every locale. Stays at src/app/ so it serves /sitemap.xml. */

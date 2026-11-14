@@ -21,7 +21,8 @@ export function socialMetadata(
 ): Pick<Metadata, 'openGraph' | 'twitter'> {
   const { site } = getSite(locale)
   const image = {
-    url: `/${locale}/opengraph-image`,
+    // With the slash: `trailingSlash: true` redirects the bare path.
+    url: `/${locale}/opengraph-image/`,
     ...ogImageSize,
     type: 'image/png',
     alt: `${site.name}, ${site.role}`,

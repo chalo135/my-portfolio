@@ -5,15 +5,15 @@ Next.js 15, React 19, Tailwind 3.4, TypeScript. Four pages (Home, Work, About, C
 ```
 npm install
 npm run dev            # http://localhost:3000/en/
-npm run build          # static export into out/
-npm run check:export   # checks out/ before it ships
-npm run check:links    # checks live project URLs still answer
+npm run build          # production build
+npm start              # serve the build at http://localhost:3000
+npm run check:links    # checks every page and link (needs npm start running)
 ```
 
 - Copy lives in `src/content/` (`*.en.ts`, `*.sw.ts`). Kiswahili drafts to review: `SWAHILI_COPY_REVIEW.md`.
 - Shared desk pieces (Pill, Paper, Tape, StickyNote, HandNote, BenchObject, drawings): `src/components/bench/`.
 - Colours and fonts: `src/app/globals.css` and `tailwind.config.ts`.
-- Deploying: `DEPLOY.md`, which starts with a "before you go live" checklist. Redirects for old URLs, cache headers and security headers: `public/.htaccess`.
+- Hosting: Vercel. Every push to `main` deploys. Steps: `DEPLOY.md`. Redirects for old URLs and security headers: `next.config.ts`.
 - Page titles, descriptions and share-card tags: `src/lib/page-meta.ts`. Search-engine data (JSON-LD): `src/app/[locale]/layout.tsx`.
 - Icons: `src/app/icon.svg` is the drawing. After changing it, copy the change into `scripts/make-icons.mjs` and run `node scripts/make-icons.mjs` to rewrite `src/app/apple-icon.png` and `src/app/favicon.ico`.
 

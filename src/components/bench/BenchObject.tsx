@@ -47,7 +47,7 @@ export default function BenchObject({
     >
       {hasPhoto ? (
         // A plain <img>: a cut-out at its natural aspect, no optimisation
-        // needed in a static export.
+        // needed.
         // eslint-disable-next-line @next/next/no-img-element
         <img src={photo} alt="" width={width} height={height} className="block h-full w-full object-contain" />
       ) : name === 'notebook' ? (

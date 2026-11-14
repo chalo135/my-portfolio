@@ -1,0 +1,45 @@
+# Checks only. Vercel builds and deploys on its own when you push.
+name: CI
+
+on:
+  push:
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Type-check
+        run: npx tsc --noEmit
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build
+        run: npm run build
+
+      - name: Check pages and links
+        run: |
+          npm start &
+          for i in $(seq 1 30); do
+            curl -s -o /dev/null http://localhost:3000/en/ && break
+            sleep 1
+          done
+          npm run check:links

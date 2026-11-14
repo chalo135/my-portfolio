@@ -4,7 +4,7 @@ import { siteUrl } from '@/lib/site-url'
 
 /**
  * Absolute URL of one page in one locale, always ending in `/` to match the
- * static export's `trailingSlash: true` (a slash-less URL would point at a
+ * site's `trailingSlash: true` (a slash-less URL would point at a
  * redirect). `path` is the route WITHOUT a locale prefix, leading-slashed:
  * '/' for home, '/work' for the Work page. A trailing slash on
  * `path` is tolerated.

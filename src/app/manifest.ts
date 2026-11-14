@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next'
 import { getSite, logo } from '@/content/site'
 import { defaultLocale } from '@/i18n/config'
 
-// Static export: written to out/manifest.webmanifest at build time.
+// Generated once at build time and served as a static file.
 export const dynamic = 'force-static'
 
 /** Web app manifest. Colours are the cream desk, as in the layout's themeColor. */

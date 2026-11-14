@@ -25,7 +25,7 @@ export function generateStaticParams() {
 export const dynamicParams = false
 
 // generateImageMetadata would give a per-locale alt, but it adds a hidden
-// segment that `output: 'export'` cannot prerender. Both locales share one.
+// segment the static export could not prerender. Both locales still share one.
 export const alt = `${getSite(defaultLocale).site.name}, ${getSite(defaultLocale).site.role}`
 
 // Satori cannot read CSS variables, so the colours are literal copies of the

@@ -16,7 +16,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
   if (!isLocale(locale)) notFound()
 
   const copy = getAboutCopy(locale)
-  // Static export: this is the build date.
+  // The page is prerendered, so this is the build date.
   const buildDate = new Date()
   const month = new Intl.DateTimeFormat(localeTags[locale], {
     month: 'long',
