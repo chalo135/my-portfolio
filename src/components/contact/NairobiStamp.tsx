@@ -12,7 +12,7 @@ const nairobiTime = new Intl.DateTimeFormat('en-GB', {
 
 /**
  * The stamp with the time in Nairobi. The server renders `--:--`; the client
- * fills the time after mount and every 30 seconds.
+ * fills the time after mount and keeps it current.
  */
 export default function NairobiStamp({
   city,
@@ -31,7 +31,9 @@ export default function NairobiStamp({
   useEffect(() => {
     const tick = () => setTime(nairobiTime.format(new Date()))
     tick()
-    const timer = window.setInterval(tick, 30_000)
+    // Every second: an unchanged string does not re-render, and the minute
+    // turns over on time.
+    const timer = window.setInterval(tick, 1000)
     return () => window.clearInterval(timer)
   }, [])
 

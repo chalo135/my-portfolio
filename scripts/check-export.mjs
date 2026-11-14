@@ -4,22 +4,29 @@
 //
 // No dependencies: Node 18+ built-ins only. Exits 1 on any failure.
 //
-//   1. The server files exist: .htaccess, 404.html, robots.txt, sitemap.xml.
+//   1. The server files exist: .htaccess, 404.html, robots.txt, sitemap.xml,
+//      the manifest, the icons and one share card per locale.
 //   2. Every route in routePaths exported, in every locale.
 //   3. Every internal href / src / srcset / og:image / twitter:image in every
 //      HTML file resolves to a file in out/.
 //   4. Every canonical and hreflang URL is on the live origin, ends in `/`,
 //      and resolves the same way.
+//   5. Every page has one <h1>, a <title>, a meta description, a share image,
+//      og:url equal to its canonical, a large Twitter card and JSON-LD that
+//      parses.
+//   6. robots.txt names the sitemap, and the sitemap lists every page once.
+//
+// To check another folder: node scripts/check-export.mjs path/to/export
 //
 // Routes, locales and the origin are read from the source files, so
 // this script has no list of its own to keep in sync.
 
 import { existsSync, statSync } from 'node:fs'
 import { readdir, readFile } from 'node:fs/promises'
-import { join, posix, relative, sep } from 'node:path'
+import { join, posix, relative, resolve, sep } from 'node:path'
 
 const ROOT = process.cwd()
-const OUT = join(ROOT, 'out')
+const OUT = process.argv[2] ? resolve(process.argv[2]) : join(ROOT, 'out')
 
 const read = (...parts) => readFile(join(ROOT, ...parts), 'utf8')
 const allMatches = (text, re) => [...text.matchAll(re)].map((m) => m[1])
@@ -43,15 +50,28 @@ function fail(message) {
   process.exit(1)
 }
 
-if (!existsSync(OUT)) fail('out/ does not exist. Run `npm run build` first.')
+if (!existsSync(OUT)) fail(OUT + ' does not exist. Run `npm run build` first.')
 if (routes.size === 0) {
   fail('Read no routes from src/content/site.ts. Has the source layout changed?')
 }
 
 /* --- 1. server files ------------------------------------------------------ */
 
-for (const file of ['.htaccess', '404.html', 'robots.txt', 'sitemap.xml']) {
-  if (!existsSync(join(OUT, file))) failures.push({ where: 'out/', what: `missing ${file}` })
+const serverFiles = [
+  '.htaccess',
+  '404.html',
+  'robots.txt',
+  'sitemap.xml',
+  'manifest.webmanifest',
+  'favicon.ico',
+  'icon.svg',
+  'apple-icon.png',
+  ...locales.map((l) => `${l}/opengraph-image`),
+]
+for (const file of serverFiles) {
+  if (!existsSync(join(OUT, ...file.split('/')))) {
+    failures.push({ where: 'out/', what: `missing ${file}` })
+  }
 }
 
 /* --- 2. every page exported ----------------------------------------------- */
@@ -59,12 +79,17 @@ for (const file of ['.htaccess', '404.html', 'robots.txt', 'sitemap.xml']) {
 const pagePaths = [...routes]
 const prefixes = locales.length > 0 ? locales.map((l) => `/${l}`) : ['']
 let expectedPages = 0
+/** Every page that exported: its file, relative to out/, and its URL path. */
+const pages = []
 for (const prefix of prefixes) {
   for (const path of pagePaths) {
     expectedPages++
-    const rel = `${prefix}${path === '/' ? '' : path}/index.html`
+    const urlPath = `${prefix}${path === '/' ? '' : path}/`
+    const rel = `${urlPath}index.html`
     if (!existsSync(join(OUT, ...rel.split('/')))) {
       failures.push({ where: 'out/', what: `missing page ${rel}` })
+    } else {
+      pages.push({ rel: rel.slice(1), urlPath })
     }
   }
 }
@@ -159,6 +184,74 @@ for (const file of files) {
     } else if (!resolves(href.slice(origin.length))) {
       failures.push({ where, what: `${rel} does not resolve: ${href}` })
     }
+  }
+}
+
+/* --- 5. what every page's <head> must carry ------------------------------ */
+
+/** The content of a <meta> tag, by its property or name. */
+function metaContent(html, key) {
+  const tag = html.match(new RegExp(`<meta\\b[^>]*\\b(?:property|name)="${key}"[^>]*>`, 'i'))?.[0]
+  const content = tag?.match(/\bcontent="([^"]*)"/)?.[1]
+  return content === undefined ? undefined : decodeEntities(content)
+}
+
+for (const { rel, urlPath } of pages) {
+  const html = await readFile(join(OUT, ...rel.split('/')), 'utf8')
+  const bad = (what) => failures.push({ where: rel, what })
+
+  const h1 = (html.match(/<h1[\s>]/gi) ?? []).length
+  if (h1 !== 1) bad(`expected one <h1>, found ${h1}`)
+  if (!/<title>[^<]+<\/title>/i.test(html)) bad('no <title>')
+  if (!metaContent(html, 'description')) bad('no meta description')
+  for (const key of ['og:title', 'og:description', 'og:locale', 'og:site_name']) {
+    if (!metaContent(html, key)) bad(`no ${key}`)
+  }
+
+  // Section 3 already checks that the image resolves; this checks it is there.
+  const image = metaContent(html, 'og:image')
+  if (!image) bad('no og:image')
+  else if (!image.startsWith(`${origin}/`)) bad(`og:image not on ${origin}: ${image}`)
+  if (!metaContent(html, 'twitter:image')) bad('no twitter:image')
+  if (metaContent(html, 'twitter:card') !== 'summary_large_image') {
+    bad('twitter:card is not summary_large_image')
+  }
+
+  const expectedUrl = `${origin}${urlPath}`
+  const canonical = html
+    .match(/<link\b[^>]*\brel="canonical"[^>]*>/i)?.[0]
+    .match(/\bhref="([^"]*)"/)?.[1]
+  if (canonical !== expectedUrl) bad(`canonical is ${canonical}, expected ${expectedUrl}`)
+  const ogUrl = metaContent(html, 'og:url')
+  if (ogUrl !== expectedUrl) bad(`og:url is ${ogUrl}, expected ${expectedUrl}`)
+
+  const jsonLd = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/i)?.[1]
+  if (!jsonLd) bad('no JSON-LD block')
+  else {
+    try {
+      JSON.parse(jsonLd)
+    } catch {
+      bad('JSON-LD does not parse')
+    }
+  }
+}
+
+/* --- 6. robots.txt and sitemap.xml ---------------------------------------- */
+
+if (existsSync(join(OUT, 'robots.txt'))) {
+  const robots = await readFile(join(OUT, 'robots.txt'), 'utf8')
+  if (!robots.includes(`Sitemap: ${origin}/sitemap.xml`)) {
+    failures.push({ where: 'robots.txt', what: 'does not name the sitemap' })
+  }
+}
+if (existsSync(join(OUT, 'sitemap.xml'))) {
+  const locs = allMatches(await readFile(join(OUT, 'sitemap.xml'), 'utf8'), /<loc>([^<]+)<\/loc>/g)
+  for (const { urlPath } of pages) {
+    const url = `${origin}${urlPath}`
+    if (!locs.includes(url)) failures.push({ where: 'sitemap.xml', what: `missing ${url}` })
+  }
+  if (locs.length !== expectedPages) {
+    failures.push({ where: 'sitemap.xml', what: `${locs.length} URLs, expected ${expectedPages}` })
   }
 }
 

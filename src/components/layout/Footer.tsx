@@ -5,7 +5,7 @@ import type { Locale } from '@/i18n/config'
 import { InstagramIcon, XIcon } from '@/components/bench/BrandIcons'
 
 const linkClass =
-  'inline-flex min-h-[44px] items-center text-fg underline-offset-4 transition-colors duration-150 ease-out hover:underline [overflow-wrap:anywhere]'
+  'inline-flex min-h-[44px] min-w-[44px] items-center justify-center text-fg underline-offset-4 transition-colors duration-150 ease-out hover:underline [overflow-wrap:anywhere]'
 
 /** One wrapping row under a dashed rule: name and year, the four links,
  *  email and GitHub. */
@@ -53,7 +53,7 @@ export default function Footer({ locale }: { locale: Locale }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Twitter"
-                className={`${linkClass} min-w-[44px] justify-center hover:text-accent`}
+                className={`${linkClass} hover:text-accent`}
               >
                 <XIcon size={20} />
               </a>
@@ -66,7 +66,7 @@ export default function Footer({ locale }: { locale: Locale }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
-                className={`${linkClass} min-w-[44px] justify-center hover:text-accent`}
+                className={`${linkClass} hover:text-accent`}
               >
                 <InstagramIcon size={20} />
               </a>

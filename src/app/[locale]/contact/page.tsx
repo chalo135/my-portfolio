@@ -19,7 +19,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
   return (
     <PageShell locale={locale}>
       <div className="mx-auto max-w-[1160px] px-4 pb-[100px] pt-10 sm:px-10">
-        <h1 className="text-[clamp(56px,7.5vw,104px)] font-bold leading-[0.95] tracking-[-0.03em]">
+        <h1 className="text-[length:clamp(40px,14.5vw,56px)] min-[747px]:text-[length:clamp(56px,7.5vw,104px)] font-bold leading-[0.95] tracking-[-0.03em]">
           {copy.heading}
         </h1>
         <p className="mt-[18px] text-[21px] leading-normal">{copy.intro}</p>

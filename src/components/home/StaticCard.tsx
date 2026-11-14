@@ -10,6 +10,7 @@ const SAND = '#E9DFC8'
 const METAL = '#9AA3B5'
 const METAL_EDGE = '#6B7488'
 const BUCKLE = '#1E1C1A'
+const BUCKLE_LINE = '#3A3632'
 
 /**
  * Server component. The ID card hanging from its lanyard, drawn in SVG and
@@ -45,7 +46,7 @@ export default function StaticCard({ card, photo }: { card: HomeCard; photo?: st
 
         <div className="relative mx-[14px] h-[172px] overflow-hidden rounded-[6px]" style={{ backgroundColor: SAND }}>
           {photo ? (
-            <Image src={photo} alt="" width={182} height={172} className="h-full w-full object-cover" priority />
+            <Image src={photo} alt="" width={182} height={172} className="h-full w-full object-cover" priority draggable={false} />
           ) : (
             // No photo yet: the monogram stands in.
             <span
@@ -73,8 +74,9 @@ export default function StaticCard({ card, photo }: { card: HomeCard; photo?: st
 
 /**
  * Two strap lengths meeting at a black plastic buckle, a swivel ring, then a
- * metal clip (44x24, at 118px on the stage) that goes through the card slot.
- * Coordinates start at the strap top, 40px above the stage.
+ * metal snap hook whose loop goes through the card's slot. Coordinates start
+ * at the strap top, 40px above the stage; the card's top edge is at 176.
+ * The 3D card (Lanyard.tsx) is laid out from the same numbers.
  */
 function Lanyard() {
   return (
@@ -82,32 +84,41 @@ function Lanyard() {
       aria-hidden
       focusable={false}
       width={80}
-      height={184}
-      viewBox="0 0 80 184"
+      height={196}
+      viewBox="0 0 80 196"
       className="absolute left-1/2 top-0 z-10 -ml-[40px] overflow-visible"
     >
       {/* Strap lengths: gold edges, crimson face. */}
       <g strokeLinecap="butt">
+        {/* On the desk the straps carry on up, behind the header. */}
+        <g className="hidden min-[900px]:block">
+          <line x1="16.31" y1="-58" x2="23.12" y2="1" stroke={GOLD} strokeWidth="11" />
+          <line x1="16.31" y1="-58" x2="23.12" y2="1" stroke={CRIMSON} strokeWidth="7" />
+          <line x1="63.69" y1="-58" x2="56.88" y2="1" stroke={GOLD} strokeWidth="11" />
+          <line x1="63.69" y1="-58" x2="56.88" y2="1" stroke={CRIMSON} strokeWidth="7" />
+        </g>
         <line x1="23" y1="0" x2="35" y2="104" stroke={GOLD} strokeWidth="11" />
         <line x1="23" y1="0" x2="35" y2="104" stroke={CRIMSON} strokeWidth="7" />
         <line x1="57" y1="0" x2="45" y2="104" stroke={GOLD} strokeWidth="11" />
         <line x1="57" y1="0" x2="45" y2="104" stroke={CRIMSON} strokeWidth="7" />
       </g>
 
-      {/* Buckle. */}
-      <rect x="26" y="96" width="28" height="34" rx="5" fill={BUCKLE} />
-      <rect x="30" y="100" width="20" height="10" rx="2" fill="none" stroke="#3A3632" strokeWidth="1.5" />
-      <rect x="31" y="115" width="18" height="2" rx="1" fill="#3A3632" />
-      <rect x="34" y="129" width="12" height="7" rx="2" fill={BUCKLE} />
+      {/* Buckle, and the tab the swivel hangs from. */}
+      <rect x="26" y="96.7" width="28" height="34" rx="4" fill={BUCKLE} />
+      <rect x="30" y="100.7" width="20" height="10" rx="2" fill="none" stroke={BUCKLE_LINE} strokeWidth="1.5" />
+      <rect x="31" y="115.7" width="18" height="2" rx="1" fill={BUCKLE_LINE} />
+      <rect x="34" y="128.7" width="12" height="9" rx="1.5" fill={BUCKLE} />
 
-      {/* Swivel ring and hook stem. */}
-      <circle cx="40" cy="141" r="5" fill="none" stroke={METAL} strokeWidth="2.5" />
-      <rect x="37" y="145" width="6" height="15" rx="2" fill={METAL} stroke={METAL_EDGE} strokeWidth="1" />
+      {/* Swivel ring and the hook's barrel. */}
+      <circle cx="40" cy="139.2" r="5" fill="none" stroke={METAL_EDGE} strokeWidth="3.4" />
+      <circle cx="40" cy="139.2" r="5" fill="none" stroke={METAL} strokeWidth="1.8" />
+      <rect x="36.4" y="145.5" width="7.2" height="15" rx="1.5" fill={METAL} stroke={METAL_EDGE} strokeWidth="1" />
 
-      {/* The clip: 44x24, 6px radius. */}
-      <rect x="18" y="158.5" width="44" height="24" rx="6" fill={METAL} stroke={METAL_EDGE} strokeWidth="1.5" />
-      <rect x="24" y="163" width="32" height="3" rx="1.5" fill="#FFFFFF" opacity="0.45" />
-      <rect x="24" y="174" width="32" height="4" rx="2" fill={METAL_EDGE} />
+      {/* The hook's loop: its lower bar sits in the card's slot. */}
+      <rect x="29" y="157" width="22" height="30" rx="8" fill="none" stroke={METAL_EDGE} strokeWidth="4.6" />
+      <rect x="29" y="157" width="22" height="30" rx="8" fill="none" stroke={METAL} strokeWidth="2.6" />
+      {/* Spring gate. */}
+      <rect x="48.3" y="161.3" width="5.4" height="13.4" rx="2.7" fill={METAL_EDGE} />
     </svg>
   )
 }

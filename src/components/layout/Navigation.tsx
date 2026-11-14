@@ -44,6 +44,19 @@ export default function Navigation({ locale }: { locale: Locale }) {
 
   const close = useCallback(() => setOpen(false), [])
 
+  // The overlay is `md:hidden`. If the viewport grows past 768px while it is
+  // open (a phone turned to landscape), close it, or the page would stay
+  // scroll-locked behind a menu nobody can see.
+  useEffect(() => {
+    if (!open) return
+    const mq = window.matchMedia('(min-width: 768px)')
+    const onChange = (e: MediaQueryListEvent) => {
+      if (e.matches) setOpen(false)
+    }
+    mq.addEventListener('change', onChange)
+    return () => mq.removeEventListener('change', onChange)
+  }, [open])
+
   // While the overlay is open: lock scroll, close on Escape, trap Tab.
   useEffect(() => {
     if (!open) return

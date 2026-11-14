@@ -6,8 +6,10 @@ import Pill, { pillClasses } from '@/components/bench/Pill'
 import { fill, mailtoUrl, topics, type ContactCopy, type Topic } from '@/content/contact'
 import { cn } from '@/lib/utils'
 
+// The rule is 55% ink (3.5:1 on paper). Focus keeps the global ink ring and
+// turns the rule crimson; the 6px top margin keeps the ring off the label.
 const fieldClasses =
-  'w-full rounded-none border-0 border-b-2 border-fg/35 bg-transparent px-[2px] py-[10px] text-[17px] text-paper-ink placeholder:text-fg-muted transition-colors duration-150 focus:border-accent focus:outline-none focus-visible:outline-none'
+  'mt-1.5 w-full rounded-none border-0 border-b-2 border-fg/55 bg-transparent px-[2px] py-[10px] text-[17px] text-paper-ink placeholder:text-fg-muted transition-colors duration-150 focus:border-accent focus-visible:outline-offset-1'
 
 /**
  * The postcard. A form that posts nowhere: on a valid submit it opens the
@@ -81,6 +83,7 @@ export default function ContactForm({
             name="name"
             type="text"
             autoComplete="name"
+            required
             placeholder={copy.namePlaceholder}
             value={name}
             onChange={onName}
@@ -103,7 +106,7 @@ export default function ContactForm({
                 key={t}
                 className={cn(
                   pillClasses(topic === t ? 'active' : 'default'),
-                  'cursor-pointer focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-fg'
+                  'relative cursor-pointer focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-fg'
                 )}
               >
                 <input
@@ -112,7 +115,9 @@ export default function ContactForm({
                   value={t}
                   checked={topic === t}
                   onChange={() => setTopic(t)}
-                  className="sr-only focus-visible:outline-none"
+                  // Not `sr-only`: globals.css un-hides `.sr-only:focus` (for the
+                  // skip link), which drew the native radio over the label.
+                  className="absolute inset-0 m-0 h-full w-full cursor-pointer opacity-0"
                 />
                 {copy.topics[t]}
               </label>
@@ -129,6 +134,7 @@ export default function ContactForm({
             id={messageId}
             name="message"
             rows={4}
+            required
             placeholder={copy.messagePlaceholder}
             value={message}
             onChange={onMessage}
@@ -144,7 +150,7 @@ export default function ContactForm({
         </div>
 
         <div className="flex flex-col items-start gap-3">
-          <Pill type="submit" variant="primary" className="min-h-[52px] px-[26px] text-[16px]">
+          <Pill type="submit" variant="primary" className="min-h-[52px] px-[26px] py-2 text-center text-[16px] leading-tight">
             {copy.submit}
           </Pill>
           <p className="text-[14px] text-fg-muted">{copy.helper}</p>

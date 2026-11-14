@@ -13,7 +13,9 @@ npm run check:links    # checks live project URLs still answer
 - Copy lives in `src/content/` (`*.en.ts`, `*.sw.ts`). Kiswahili drafts to review: `SWAHILI_COPY_REVIEW.md`.
 - Shared desk pieces (Pill, Paper, Tape, StickyNote, HandNote, BenchObject, drawings): `src/components/bench/`.
 - Colours and fonts: `src/app/globals.css` and `tailwind.config.ts`.
-- Deploying: `DEPLOY.md`. Redirects for old URLs: `public/.htaccess`.
+- Deploying: `DEPLOY.md`, which starts with a "before you go live" checklist. Redirects for old URLs, cache headers and security headers: `public/.htaccess`.
+- Page titles, descriptions and share-card tags: `src/lib/page-meta.ts`. Search-engine data (JSON-LD): `src/app/[locale]/layout.tsx`.
+- Icons: `src/app/icon.svg` is the drawing. After changing it, copy the change into `scripts/make-icons.mjs` and run `node scripts/make-icons.mjs` to rewrite `src/app/apple-icon.png` and `src/app/favicon.ico`.
 
 ## Files you add yourself
 

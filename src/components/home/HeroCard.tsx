@@ -79,10 +79,14 @@ export default function HeroCard({
 
   return (
     <>
-      <div className={cn('absolute inset-0 transition-opacity duration-300', ready && 'opacity-0')}>{children}</div>
+      {/* Once hidden, the static card also stops taking the pointer, so a
+          press on the 3D card can't start dragging the photo underneath. */}
+      <div className={cn('absolute inset-0 transition-opacity duration-300', ready && 'pointer-events-none opacity-0')}>
+        {children}
+      </div>
       {enabled && !failed ? (
         <Fallback onError={onError}>
-          <Lanyard card={card} backWord={backWord} photo={photo} onReady={onReady} />
+          <Lanyard card={card} backWord={backWord} photo={photo} onReady={onReady} onError={onError} />
         </Fallback>
       ) : null}
     </>

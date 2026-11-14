@@ -79,13 +79,38 @@ jobs:
         run: |
           set -u
           fail=0
-          for path in /en/ /sw/; do
+          # The four pages in both locales, and the files crawlers ask for.
+          for path in \
+            /en/ /en/work/ /en/about/ /en/contact/ \
+            /sw/ /sw/work/ /sw/about/ /sw/contact/ \
+            /robots.txt /sitemap.xml /manifest.webmanifest /favicon.ico; do
             code=$(curl -s -o /dev/null -w '%{http_code}' "$SITE$path")
             echo "$path -> $code"
             [ "$code" = 200 ] || fail=1
           done
-          # / has no page of its own; .htaccess sends it to /en/.
-          read -r code location < <(curl -s -o /dev/null -w '%{http_code} %{redirect_url}' "$SITE/")
-          echo "/ -> $code $location"
-          [ "$code" = 301 ] && [ "$location" = "$SITE/en/" ] || fail=1
+
+          # One 301, straight to the target. / has no page of its own, and
+          # one old route per target page stands in for the rest (the full
+          # list is in DEPLOY.md, section 7).
+          check_redirect() {
+            read -r code location < <(curl -s -o /dev/null -w '%{http_code} %{redirect_url}' "$SITE$1")
+            echo "$1 -> $code $location"
+            [ "$code" = 301 ] && [ "$location" = "$SITE$2" ] || fail=1
+          }
+          check_redirect /                /en/
+          check_redirect /projects        /en/work/
+          check_redirect /philosophy      /en/
+          check_redirect /sw/experience   /sw/about/
+          check_redirect /en/about        /en/about/
+
+          # A missing page answers 404, not 200.
+          code=$(curl -s -o /dev/null -w '%{http_code}' "$SITE/does-not-exist/")
+          echo "/does-not-exist/ -> $code"
+          [ "$code" = 404 ] || fail=1
+
+          # The share card has no file extension; it must still be a PNG.
+          type=$(curl -s -o /dev/null -w '%{content_type}' "$SITE/en/opengraph-image")
+          echo "/en/opengraph-image -> $type"
+          [ "$type" = image/png ] || fail=1
+
           exit $fail

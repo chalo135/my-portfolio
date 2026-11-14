@@ -33,7 +33,8 @@ export default async function WorkPage({ params }: { params: Promise<{ locale: s
           <StickyNote
             color="yellow"
             tilt={4}
-            className="absolute right-0 top-10 px-[18px] py-[14px] whitespace-nowrap font-hand text-[26px] font-bold leading-none"
+            // Under 360px it would cover the heading, so it sits above it.
+            className="absolute right-0 top-10 max-[359px]:top-[-22px] px-[18px] py-[14px] whitespace-nowrap font-hand text-[26px] font-bold leading-none"
           >
             {copy.sticky.replace('{count}', projectCount())}
           </StickyNote>

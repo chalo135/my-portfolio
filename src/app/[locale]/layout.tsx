@@ -3,11 +3,13 @@ import { notFound } from 'next/navigation'
 import '../globals.css'
 import { fontVariables } from '../fonts'
 import { ExperienceProvider } from '@/providers/ExperienceProvider'
-import { getSite } from '@/content/site'
+import { getSite, contact } from '@/content/site'
 import { getPages } from '@/content/pages'
 import { siteUrl } from '@/lib/site-url'
-import { alternatesFor } from '@/lib/alternates'
-import { locales, isLocale, localeTags, localeOgTags } from '@/i18n/config'
+import { alternatesFor, pageUrl } from '@/lib/alternates'
+import { socialMetadata } from '@/lib/page-meta'
+import { publicFileExists } from '@/lib/public-file'
+import { locales, isLocale, localeTags, type Locale } from '@/i18n/config'
 
 /** Both locales prerender; there is no runtime locale negotiation anywhere. */
 export function generateStaticParams() {
@@ -37,13 +39,58 @@ export async function generateMetadata({
     keywords: meta.keywords,
     authors: [{ name: site.name }],
     alternates: alternatesFor('/', locale),
-    openGraph: {
-      title: home.title,
-      description: home.description,
-      type: 'website',
-      locale: localeOgTags[locale],
-    },
+    robots: { index: true, follow: true },
+    ...socialMetadata(locale, '/', home.title, home.description),
   }
+}
+
+/** The portrait, only when the file is in public/ at build time. */
+const PHOTO = '/me/chalo.jpg'
+
+/**
+ * JSON-LD for search engines: who the site is about, and the site itself.
+ * Built only from src/content/site.ts. Public profile facts only: no email,
+ * phone number or other personal details.
+ */
+function structuredData(locale: Locale): string {
+  const { site } = getSite(locale)
+  const personId = `${siteUrl}/#person`
+  const [locality, country] = site.location.split(',').map((part) => part.trim())
+  const sameAs = [contact.github, contact.linkedin].filter(
+    (url): url is string => typeof url === 'string' && url.length > 0
+  )
+
+  const graph = [
+    {
+      '@type': 'Person',
+      '@id': personId,
+      name: site.name,
+      jobTitle: site.role,
+      url: pageUrl(locale, '/'),
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: locality,
+        ...(country ? { addressCountry: country } : {}),
+      },
+      ...(publicFileExists(PHOTO) ? { image: `${siteUrl}${PHOTO}` } : {}),
+      ...(sameAs.length > 0 ? { sameAs } : {}),
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${siteUrl}/#website`,
+      name: site.name,
+      url: pageUrl(locale, '/'),
+      inLanguage: localeTags[locale],
+      description: site.description,
+      author: { '@id': personId },
+    },
+  ]
+
+  // "<" is escaped so no string in the copy can close the script tag.
+  return JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }).replace(
+    /</g,
+    '\\u003c'
+  )
 }
 
 export const viewport: Viewport = {
@@ -86,6 +133,10 @@ export default async function LocaleLayout({
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: structuredData(locale) }}
+        />
       </head>
       <body className="bg-bg text-fg antialiased">
         <a

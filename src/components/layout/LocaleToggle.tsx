@@ -16,8 +16,8 @@ import { localeFromPathname, swapLocaleInPathname } from '@/lib/locale-href'
 
 /**
  * Locale switcher, styled as one Pill reading `EN / SW`. Links, not buttons:
- * switching locale is a navigation. The current locale is full `fg`, the
- * other is muted. Each link fills the pill's height, so it is a 44px target.
+ * switching locale is a navigation. The current locale is bold, full `fg`;
+ * the other is regular weight and slightly lighter. Each link fills the pill's height, so it is a 44px target.
  *
  * `variant="names"` is the mobile overlay, with full endonyms.
  */
@@ -55,7 +55,8 @@ export default function LocaleToggle({
               tabIndex={tabIndex}
               className={cn(
                 'flex min-h-[44px] min-w-[44px] items-center justify-center px-1 transition-colors duration-150 ease-out hover:underline',
-                isActive ? 'text-fg' : 'text-fg-muted hover:text-fg'
+                // fg-muted on the sand pill is 4.42:1; fg at 80% is 6.6:1.
+                isActive ? 'font-bold text-fg' : 'text-fg/80 hover:text-fg'
               )}
             >
               {text[locale]}
