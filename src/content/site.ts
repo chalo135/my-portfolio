@@ -79,7 +79,7 @@ export const logo = 'chalo'
 
 /**
  * Every static route, without a locale prefix. The single source of truth for
- * the sitemap and scripts/check-export.mjs. Paths are not localized, so the
+ * the sitemap, which scripts/check-links.mjs then walks. Paths are not localized, so the
  * locale toggle can swap the prefix and land on the same page.
  */
 export const routePaths = ['/', '/work', '/about', '/contact'] as const
