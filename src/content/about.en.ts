@@ -5,13 +5,15 @@ export const aboutContent: AboutCopy = {
   statement: "I'm Charles Ndirangu. Most people call me",
   statementName: 'Chalo.',
   paragraphs: [
-    "I studied Computer Technology at Multimedia University of Kenya. I've built software for clients since April 2025.",
-    "I also help run our family's plumbing and bio-digester business and our spare-parts shop.",
+    "I work in software engineering and IT support, with over two years of experience building and supporting web applications. My goal is to keep businesses running smoothly and their users happy.",
+    "In my daily workflow, I specialize in building web applications, troubleshooting technical problems, and keeping systems secure. I work across several programming languages, and use tools like Git and Docker to make sure every project I touch is reliable, scalable, and user-friendly. For me, it’s not just about building or fixing something. It’s about making sure the solution fits your business goals.",
+    "I hold a degree in Computer Technology from Multimedia University of Kenya, a customer service certification from Griffin Global Technologies, and ALX’s Data and AI Literacy certification",
+    "What sets my approach apart is that I’m a software engineer who speaks the customer’s language. "
   ],
   photoAlt: 'A photo of Charles Ndirangu',
   photoCaption: 'me, somewhere in Nairobi',
   cvButton: 'Download my CV',
-  notebookTitle: 'Chalo in data',
+  notebookTitle: 'My data',
   updated: 'Updated {date}',
   labels: {
     age: 'Age',

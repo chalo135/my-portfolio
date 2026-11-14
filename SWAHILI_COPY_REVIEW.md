@@ -136,7 +136,7 @@ Kazi ya usalama ilinipata kwa njia hiyohiyo. Kwenye jukwaa la biashara mtandaoni
 
 ## `src/content/about-report.sw.ts`
 
-The "Chalo in data" report on the About page. DAX, M code, table, column and
+The "My data" report on the About page. DAX, M code, table, column and
 step names are deliberately left in English.
 
 | key | English | Kiswahili |
@@ -164,7 +164,7 @@ step names are deliberately left in English.
 | `body` | DimDate is a calculated table marked as the date table. It filters FactTimeline on Start, and MonthNo keeps months sorting in date order instead of alphabetically. | DimDate ni jedwali lililokokotolewa na kuwekwa alama kama jedwali la tarehe. Huchuja FactTimeline kupitia Start, na MonthNo huhakikisha miezi inapangwa kwa mpangilio wa tarehe badala ya alfabeti. |
 | `daxContext` | Filter context right now: {filters}. The values below are calculated in it. | Muktadha wa kichujio sasa hivi: {filters}. Thamani zilizo hapa chini zimekokotolewa ndani yake. |
 | `daxNoContext` | No filters right now. Set one on the Overview page and come back: the values below change with it. | Hakuna vichujio sasa hivi. Weka kimoja kwenye ukurasa wa Muhtasari kisha urudi: thamani zilizo hapa chini zitabadilika nacho. |
-| `figureAlt` | The Chalo in data report open in Power BI Desktop, showing the Overview page with the status slicer, KPI cards, bar chart and project table. | Ripoti ya Chalo kwa data ikiwa wazi ndani ya Power BI Desktop, ikionyesha ukurasa wa Muhtasari wenye kichujio cha hali, kadi za KPI, chati ya mistari na jedwali la miradi. |
+| `figureAlt` | The My data report open in Power BI Desktop, showing the Overview page with the status slicer, KPI cards, bar chart and project table. | Ripoti ya Chalo kwa data ikiwa wazi ndani ya Power BI Desktop, ikionyesha ukurasa wa Muhtasari wenye kichujio cha hali, kadi za KPI, chati ya mistari na jedwali la miradi. |
 
 ## `src/content/philosophy.sw.ts`
 
