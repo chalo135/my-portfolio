@@ -15,7 +15,7 @@ npm run check:links    # checks every page and link (needs npm start running)
 - Colours and fonts: `src/app/globals.css` and `tailwind.config.ts`.
 - Hosting: Vercel. Every push to `main` deploys. Steps: `DEPLOY.md`. Redirects for old URLs and security headers: `next.config.ts`.
 - Page titles, descriptions and share-card tags: `src/lib/page-meta.ts`. Search-engine data (JSON-LD): `src/app/[locale]/layout.tsx`.
-- Icons: `src/app/icon.svg` is the drawing. After changing it, copy the change into `scripts/make-icons.mjs` and run `node scripts/make-icons.mjs` to rewrite `src/app/apple-icon.png` and `src/app/favicon.ico`.
+- Icons: `src/app/favicon.ico` is the site icon (16, 32 and 48 px). `src/app/apple-icon.png` (180×180) is made from it; replace both together when the icon changes.
 
 ## Files you add yourself
 

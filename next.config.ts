@@ -53,7 +53,7 @@ const nextConfig: NextConfig = {
       })),
 
       // The old site's favicon, still in some bookmarks.
-      { source: '/favicon.svg', destination: '/icon.svg', permanent: true },
+      { source: '/favicon.svg', destination: '/favicon.ico', permanent: true },
     ]
   },
 

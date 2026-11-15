@@ -100,7 +100,7 @@ its trailing slash takes one extra hop to add it):
 | `/philosophy/`, `/writing/`, `/writing/<slug>/` | `/en/` |
 | `/experience/`, `/resume/` | `/en/about/` |
 | The same removed pages under `/en/` or `/sw/` | That language's Work, Home or About page |
-| `/favicon.svg` | `/icon.svg` |
+| `/favicon.svg` | `/favicon.ico` |
 
 The list lives in `next.config.ts`.
 
